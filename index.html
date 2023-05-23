@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Listen to your favourite songs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body onload="onPageLoad()">
+    <nav id="navi">
+        <div class="left">
+            <img src="Spotify.png" alt="" width="50px">
+            <div id="id"> Spotify</div>
+            <!-- <div id="home">Home</div>
+            <div id="about">About</div> -->
+        </div>
+        <div class="right" style="float:right">
+            <input type="search" name="searchBox1" id="searchBox" placeholder="search" onkeydown="ifEnter(event)">
+            <div id="search" onclick="loginFindQuery()">Search</div>
+            <div id="login" onclick="getAuthorise()">Login</div>
+            <div id="logout" onclick="logoutFn()" style="visibility: hidden;">Logout</div>
+        </div>
+    </nav>
+
+    <div id="main">
+        <div class="cover">
+            <img class="coverimage" src="/assets/img/cover.png" alt="">
+            <div class="coverlabel">
+                <div class="covertitle">HIT SONGS ENGLISH</div>
+                <div class="coverartists">HIT SONGS ENGLISH: All your favourite songs right here!</div>
+                <div class="coverButton">
+                    <div class="play_bigG">Play</div>
+                    <div class="play_bigB">Follow</div>
+                </div>
+            </div>
+        </div>
+        <div class="hot">
+            <p> Hot Right Now</p>
+            <div class="playlists">
+                <div class="playlist">
+                    <!-- <a href="http://"></a> -->
+                    <div class="AA"><img alt=""></div>
+                    <div class="pltitle"></div>
+                    <div class="artists"></div>
+                    <div class="play_small"><img class="play_small_img" src="play-solid.svg" alt=""></div>
+                </div>
+                <div class="playlist">
+                    <div class="AA"><img alt=""></div>
+                    <div class="pltitle"></div>
+                    <div class="artists"></div>
+                    <div class="play_small"><img class="play_small_img" src="play-solid.svg" alt=""></div>
+                </div>
+                <div class="playlist">
+                    <div class="AA"><img alt=""></div>
+                    <div class="pltitle"></div>
+                    <div class="artists"></div>
+                    <div class="play_small"><img class="play_small_img" src="play-solid.svg" alt=""></div>
+                </div>
+                <div class="playlist">
+                    <div class="AA"><img alt=""></div>
+                    <div class="pltitle"></div>
+                    <div class="artists"></div>
+                    <div class="play_small"><img class="play_small_img" src="play-solid.svg" alt=""></div>
+                </div>
+                <div class="playlist">
+                    <div class="AA"><img alt=""></div>
+                    <div class="pltitle"></div>
+                    <div class="artists"></div>
+                    <div class="play_small"><img class="play_small_img" src="play-solid.svg" alt=""></div>
+                </div>
+                <div class="playlist">
+                    <div class="AA"><img alt=""></div>
+                    <div class="pltitle"></div>
+                    <div class="artists"></div>
+                    <div class="play_small"><img class="play_small_img" src="play-solid.svg" alt=""></div>
+                </div>
+                <div class="playlist">
+                    <div class="AA"><img alt=""></div>
+                    <div class="pltitle"></div>
+                    <div class="artists"></div>
+                    <div class="play_small"><img class="play_small_img" src="play-solid.svg" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="hot">
+            <p> Recommended for you</p>
+            <div class="playlists">
+                <div class="playlist">
+                    <div class="AA"><img alt=""></div>
+                    <div class="pltitle"></div>
+                    <div class="artists"></div>
+                    <div class="play_small"><img class="play_small_img" src="play-solid.svg" alt=""></div>
+                </div>
+                <div class="playlist">
+                    <div class="AA"><img alt=""></div>
+                    <div class="pltitle"></div>
+                    <div class="artists"></div>
+                    <div class="play_small"><img class="play_small_img" src="play-solid.svg" alt=""></div>
+                </div>
+                <div class="playlist">
+                    <div class="AA"><img alt=""></div>
+                    <div class="pltitle"></div>
+                    <div class="artists"></div>
+                    <div class="play_small"><img class="play_small_img" src="play-solid.svg" alt=""></div>
+                </div>
+                <div class="playlist">
+                    <div class="AA"><img alt=""></div>
+                    <div class="pltitle"></div>
+                    <div class="artists"></div>
+                    <div class="play_small"><img class="play_small_img" src="play-solid.svg" alt=""></div>
+                </div>
+                <div class="playlist">
+                    <div class="AA"><img alt=""></div>
+                    <div class="pltitle"></div>
+                    <div class="artists"></div>
+                    <div class="play_small"><img class="play_small_img" src="play-solid.svg" alt=""></div>
+                </div>
+                <div class="playlist">
+                    <div class="AA"><img alt=""></div>
+                    <div class="pltitle"></div>
+                    <div class="artists"></div>
+                    <div class="play_small"><img class="play_small_img" src="play-solid.svg" alt=""></div>
+                </div>
+                <div class="playlist">
+                    <div class="AA"><img alt=""></div>
+                    <div class="pltitle"></div>
+                    <div class="artists"></div>
+                    <div class="play_small"><img class="play_small_img" src="play-solid.svg" alt=""></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="panel" class="panel">
+        <div id="l"></div>
+        <div class="panelPage">
+            <div id="artistArtPanelWrapper"><img id="artistArtPanel" src="" alt=""></div>
+
+            <div class="panelLabel">
+                <div id="artistPanel"></div>
+                <div class="popSongLabel">
+                    <div>Popular Hits</div>
+                    <div id="playBtn_Panel">Play</div>
+                </div>
+                <div class="popSongs">
+
+                    <div class="popSongs1">
+                        <div class="pSong">
+                            <img alt="" >
+                            <span class="pSdark"></span>
+                            <span class="pSlight"></span>
+                        </div>
+                        <div class="pSong">
+                            <img alt="">
+                            <span class="pSdark"></span>
+                            <span class="pSlight"></span>
+                        </div>
+                        <div class="pSong">
+                            <img alt="">
+                            <span class="pSdark"></span>
+                            <span class="pSlight"></span>
+                        </div>
+                        <div class="pSong">
+                            <img alt="">
+                            <span class="pSdark"></span>
+                            <span class="pSlight"></span>
+                        </div>
+                        <div class="pSong">
+                            <img alt="">
+                            <span class="pSdark"></span>
+                            <span class="pSlight"></span>
+                        </div>
+                    </div>
+
+                    <div class="popSongs2">
+                        <div class="pSong">
+                            <img alt="" >
+                            <span class="pSdark"></span>
+                            <span class="pSlight"></span>
+                        </div>
+                        <div class="pSong">
+                            <img alt="" >
+                            <span class="pSdark"></span>
+                            <span class="pSlight"></span>
+                        </div>
+                        <div class="pSong">
+                            <img alt="" >
+                            <span class="pSdark"></span>
+                            <span class="pSlight"></span>
+                        </div>
+                        <div class="pSong">
+                            <img alt="" >
+                            <span class="pSdark"></span>
+                            <span class="pSlight"></span>
+                        </div>
+                        <div class="pSong">
+                            <img alt="" >
+                            <span class="pSdark"></span>
+                            <span class="pSlight"></span>
+                        </div>
+                    </div>
+                </div>
+                <img id="panelClose" src="/assets/circle-xmark-regular.svg" alt="">
+            </div>
+
+        </div>
+        <div id="r"></div>
+    </div>
+
+
+
+
+    </div>
+
+    <div id="errMsg">Song not found</div>
+    <div id="player">
+        <img id="albumArt" alt="">
+        <div id="progressUnit">
+            <div id="currTime">0:00</div>
+            <input id="progressbar" type="range" min="0" max="100" value="0" step="any">
+            <div id="duration">0:00</div>
+        </div>
+        <div id="songNamePlayer">Song name</div>
+        <!-- <Audio id="audioElem" type="audio/mpeg"></Audio>    controlled from JS -->
+        <div class="icons">
+            <img id="prev" src="backward-step-solid.svg" alt="prev">
+            <img id="playpause" src="play-solid.svg" alt="play">
+            <img id="next" src="forward-step-solid.svg" alt="next">
+        </div>
+        <div id="autoP">Autoplay
+            <label class="switch">
+                <input type="checkbox" name="autoplay" id="autoplay" checked="True">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="scriptAPI.js"></script>
+
+</body>
+
+</html>
