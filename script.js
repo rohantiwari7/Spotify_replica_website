@@ -107,7 +107,7 @@ playpause.addEventListener('click', () => {
 
 })
 
-audioElem.addEventListener("canplaythrough", () => {audioElem.play();});
+audioElem.addEventListener("canplay", () => {audioElem.play();});
 
 
 // metadata loaded. ready to fill player metadata
