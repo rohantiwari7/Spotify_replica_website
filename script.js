@@ -248,8 +248,8 @@ cover.addEventListener('click', () => {
     onlinePlaylist = false;
     songNamePlayer.innerText = "Unholy - Sam Smith ft. Kim Petras";
     songName = songNamePlayer.innerText;
-    albumArt.src = "/assets/img/cover.png";
-    audioElem.src = "/songs/coversong/Unholy ft Kim Petras.mp3";
+    albumArt.src = "assets/img/cover.png";
+    audioElem.src = "songs/coversong/Unholy ft Kim Petras.mp3";
     playpause.click();
 })
 
