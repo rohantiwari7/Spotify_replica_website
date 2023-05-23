@@ -98,7 +98,7 @@ elemArray.forEach((elem, i) => {
 playpause.addEventListener('click', () => {
     if (audioElem.paused || audioElem.currentTime <= 0) {  //if paused (make it play)
         playpause.src = "pause-solid.svg";
-        // audioElem.play();
+        audioElem.play();
     }
     else {   //if playing
         playpause.src = "play-solid.svg";
@@ -165,7 +165,8 @@ prev.addEventListener('click', () => {
     songNamePlayer.innerText = songs[songInd].songName;
     albumArt.src = coverDir + songs[songInd].coverName;
     audioElem.src = songDir + songs[songInd].songName + ".mp3";
-    playpause.click();
+    // playpause.click(); // handeled by canplay event
+    playpause.src = "pause-solid.svg";
 
 })
 prev.addEventListener('animationend', () => {
@@ -192,7 +193,8 @@ next.addEventListener('click', () => {
             songName = popularSongs[tempInd].trackName;
             albumArt.src = popularSongs[tempInd].trackAlbumArt;
             audioElem.src = popularSongs[tempInd].trackSrc;
-            playpause.click();
+            // playpause.click();
+            playpause.src = "pause-solid.svg";
             tempInd += 1;
             if (tempInd >= popularSongs.length) {
                 setTimeout(() => {   onlinePlaylist = false;   tempInd = 0;   }, 500);
@@ -228,7 +230,8 @@ next.addEventListener('click', () => {
         songNamePlayer.innerText = songs[songInd].songName;
         albumArt.src = coverDir + songs[songInd].coverName;
         audioElem.src = songDir + songs[songInd].songName + ".mp3";
-        playpause.click();
+        playpause.src = "pause-solid.svg";
+        // playpause.click();
     }
 })
 
