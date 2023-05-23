@@ -260,6 +260,15 @@ cover.addEventListener('click', () => {
 /////////////////////////////////////////////////////////
 let panelOpen = false;
 
+function tryopenWindow() {
+    if(panelOpen){
+        closeWindow();
+    }
+    else{
+        openWindow();
+    }
+}
+
 function openWindow() {
     if(panelOpen){
         return
@@ -283,9 +292,9 @@ function openWindow() {
 
 }
 
-albumArt.addEventListener('click', openWindow);
+albumArt.addEventListener('click', tryopenWindow);
 
-songNamePlayer.addEventListener('click', openWindow);
+songNamePlayer.addEventListener('click', tryopenWindow);
 
 ////////Close panel
 
