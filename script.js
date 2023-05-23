@@ -98,7 +98,7 @@ elemArray.forEach((elem, i) => {
 playpause.addEventListener('click', () => {
     if (audioElem.paused || audioElem.currentTime <= 0) {  //if paused (make it play)
         playpause.src = "pause-solid.svg";
-        audioElem.play();
+        // audioElem.play();
     }
     else {   //if playing
         playpause.src = "play-solid.svg";
@@ -106,6 +106,9 @@ playpause.addEventListener('click', () => {
     }
 
 })
+
+audioElem.addEventListener("canplaythrough", () => {audioElem.play();});
+
 
 // metadata loaded. ready to fill player metadata
 audioElem.addEventListener('loadedmetadata', () => {
