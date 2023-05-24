@@ -1,7 +1,7 @@
 const Client_ID = '5ef41c05df4a4a94b29e1b8807f60745';
 const Client_secret = 'b6b38b9c06aa4fa38a90ebbface4cdf2';
-const Redirect_uri = 'http://127.0.0.1:5500/index.html';
-// const Redirect_uri = 'https://rohantiwari7.github.io/Spotify_replica_website/';
+// const Redirect_uri = 'http://127.0.0.1:5500/index.html';
+const Redirect_uri = 'https://rohantiwari7.github.io/Spotify_replica_website/';
 
 const AUTHORIZE = "https://accounts.spotify.com/authorize"
 const TOKEN = "https://accounts.spotify.com/api/token";
