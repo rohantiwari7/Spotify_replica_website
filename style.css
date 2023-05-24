@@ -52,7 +52,6 @@ nav {
 
 .right div img{
     width: 20px;
-    /* padding: 10px; */
     padding-top: 4px;
     filter: invert(100%);
 }
@@ -808,10 +807,8 @@ nav {
         width: 35px;
     }
     .right div img{
-        width: 15px;
-        /* padding: 10px; */
-        padding-top: 2px;
-        filter: invert(100%);
+        width: 16px;
+        padding-top: 4px;
     }
     .cover {
         height: 186px;
