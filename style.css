@@ -46,6 +46,12 @@ nav {
     font-size: 17px;
     cursor: pointer;
 }
+.right div img{
+    width: 20px;
+    /* padding: 10px; */
+    padding-top: 4px;
+    filter: invert(100%);
+}
 
 #id {
     font-size: 24px;
@@ -734,8 +740,11 @@ nav {
 }
 
 @media only screen and (max-width:600px) {
-    #logout{
-        display: none;
+    .left div, .right div {
+        padding: 0 10px;
+    }
+    #id {
+        font-size: 21px;
     }
     #searchBox{
         width: 120px;
@@ -775,21 +784,21 @@ nav {
 }
 
 @media only screen and (max-width:480px) {
+    nav{
+        padding: 3px;
+    }
     #id {
-        font-size: 19px;
+        font-size: 18px;
         padding: 0 5px 0 5px;
     }
     #main{
         background: linear-gradient(160deg, rgb(91, 122, 184),30%, rgb(169, 110, 110));
     }
-    #search{
-        display: none;
-    }
     #searchBox{
-        width: 90px;
+        width: 80px;
     }
     .left div, .right div {
-        padding: 0 7px;
+        padding: 0 9px;
     }
     .cover {
         height: 186px;
