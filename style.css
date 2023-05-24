@@ -52,6 +52,7 @@ nav {
     font-family: 'Varela Round', sans-serif;
     padding: 0 5px 0 12px;
     font-weight:bold;
+    cursor: pointer;
 }
 
 #searchBox{
@@ -504,7 +505,7 @@ nav {
 /* panel styling */
 .panelPage{
     display: flex;
-    padding: 5vh;
+    padding: 4vw;
     background-color: rgba(71, 60, 60, 0.956);
     border-radius: 10px;
     height: 100%;
@@ -772,17 +773,23 @@ nav {
 }
 
 @media only screen and (max-width:480px) {
+    #id {
+        padding: 0 5px 0 5px;
+    }
     #main{
         background: linear-gradient(160deg, rgb(91, 122, 184),30%, rgb(169, 110, 110));
     }
 
     #searchBox{
-        width: 130px;
+        width: 110px;
+    }
+    .left div, .right div {
+        padding: 0 10px;
     }
     .cover{
         margin: 10px 30px 20px 30px;
     }
-    .covertitle, #artistPanel {
+    .covertitle {
         font-size: 24px;
         font-weight: 600;
         color: white;
@@ -809,6 +816,13 @@ nav {
         margin: 10px 10px;
         padding: 10px;
     }
+    .panelLabel{
+        margin:  0px 5px;
+    }
+    .pSong{
+        margin: 12px 3px;
+    }
+
 }
 @media only screen and (max-width:380px) {
     #searchBox{
@@ -817,7 +831,7 @@ nav {
     .cover{
         margin: 10px 20px 15px 20px;
     }
-    .covertitle, #artistPanel {
+    .covertitle {
         font-size: 23.5px;
         font-weight: 600;
         color: white;
@@ -842,5 +856,8 @@ nav {
     }
     .icons {
         padding-right: 5px;
+    }
+    .panelLabel{
+        margin:  0px 4px;
     }
 }
