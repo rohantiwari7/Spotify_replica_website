@@ -798,7 +798,16 @@ nav {
         width: 80px;
     }
     .left div, .right div {
-        padding: 0 9px;
+        padding: 0 6px;
+    }
+    .left img{
+        width: 35px;
+    }
+    .right div img{
+        width: 15px;
+        /* padding: 10px; */
+        padding-top: 2px;
+        filter: invert(100%);
     }
     .cover {
         height: 186px;
