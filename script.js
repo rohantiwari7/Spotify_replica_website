@@ -15,20 +15,20 @@ let songDir = "songs/";
 let coverDir = "assets/img/";
 
 songs = [
-    { songName: "5 Taara (with Jatinder Shah)", coverName: "cover1.png", artistName: "Diljit Dosanjh" },
-    { songName: "Aaj Phir", coverName: "cover2.png", artistName: "Arijit Singh and Samira Koppikar" },
-    { songName: "Aashiqui 2 - Tum Hi Ho", coverName: "cover3.png", artistName: "Arijit Singh" },
-    { songName: "Teri Meri - Bodyguard", coverName: "cover4.png", artistName: "Rahat Fateh Ali Khan and Shreya Ghoshal" },
-    { songName: "Call Out My Name", coverName: "cover5.png", artistName: "The Weeknd" },
-    { songName: "Addicted", coverName: "cover6.png", artistName: "Enrique Iglesias" },
-    { songName: "Guzaarish Hai Ye Jo Barish", coverName: "cover7.png", artistName: "K.K., Shail Hada" },
-    { songName: "Life In Technicolor", coverName: "cover8.png", artistName: "Coldplay" },
-    { songName: "Be Intehaan - Race 2", coverName: "cover9.png", artistName: "Atif Aslam, Sunidhi Chauhan" },
-    { songName: "Singh Is Kinng (2008)", coverName: "cover10.png", artistName: "RDB, SnoopDog" },
-    { songName: "Pani da rang - Vicky Donor", coverName: "cover11.png", artistName: "Ayushmann Khurrana" },
-    { songName: "Zara Sa - KK", coverName: "cover12.png", artistName: "K.K." },
-    { songName: "Kahani Suno 2.0", coverName: "cover13.png", artistName: "Kaifi Khalil" },
-    { songName: "Bolo Har Har - Shivaay", coverName: "cover14.png", artistName: "Badshah" }
+    { songName: "5 Taara (with Jatinder Shah)", coverName: "cover1.jpg", artistName: "Diljit Dosanjh" },
+    { songName: "Aaj Phir", coverName: "cover2.jpg", artistName: "Arijit Singh and Samira Koppikar" },
+    { songName: "Aashiqui 2 - Tum Hi Ho", coverName: "cover3.jpg", artistName: "Arijit Singh" },
+    { songName: "Teri Meri - Bodyguard", coverName: "cover4.jpg", artistName: "Rahat Fateh Ali Khan and Shreya Ghoshal" },
+    { songName: "Call Out My Name", coverName: "cover5.jpg", artistName: "The Weeknd" },
+    { songName: "Addicted", coverName: "cover6.jpg", artistName: "Enrique Iglesias" },
+    { songName: "Guzaarish Hai Ye Jo Barish", coverName: "cover7.jpg", artistName: "K.K., Shail Hada" },
+    { songName: "Life In Technicolor", coverName: "cover8.jpg", artistName: "Coldplay" },
+    { songName: "Be Intehaan - Race 2", coverName: "cover9.jpg", artistName: "Atif Aslam, Sunidhi Chauhan" },
+    { songName: "Singh Is Kinng (2008)", coverName: "cover10.jpg", artistName: "RDB, SnoopDog" },
+    { songName: "Pani da rang - Vicky Donor", coverName: "cover11.jpg", artistName: "Ayushmann Khurrana" },
+    { songName: "Zara Sa - KK", coverName: "cover12.jpg", artistName: "K.K." },
+    { songName: "Kahani Suno 2.0", coverName: "cover13.jpg", artistName: "Kaifi Khalil" },
+    { songName: "Bolo Har Har - Shivaay", coverName: "cover14.jpg", artistName: "Badshah" }
 ]
 
 var songInd = 0;
