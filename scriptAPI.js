@@ -1,7 +1,7 @@
 const Client_ID = '5ef41c05df4a4a94b29e1b8807f60745';
 const Client_secret = 'b6b38b9c06aa4fa38a90ebbface4cdf2';
-// const Redirect_uri = 'http://127.0.0.1:5500/index.html';
-const Redirect_uri = 'https://rohantiwari7.github.io/Spotify_replica_website/';
+const Redirect_uri = 'http://127.0.0.1:5500/index.html';
+// const Redirect_uri = 'https://rohantiwari7.github.io/Spotify_replica_website/';
 
 const AUTHORIZE = "https://accounts.spotify.com/authorize"
 const TOKEN = "https://accounts.spotify.com/api/token";
@@ -197,9 +197,9 @@ async function findQuery(){
     }
     else{   //search feature used
         localSong=false;
-        setTimeout(() => {
-            openWindow();
-        }, 100);
+        // setTimeout(() => {
+        //     openWindow();
+        // }, 100);
     }
     let q=SEARCH+'?q='+query+"&type=track,artist&market=IN&limit=5&include_external=audio";
     // console.log(query);
@@ -215,6 +215,7 @@ async function findQuery(){
             artistName=data.tracks.items[0].artists[0].name;
             artistId=data.tracks.items[0].artists[0].id;
             console.log('songName=', songName,'  artistName=', artistName,'  artistId=',artistId);
+            // console.log(data)
             if (!localSong && data.tracks.items[0].preview_url!=null){   //handeling "search" query
                 query1.classList.remove('play_small_hover');
                 query2.src = "play-solid.svg";
