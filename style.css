@@ -6,7 +6,10 @@
 
     margin: 0;
 }
-
+.prevent-select{
+    user-select: none;
+    -webkit-user-select: none;
+}
 :root {
     --player-height: 70px;
     --img-height:155px;
