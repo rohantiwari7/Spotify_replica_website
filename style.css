@@ -46,6 +46,7 @@ nav {
     font-size: 17px;
     cursor: pointer;
 }
+
 .right div img{
     width: 20px;
     /* padding: 10px; */
@@ -473,8 +474,8 @@ nav {
     position: absolute;
     z-index: 20;
     width: 100%;
-    top: 10vh;
-    height: calc(81vh - var(--player-height));
+    top: 80px;
+    height: calc(100vh - 200px);
     }
 
 #l, #r{
@@ -491,7 +492,7 @@ nav {
     display: block;
     position: absolute;
     z-index: 21;
-    top: 6vh;
+    top: 2.6vw;
     right: 6vw;
     height: 40px;
     width: 40px;
@@ -848,7 +849,10 @@ nav {
     .pSong{
         margin: 12px 3px;
     }
-
+    #panelClose{
+        height: 35px;
+        width: 35px;
+    }
 }
 @media only screen and (max-width:392px) {
     #searchBox{
@@ -856,6 +860,11 @@ nav {
     }
     .cover{
         margin: 10px 20px 15px 20px;
+    }
+    #login{
+        max-width: 100px;
+        overflow: hidden;
+        box-sizing: border-box;
     }
     .covertitle {
         font-size: 23.5px;
