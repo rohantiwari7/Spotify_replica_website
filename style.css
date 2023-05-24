@@ -732,7 +732,7 @@ nav {
     }
 }
 
-@media only screen and (max-width:625px) {
+@media only screen and (max-width:600px) {
     #login, #logout{
         display: none;
     }
@@ -769,4 +769,78 @@ nav {
     }
 
 
+}
+
+@media only screen and (max-width:480px) {
+    #main{
+        background: linear-gradient(160deg, rgb(91, 122, 184),30%, rgb(169, 110, 110));
+    }
+
+    #searchBox{
+        width: 130px;
+    }
+    .cover{
+        margin: 10px 30px 20px 30px;
+    }
+    .covertitle, #artistPanel {
+        font-size: 24px;
+        font-weight: 600;
+        color: white;
+    }
+    .play_bigB {
+        display: none;
+    }
+    .hot p{
+        font-size: 22px;
+        margin: 10px 35px;
+        /* padding-top: 5px;         */
+    }
+    .hot .playlists {
+        margin: 5px 10px;
+        max-height: 750px;
+    }
+    #albumArt {
+        padding: 0 10px 0 5px;
+    }
+    .icons {
+        padding-right: 5px;
+    }
+    .playlist {
+        margin: 10px 10px;
+        padding: 10px;
+    }
+}
+@media only screen and (max-width:380px) {
+    #searchBox{
+        width: 90px;
+    }
+    .cover{
+        margin: 10px 20px 15px 20px;
+    }
+    .covertitle, #artistPanel {
+        font-size: 23.5px;
+        font-weight: 600;
+        color: white;
+    }
+    .play_bigB {
+        display: none;
+    }
+    .hot p{
+        font-size: 22px;
+        margin: 10px 25px;
+        /* padding-top: 5px;         */
+    }
+    .hot .playlists {
+        margin: 5px 5px;
+    }
+    .playlist {
+        margin: 10px 5px;
+        padding: 10px;
+    }
+    #albumArt {
+        padding: 0 10px 0 5px;
+    }
+    .icons {
+        padding-right: 5px;
+    }
 }
