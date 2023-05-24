@@ -35,7 +35,7 @@ var songInd = 0;
 let songName = songs[songInd].songName;
 songNamePlayer.innerText = songs[songInd].songName;
 albumArt.src = coverDir + songs[songInd].coverName;
-audioElem.src = songDir + songs[songInd].songName + ".mp3";
+// audioElem.src = songDir + songs[songInd].songName + ".mp3";
 
 
 query1 = document.querySelector('.play_small');

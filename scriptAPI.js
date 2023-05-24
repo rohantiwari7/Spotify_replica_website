@@ -51,6 +51,7 @@ async function onPageLoad() {
     else if(localStorage.length>2){
         let naam=await apiCall(ME);    // initiator of check login
         // console.log(naam.display_name)
+        audioElem.src = songDir + songs[songInd].songName + ".mp3";
         if (loggedIn && naam!=undefined){
             console.log('loggedIn', loggedIn);
             login.innerText=naam.display_name;
