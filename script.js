@@ -119,6 +119,7 @@ audioElem.addEventListener("canplay", () => {
 // metadata loaded. ready to fill player metadata
 audioElem.addEventListener('loadedmetadata', () => {
     if (loggedIn && onlinePlaylist == false) { findQuery(); }
+    progressbar.value = 0;
     let m = ~~(audioElem.duration / 60);
     let s = ~~(audioElem.duration % 60);
     let dispM = m < 1 ? '0' : m;
@@ -147,9 +148,9 @@ audioElem.addEventListener('timeupdate', () => {
 //AutoPlay  /when current playlist is ended
 audioElem.addEventListener('ended', () => {
     cv = false;
-    progressbar.value = 0;
     currTime.textContent = '0:00';
     playpause.src = "play-solid.svg";
+    progressbar.value = 0;
     if (autoplay.checked) {
         next.click();
     }
