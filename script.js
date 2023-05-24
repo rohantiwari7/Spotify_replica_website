@@ -266,6 +266,8 @@ cover.addEventListener('click', () => {
     albumArt.src = "assets/img/cover.png";
     audioElem.src = "songs/coversong/Unholy ft Kim Petras.mp3";
     playpause.click();
+    setTimeout(()=>{songInd= 9;},2000);
+
 })
 
 

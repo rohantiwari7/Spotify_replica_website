@@ -734,10 +734,12 @@ nav {
 }
 
 @media only screen and (max-width:600px) {
-    #login, #logout{
+    #logout{
         display: none;
     }
-    
+    #searchBox{
+        width: 120px;
+    }
     .coverartists{
         display: none;
     }
@@ -774,6 +776,7 @@ nav {
 
 @media only screen and (max-width:480px) {
     #id {
+        font-size: 19px;
         padding: 0 5px 0 5px;
     }
     #main{
@@ -781,10 +784,10 @@ nav {
     }
 
     #searchBox{
-        width: 110px;
+        width: 90px;
     }
     .left div, .right div {
-        padding: 0 10px;
+        padding: 0 7px;
     }
     .cover {
         height: 186px;
@@ -807,7 +810,7 @@ nav {
     }
     .hot .playlists {
         margin: 5px 10px;
-        max-height: 738px;
+        max-height: 735px;
     }
     .playlist {
         margin: 10px 10px;
