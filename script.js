@@ -35,7 +35,7 @@ var songInd = 0;
 let songName = songs[songInd].songName;
 songNamePlayer.innerText = songs[songInd].songName;
 albumArt.src = coverDir + songs[songInd].coverName;
-// audioElem.src = songDir + songs[songInd].songName + ".mp3";
+// audioElem.src = songDir + songs[songInd].songName + ".mp3";  set from "onloaded" event
 
 
 query1 = document.querySelector('.play_small');
@@ -93,12 +93,14 @@ elemArray.forEach((elem, i) => {
     })
 })
 
-
+let playAllowed=0
 // play pause feature, and changing icon
 playpause.addEventListener('click', () => {
+    playAllowed=1;
     if (audioElem.paused || audioElem.currentTime <= 0) {  //if paused (make it play)
         playpause.src = "pause-solid.svg";
         audioElem.play();
+
     }
     else {   //if playing
         playpause.src = "play-solid.svg";
@@ -107,7 +109,11 @@ playpause.addEventListener('click', () => {
 
 })
 
-audioElem.addEventListener("canplay", () => {audioElem.play();});
+audioElem.addEventListener("canplay", () => {
+    if(playAllowed==1){
+        audioElem.play();
+    }
+});
 
 
 // metadata loaded. ready to fill player metadata
@@ -161,6 +167,7 @@ prev.addEventListener('click', () => {
     else {
         songInd = songs.length - 1;
     }
+    playAllowed=1
     songName = songs[songInd].songName;
     songNamePlayer.innerText = songs[songInd].songName;
     albumArt.src = coverDir + songs[songInd].coverName;
@@ -183,6 +190,7 @@ next.addEventListener('click', () => {
     query2.classList.remove('pause_small_img');
     query2.classList.add('play_small_img');
     // console.log("next clicked");
+    playAllowed=1
 
     ////Main function
     next.classList.add("buttonPress");
