@@ -505,7 +505,7 @@ nav {
 /* panel styling */
 .panelPage{
     display: flex;
-    padding: 4vw;
+    padding: 3vw;
     background-color: rgba(71, 60, 60, 0.956);
     border-radius: 10px;
     height: 100%;
