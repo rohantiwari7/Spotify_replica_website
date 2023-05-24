@@ -782,7 +782,9 @@ nav {
     #main{
         background: linear-gradient(160deg, rgb(91, 122, 184),30%, rgb(169, 110, 110));
     }
-
+    #search{
+        display: none;
+    }
     #searchBox{
         width: 90px;
     }
