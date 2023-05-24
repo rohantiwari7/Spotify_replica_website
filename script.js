@@ -21,7 +21,7 @@ songs = [
     { songName: "Teri Meri - Bodyguard", coverName: "cover4.png", artistName: "Rahat Fateh Ali Khan and Shreya Ghoshal" },
     { songName: "Call Out My Name", coverName: "cover5.png", artistName: "The Weeknd" },
     { songName: "Addicted", coverName: "cover6.png", artistName: "Enrique Iglesias" },
-    { songName: "Guzaarish - KK", coverName: "cover7.png", artistName: "K.K., Shail Hada" },
+    { songName: "Guzaarish Hai Ye Jo Barish", coverName: "cover7.png", artistName: "K.K., Shail Hada" },
     { songName: "Life In Technicolor", coverName: "cover8.png", artistName: "Coldplay" },
     { songName: "Be Intehaan - Race 2", coverName: "cover9.png", artistName: "Atif Aslam, Sunidhi Chauhan" },
     { songName: "Singh Is Kinng (2008)", coverName: "cover10.png", artistName: "RDB, SnoopDog" },
