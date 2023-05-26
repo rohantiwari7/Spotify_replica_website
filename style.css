@@ -911,9 +911,13 @@ nav {
     #albumArt {
         padding: 0 10px 0 5px;
     }
-    .icons {
-        padding-right: 5px;
+    #progressbar{
+        display: none;
     }
+    .icons img {
+        height: 22px;
+        padding: 5px 12px; 
+    } 
     .panelLabel{
         margin:  0px 4px;
     }
