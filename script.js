@@ -9,7 +9,7 @@
 // var songNamePlayer = document.getElementById('songNamePlayer');
 // var autoplay = document.getElementById('autoplay')  //.checked is true or false
 /// Initialise Songs
-let audioElem = document.createElement('video');  //audio HTML element (all functions apply to this)
+let audioElem = document.createElement('audio');  //audio HTML element (all functions apply to this)
 audioElem.type = "audio/mpeg";
 let songDir = "songs/";
 let coverDir = "assets/img/";
