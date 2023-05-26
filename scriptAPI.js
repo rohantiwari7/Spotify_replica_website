@@ -221,6 +221,7 @@ async function findQuery(){
                 query2.src = "play-solid.svg";
                 query2.classList.remove('pause_small_img');
                 query2.classList.add('play_small_img');
+                remLineQ();
                 // songInd=-1;
                 onlinePlaylist=true;
                 audioElem.src=data.tracks.items[0].preview_url;
