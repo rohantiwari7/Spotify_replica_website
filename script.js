@@ -304,9 +304,9 @@ function openWindow() {
         main.classList.add('blur');
         console.log('panel is opened');
         panelOpen = true;
-        if(foundArtistId==undefined || foundArtistId!=artistId){
-            findPopSongs(artistId);
-        }
+        // if(foundArtistId==undefined || foundArtistId!=artistId){
+        //     findPopSongs(artistId);
+        // }
     }
 
 }
