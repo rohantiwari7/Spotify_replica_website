@@ -163,24 +163,64 @@ audioElem.addEventListener('ended', () => {
 // /////////////////////////////////////////////
 // prev button click animation using CSS 'buttonPress' class
 prev.addEventListener('click', () => {
-    
+    query1.classList.remove('play_small_hover');
+    query2.src = "play-solid.svg";
+    query2.classList.remove('pause_small_img');
+    query2.classList.add('play_small_img');
+    remLineQ();
     // console.log("prev clicked");
     prev.classList.add("buttonPress");
-    if (songInd > 0) {
-        songInd -= 1;
+
+    if (onlinePlaylist == true) {
+        if (tempInd >0 ) {
+            tempInd -= 1;
+            songNamePlayer.innerText = popularSongs[tempInd].trackName;
+            songName = popularSongs[tempInd].trackName;
+            albumArt.src = popularSongs[tempInd].trackAlbumArt;
+            audioElem.src = popularSongs[tempInd].trackSrc;
+            lineQuery[tempInd].classList.add('line_show');
+            pArray[tempInd].classList.add('pSong_select');
+
+            // playpause.click();
+            playpause.src = "pause-solid.svg";
+            if (tempInd <= 0) {
+                setTimeout(() => {   onlinePlaylist = false;   tempInd = 0;   }, 150);
+            }
+        }
+        else {
+            onlinePlaylist = false;
+            tempInd = 0;
+        }
     }
     else {
-        songInd = songs.length - 1;
-    }
-    playAllowed=1
-    songName = songs[songInd].songName;
-    songNamePlayer.innerText = songs[songInd].songName;
-    albumArt.src = coverDir + songs[songInd].coverName;
-    audioElem.src = songDir + songs[songInd].songName + ".mp3";
-    // playpause.click(); // handeled by canplay event
-    playpause.src = "pause-solid.svg";
 
+        if (songInd > 0) {
+            songInd -= 1;
+        }
+        else {
+            songInd = songs.length - 1;
+        }
+        playAllowed=1
+        // styling
+        ele = document.getElementsByClassName('playlist')[songInd]
+        query1 = ele.querySelector('.play_small');
+        query2 = ele.querySelector('.play_small_img');
+        query2.src = "pause-solid.svg";
+        query2.classList.remove('play_small_img');
+        query2.classList.add('pause_small_img');
+        query1.classList.add('play_small_hover');
+        //end styling 
+        onlinePlaylist = false;
+
+        songName = songs[songInd].songName;
+        songNamePlayer.innerText = songs[songInd].songName;
+        albumArt.src = coverDir + songs[songInd].coverName;
+        audioElem.src = songDir + songs[songInd].songName + ".mp3";
+        // playpause.click(); // handeled by canplay event
+        playpause.src = "pause-solid.svg";
+    }
 })
+
 prev.addEventListener('animationend', () => {
     // console.log("prev animated");
     prev.classList.remove("buttonPress");
@@ -214,7 +254,7 @@ next.addEventListener('click', () => {
             // playpause.click();
             playpause.src = "pause-solid.svg";
             if (tempInd >= popularSongs.length) {
-                setTimeout(() => {   onlinePlaylist = false;   tempInd = 0;   }, 100);
+                setTimeout(() => {   onlinePlaylist = false;   tempInd = 0;   }, 150);
             }
         }
         else {
