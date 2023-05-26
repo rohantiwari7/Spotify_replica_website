@@ -53,7 +53,7 @@ elemArray.forEach((elem, i) => {
 
 elemArray.forEach((elem, i) => {
     elem.addEventListener('click', () => {
-
+        remLineQ(); //remove any panel click styling
         if (songInd === i) { //pause it
             query1.classList.remove('play_small_hover');
             query2.src = "play-solid.svg";
@@ -163,6 +163,7 @@ audioElem.addEventListener('ended', () => {
 // /////////////////////////////////////////////
 // prev button click animation using CSS 'buttonPress' class
 prev.addEventListener('click', () => {
+    
     // console.log("prev clicked");
     prev.classList.add("buttonPress");
     if (songInd > 0) {
@@ -193,6 +194,7 @@ next.addEventListener('click', () => {
     query2.src = "play-solid.svg";
     query2.classList.remove('pause_small_img');
     query2.classList.add('play_small_img');
+    remLineQ();
     // console.log("next clicked");
     playAllowed=1
 
@@ -200,16 +202,19 @@ next.addEventListener('click', () => {
     next.classList.add("buttonPress");
     if (onlinePlaylist == true) {
         if (tempInd < popularSongs.length) {
-            // songInd=-1
             songNamePlayer.innerText = popularSongs[tempInd].trackName;
             songName = popularSongs[tempInd].trackName;
             albumArt.src = popularSongs[tempInd].trackAlbumArt;
             audioElem.src = popularSongs[tempInd].trackSrc;
+            lineQuery[tempInd].classList.add('line_show');
+            pArray[tempInd].classList.add('pSong_select');
+
+            tempInd += 1;
+
             // playpause.click();
             playpause.src = "pause-solid.svg";
-            tempInd += 1;
             if (tempInd >= popularSongs.length) {
-                setTimeout(() => {   onlinePlaylist = false;   tempInd = 0;   }, 500);
+                setTimeout(() => {   onlinePlaylist = false;   tempInd = 0;   }, 100);
             }
         }
         else {
@@ -227,7 +232,7 @@ next.addEventListener('click', () => {
         // shuffle
         // let len=songs.length;
         // songInd= Math.floor(Math.random() * len);
-        // 
+        // styling
         ele = document.getElementsByClassName('playlist')[songInd]
         query1 = ele.querySelector('.play_small');
         query2 = ele.querySelector('.play_small_img');
@@ -235,7 +240,7 @@ next.addEventListener('click', () => {
         query2.classList.remove('play_small_img');
         query2.classList.add('pause_small_img');
         query1.classList.add('play_small_hover');
-        // 
+        //end styling 
         onlinePlaylist = false;
         // 
         songName = songs[songInd].songName;
@@ -334,9 +339,11 @@ r.addEventListener('click', closeWindow);
 // panel js
 let panelquery = document.getElementsByClassName('pSong');
 pArray = Array.from(panelquery);
-// console.log(pArray)
+let lineQuery=Array.from(document.getElementsByClassName('line'))
+console.log(lineQuery)
 pArray.forEach((pElem, i) => {
     pElem.addEventListener('click', () => {
+        remLineQ();
         tempInd = i
         onlinePlaylist = true;
         songNamePlayer.innerText = popularSongs[tempInd].trackName
@@ -344,12 +351,15 @@ pArray.forEach((pElem, i) => {
         albumArt.src = popularSongs[tempInd].trackAlbumArt;
         audioElem.src = popularSongs[tempInd].trackSrc;
         playpause.click();
+        /////styling
         query1.classList.remove('play_small_hover');
         query2.src = "play-solid.svg";
         query2.classList.remove('pause_small_img');
         query2.classList.add('play_small_img');
-        tempInd += 1;
-        setTimeout(() => {   onlinePlaylist = false;   }, 3000);  
+        lineQuery[tempInd].classList.add('line_show');  
+        pArray[tempInd].classList.add('pSong_select');
+        ////end styling
+        setTimeout(() => {   onlinePlaylist = false;   }, 300);  
     })
 })
 function refreshPanel() {
@@ -365,4 +375,9 @@ function refreshPanel() {
 
 }
 
-
+function remLineQ(){
+    for (let x=0;x<popularSongs.length;x++){
+        lineQuery[x].classList.remove('line_show');
+        pArray[x].classList.remove('pSong_select');
+    }
+}

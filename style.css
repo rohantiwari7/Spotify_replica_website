@@ -455,8 +455,8 @@ nav {
 }
 
 .play_small_hover{
-    opacity: 1;
     transition: opacity .4s;
+    opacity: 1;
 }
 
 .play_small:hover {
@@ -594,13 +594,21 @@ nav {
     margin: 12px 8px 0px 8px;
 }
 .line{
-    height: 1.5px;
+    height: 1.6px;
     margin: 0px 8px 0px 0px;
     width: calc(100% - 76px);
     align-self: flex-end;
     background-color: rgb(37, 205, 37);
+    opacity: 0;
+    transition: opacity 0.4s;
 }
-
+.line_show{
+    opacity: 1;
+}
+.pSong_select{
+    background-color: rgba(13, 13, 13, 0.6);
+    transition: background-color .4s;
+}
 /* overflow: hidden; */
 .pSong img{
     width: 60px;
@@ -857,7 +865,7 @@ nav {
         margin: 20px 3px 0px 3px;
     }
     .line{
-        height: 1.5px;
+        /* height: 1.5px; */
         margin: 0px 3px 0px 0px;
         width: calc(100% - 66px);
     }
