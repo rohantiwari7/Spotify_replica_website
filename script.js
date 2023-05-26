@@ -121,13 +121,13 @@ audioElem.addEventListener("canplay", () => {
 
 // metadata loaded. ready to fill player metadata
 audioElem.addEventListener('loadedmetadata', () => {
-    if (loggedIn && onlinePlaylist == false) { findQuery(); }
     progressbar.value = 0;
     let m = ~~(audioElem.duration / 60);
     let s = ~~(audioElem.duration % 60);
     let dispM = m < 1 ? '0' : m;
     let dispS = s < 10 ? '0' + s : s;
     duration.textContent = dispM + ':' + dispS;
+    if (loggedIn && onlinePlaylist == false) { findQuery(); }
 })
 
 //seeking(manually) through progressbar, 
@@ -276,7 +276,7 @@ cover.addEventListener('click', () => {
 
 /////////////////////////////////////////////////////////
 let panelOpen = false;
-
+let foundArtistId = undefined;
 function tryopenWindow() {
     if(panelOpen){
         closeWindow();
@@ -304,7 +304,9 @@ function openWindow() {
         main.classList.add('blur');
         console.log('panel is opened');
         panelOpen = true;
-        findPopSongs(artistId);
+        if(foundArtistId==undefined || foundArtistId!=artistId){
+            findPopSongs(artistId);
+        }
     }
 
 }

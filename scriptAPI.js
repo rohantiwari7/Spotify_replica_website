@@ -231,11 +231,13 @@ async function findQuery(){
                 setTimeout(()=>{onlinePlaylist = false; let len=songs.length; songInd= Math.floor(Math.random() * len);},1000);
             }
             if (panelOpen==true ){
-                if (loggedIn){await findPopSongs(artistId);}
-                
+                if (loggedIn){
+                    if(foundArtistId==undefined || foundArtistId!=artistId){
+                        findPopSongs(artistId);
+                    }
+                }
             }
         }
-    
         else{
             searchBox.value="";
             if(!localSong) {
@@ -269,6 +271,7 @@ async function findPopSongs(artistId){
     }
     if (!data.error){  
         if(data.tracks.length!=0){
+            foundArtistId=artistId;
             popularSongs=[];
             for(i=0;i<10;i++){
                 if (data.tracks[i].preview_url!=undefined || data.tracks[i].preview_url!=null){

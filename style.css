@@ -394,7 +394,7 @@ nav {
     background-color: rgba(67, 62, 62, 0.9);
 }
 
-.playlist:hover {
+.playlist:hover, .pSong:hover, #panelClose:hover {
     background-color: rgba(13, 13, 13, 0.6);
     transition: background-color .4s;
     cursor: pointer;
@@ -498,7 +498,7 @@ nav {
     right: 6vw;
     height: 40px;
     width: 40px;
-    /* border-radius: 50%; */
+    border-radius: 50%;
     cursor:pointer;
     /* border: 2px solid black; */
 }
