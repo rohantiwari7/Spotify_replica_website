@@ -591,7 +591,14 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 8px;
+    margin: 12px 8px 0px 8px;
+}
+.line{
+    height: 1.5px;
+    margin: 0px 8px 0px 0px;
+    width: calc(100% - 76px);
+    align-self: flex-end;
+    background-color: rgb(37, 205, 37);
 }
 
 /* overflow: hidden; */
