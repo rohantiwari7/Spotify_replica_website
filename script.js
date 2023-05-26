@@ -309,6 +309,14 @@ let cover = document.getElementsByClassName('cover')[0];
 cover.addEventListener('click', () => {
     cv = true
     onlinePlaylist = false;
+    // styling
+    remLineQ();
+    query1.classList.remove('play_small_hover');
+    query2.src = "play-solid.svg";
+    query2.classList.remove('pause_small_img');
+    query2.classList.add('play_small_img');
+    // 
+
     songNamePlayer.innerText = "Unholy - Sam Smith ft. Kim Petras";
     songName = songNamePlayer.innerText;
     albumArt.src = "assets/img/cover.png";
