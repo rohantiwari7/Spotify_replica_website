@@ -96,7 +96,7 @@ elemArray.forEach((elem, i) => {
 let playAllowed=0
 // play pause feature, and changing icon
 playpause.addEventListener('click', () => {
-    if(playAllowed==0 && !localSong){
+    if(playAllowed==0 && songInd==0 && localSong){
         query2.src = "pause-solid.svg";
         query2.classList.remove('play_small_img');
         query2.classList.add('pause_small_img');
