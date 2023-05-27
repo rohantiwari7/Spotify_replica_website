@@ -437,10 +437,10 @@ function remLineQ(){
     }
 }
 
-window.addEventListener("popstate", function(event) {
-    // Do something when the back button is clicked
-    closeWindow();
-  });
+// window.addEventListener("popstate", function(event) {
+//     // Do something when the back button is clicked
+//     closeWindow();
+//   });
 
 
-  document.addEventListener("backbutton", closeWindow())
+// document.addEventListener("backbutton", closeWindow())
