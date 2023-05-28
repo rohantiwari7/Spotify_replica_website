@@ -121,13 +121,13 @@ nav {
     box-shadow: 2px 2px 3px 1px rgb(63, 52, 52);
     font-family: sans-serif;
     font-size: 17px;
-    /* , 0 0 0 2px */
+    padding: 0px 10px;
 }
 
 #albumArt {
     width: 56px;
     height: 56px;
-    padding: 0 15px 0 10px;
+    margin: 0 10px 0 5px;
     cursor: pointer;
 }
  /* progress bar including time divs on both sides */
@@ -138,17 +138,17 @@ nav {
 #progressbar {
     cursor: pointer;
     margin: 0 8px;
-    width: 40vw;
+    width: 36vw;
 }
 
 #songNamePlayer {
-    padding: 4px 5px;
-    width: 220px;
+    padding: 4px 15px;
+    min-width: 130px;
+    max-width: 230px;
     max-height: 35px;
     font-family: 'Roboto', sans-serif;
-
     font-weight: 500;
-    overflow-y: hidden;
+    overflow: hidden;
     text-align: center;
     cursor: pointer;
 }
@@ -160,9 +160,11 @@ nav {
 .icons {
     display: flex;
     /* padding: 0 2vw; */
-    justify-content: center;
+    justify-content: space-between;
+    margin: 0px 15px 0px 0px;
     width: 100px;
     min-width: 70px;
+    align-items: center;
 
 }
 
@@ -514,7 +516,7 @@ nav {
 /* panel styling */
 .panelPage{
     display: flex;
-    padding: 3vw;
+    padding: 3.5vw 3vw;
     background-color: rgba(71, 60, 60, 0.956);
     border-radius: 10px;
     height: 100%;
@@ -549,27 +551,28 @@ nav {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     font-weight: 700;
-    margin: 15px 5px;
+    margin: 15px 5px 0px 5px;
     color: white;
     max-width: 250px;
     justify-content: space-between;
+    align-items: end;
     /* position: relative; */
 }
 
 #playBtn_Panel {
-    width: 88px;
-    height: 30px;
-    font-size: 18.5px;
+    width: 78px;
+    height: 27px;
+    font-size: 17.5px;
     font-weight: 500;
     color: black;
     background-color: rgb(50, 193, 50);
     border-radius: 15px;
     text-align: center;
-    line-height: 30px;
+    line-height: 26px;
     cursor: pointer;
 } 
 #playBtn_Panel:hover {
-    font-weight: 600;
+    background-color: rgb(44, 130, 44);
 }
 
 .popSongs{
@@ -638,9 +641,6 @@ nav {
 /* //////////////////////////////////////////// */
 
 @media only screen and (max-width:1400px) {
-    #progressbar{
-        width: 37vw;
-    }
     #main{
         background:  linear-gradient(160deg, rgb(77, 148, 77),30%, rgb(159, 95, 95));
     }
@@ -652,7 +652,7 @@ nav {
 
 @media only screen and (max-width:1200px) {
     #progressbar{
-        width: 35vw;
+        width: 33vw;
     }
     #autoP{
         display: none;
@@ -660,9 +660,9 @@ nav {
     #main{
         background:  linear-gradient(160deg,rgb(188, 97, 97),30%, rgb(79, 92, 136));
     }
-    .icons {
-        padding-right: 20px;
-    }
+    /* .icons {
+        margin-right: 10px;
+    } */
     .pSlight{
         display: none;
     }
@@ -684,6 +684,9 @@ nav {
     }
     .hot .playlists {
         max-height: 528px;
+    }
+    #progressbar{
+        width: 25vw;
     }
     .playlist{
         width: var(--img-width-small);
@@ -713,9 +716,6 @@ nav {
         display: none;
     } */
     
-    #progressbar{
-        width: 28vw;
-    }
     #main{
         background:  linear-gradient(160deg,rgb(118, 199, 105),30%, gray);      
     }
@@ -725,12 +725,15 @@ nav {
     .hot .playlists {
         margin: 10px 35px;
     }
+    #songNamePlayer {
+        padding: 4px 10px;
+    }
+    
     .icons {
-        padding-right: 10px;
+        margin-right: 10px;
     }
     .icons img {
         height: 19px;
-        padding: 5px 9px; 
     }    
     .cover {
         height: 200px;
@@ -752,8 +755,17 @@ nav {
     .pSdark {
         font-size: 16px;
     }
+    #playBtn_Panel {
+        width: 75px;
+        height: 26px;
+        font-size: 17px;
+        line-height: 25px;
+    } 
     #artistPanel{
-        font-size: 35px;
+        font-size: 36px;
+    }
+    #progressbar{
+        width: 20vw;
     }
 }
 
@@ -779,11 +791,14 @@ nav {
     #main{
         background:  linear-gradient(160deg,rgb(193, 189, 90),30%, gray);      
     }
+    .icons{
+        width: 71px;
+    }
     #prev{
         display: none;
     }
     #progressbar{
-        width: 25vw;
+        width: 16vw;
     }
     #currTime{
         display: none;
@@ -856,16 +871,16 @@ nav {
         padding: 8px;
     }
     #albumArt {
-        padding: 0 10px 0 5px;
+        margin: 0 10px 0 10px;
     }
-    .icons {
+    /* .icons {
         padding-right: 5px;
-    }
+    } */
     .panelLabel{
         margin:  0px 5px;
     }
     .pSong{
-        margin: 20px 3px 0px 3px;
+        margin: 17px 3px 0px 3px;
     }
     .line{
         /* height: 1.5px; */
@@ -875,6 +890,9 @@ nav {
     #panelClose{
         height: 35px;
         width: 35px;
+    }
+    #progressbar{
+        width: 13vw;
     }
 }
 @media only screen and (max-width:392px) {
@@ -907,9 +925,6 @@ nav {
     }
     .playlist {
         margin: 10px 5px;
-    }
-    #albumArt {
-        padding: 0 10px 0 5px;
     }
     #progressbar{
         display: none;
