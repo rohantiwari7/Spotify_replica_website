@@ -658,6 +658,9 @@ nav {
     #autoP{
         display: none;
     }
+    .covertitle {
+        font-size: 50px;
+    }
     #main{
         background:  linear-gradient(160deg,rgb(188, 97, 97),30%, rgb(79, 92, 136));
     }
@@ -740,9 +743,6 @@ nav {
         height: 200px;
         margin: 10px 50px;
     }
-    .coverlabel {
-        margin: 20px 0 0 20px;
-    }
     .coverimage{
         width: 170px;
         height: 170px;
@@ -752,6 +752,9 @@ nav {
     }
     .covertitle{
         font-size: 30px;
+    }
+    .coverlabel {
+        margin: 20px 0 0 40px;
     }
     .pSdark {
         font-size: 16px;
@@ -784,7 +787,7 @@ nav {
         display: none;
     }
     .coverButton{
-        margin: 40px  0px;
+        margin: 20px  0px;
     }
     .hot .playlists {
         max-height: 767px;
@@ -851,9 +854,6 @@ nav {
     }
     .covertitle {
         font-size: 24px;
-    }
-    .coverlabel {
-        margin: 9px 0 0 20px;
     }
     .play_bigB {
         display: none;
