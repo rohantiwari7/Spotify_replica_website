@@ -23,7 +23,7 @@ songs = [
     { songName: "Addicted", coverName: "cover6.jpg", artistName: "Enrique Iglesias" },
     { songName: "Guzaarish Hai Ye Jo Barish", coverName: "cover7.jpg", artistName: "K.K., Shail Hada" },
     { songName: "Life In Technicolor", coverName: "cover8.jpg", artistName: "Coldplay" },
-    { songName: "Be Intehaan - Race", coverName: "cover9.jpg", artistName: "Atif Aslam, Sunidhi Chauhan" },
+    { songName: "Be Intehaan - Atif", coverName: "cover9.jpg", artistName: "Atif Aslam, Sunidhi Chauhan" },
     { songName: "Singh Is Kinng", coverName: "cover10.jpg", artistName: "RDB, SnoopDog" },
     { songName: "Pani da rang - Vicky Donor", coverName: "cover11.jpg", artistName: "Ayushmann Khurrana" },
     { songName: "Zara Sa - KK", coverName: "cover12.jpg", artistName: "K.K." },
