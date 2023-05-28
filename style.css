@@ -683,7 +683,7 @@ nav {
         font-size: 40px;
     }
     .hot .playlists {
-        max-height: 532px;
+        max-height: 528px;
     }
     .playlist{
         width: var(--img-width-small);
@@ -774,7 +774,7 @@ nav {
         margin: 40px  0px;
     }
     .hot .playlists {
-        max-height: 780px;
+        max-height: 767px;
     }
     #main{
         background:  linear-gradient(160deg,rgb(193, 189, 90),30%, gray);      
@@ -846,7 +846,7 @@ nav {
     }
     .hot .playlists {
         margin: 5px 10px;
-        max-height: 735px;
+        max-height: 720px;
     }
     .playlist {
         margin: 10px 10px;
