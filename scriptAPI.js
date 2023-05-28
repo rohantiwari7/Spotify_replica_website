@@ -31,7 +31,8 @@ async function getAuthorise() {
             response_type: 'code',
             redirect_uri: encodeURI(Redirect_uri),
             show_dialog: showDialog,
-            scope: "user-read-private user-read-email user-modify-playback-state user-read-playback-position user-library-read streaming user-read-playback-state user-read-recently-played playlist-read-private"
+            scope: ""
+            // "user-read-private user-read-email user-modify-playback-state user-read-playback-position user-library-read streaming user-read-playback-state user-read-recently-played playlist-read-private"
         }).toString();
         // const response =fetch(q,{mode:"no-cors",headers:{"Access-Control-Allow-Origin": "http://localhost:5500"}})  
         window.location.href = q;
