@@ -18,7 +18,7 @@ songs = [
     { songName: "5 Taara (with Jatinder Shah)", coverName: "cover1.jpg", artistName: "Diljit Dosanjh" },
     { songName: "Aaj Phir", coverName: "cover2.jpg", artistName: "Arijit Singh and Samira Koppikar" },
     { songName: "Aashiqui 2 - Tum Hi Ho", coverName: "cover3.jpg", artistName: "Arijit Singh" },
-    { songName: "Teri Meri - Bodyguard", coverName: "cover4.jpg", artistName: "Rahat Fateh Ali Khan and Shreya Ghoshal" },
+    { songName: "Teri Meri", coverName: "cover4.jpg", artistName: "Rahat Fateh Ali Khan and Shreya Ghoshal" },
     { songName: "Call Out My Name", coverName: "cover5.jpg", artistName: "The Weeknd" },
     { songName: "Addicted", coverName: "cover6.jpg", artistName: "Enrique Iglesias" },
     { songName: "Guzaarish Hai Ye Jo Barish", coverName: "cover7.jpg", artistName: "K.K., Shail Hada" },
