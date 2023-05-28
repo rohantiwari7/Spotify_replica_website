@@ -24,7 +24,7 @@ songs = [
     { songName: "Guzaarish Hai Ye Jo Barish", coverName: "cover7.jpg", artistName: "K.K., Shail Hada" },
     { songName: "Life In Technicolor", coverName: "cover8.jpg", artistName: "Coldplay" },
     { songName: "Be Intehaan - Race 2", coverName: "cover9.jpg", artistName: "Atif Aslam, Sunidhi Chauhan" },
-    { songName: "Singh Is Kinng (2008)", coverName: "cover10.jpg", artistName: "RDB, SnoopDog" },
+    { songName: "Singh Is Kinng", coverName: "cover10.jpg", artistName: "RDB, SnoopDog" },
     { songName: "Pani da rang - Vicky Donor", coverName: "cover11.jpg", artistName: "Ayushmann Khurrana" },
     { songName: "Zara Sa - KK", coverName: "cover12.jpg", artistName: "K.K." },
     { songName: "Kahani Suno 2.0", coverName: "cover13.jpg", artistName: "Kaifi Khalil" },
