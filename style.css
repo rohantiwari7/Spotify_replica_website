@@ -801,7 +801,7 @@ nav {
 
 }
 
-@media only screen and (max-width:480px) {
+@media only screen and (max-width:490px) {
     nav{
         padding: 3px;
     }
@@ -835,6 +835,9 @@ nav {
     }
     .covertitle {
         font-size: 24px;
+    }
+    .coverlabel {
+        margin: 9px 0 0 20px;
     }
     .play_bigB {
         display: none;
@@ -890,9 +893,6 @@ nav {
         font-size: 23.5px;
         font-weight: 600;
         color: white;
-    }
-    .coverlabel {
-        margin: 12px 0 0 20px;
     }
     .play_bigB {
         display: none;
