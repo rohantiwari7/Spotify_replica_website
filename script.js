@@ -397,7 +397,7 @@ pArray = Array.from(panelquery);
 let lineQuery=Array.from(document.getElementsByClassName('line'))
 // console.log(lineQuery)
 pArray.forEach((pElem, i) => {
-    pElem.addEventListener('click', () => {
+    pElem.addEventListener('click', () => { //onlineplaylist trick to avoid findQuery on loaded metadata event  first true, then false after some sec
         remLineQ();
         tempInd = i
         onlinePlaylist = true;
@@ -414,7 +414,7 @@ pArray.forEach((pElem, i) => {
         lineQuery[tempInd].classList.add('line_show');  
         pArray[tempInd].classList.add('pSong_select');
         ////end styling
-        setTimeout(() => {   onlinePlaylist = false;   }, 300);  
+        setTimeout(() => {   onlinePlaylist = false;   }, 400);  
     })
 })
 function refreshPanel() {
