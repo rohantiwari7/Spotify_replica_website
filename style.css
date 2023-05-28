@@ -298,6 +298,7 @@ nav {
     font-family: 'Roboto', sans-serif;
     font-size: 60px;
     font-weight: 600;
+    margin-right: 45px;
     color: white;
 }
 
@@ -516,7 +517,7 @@ nav {
 /* panel styling */
 .panelPage{
     display: flex;
-    padding: 3.5vw 3vw;
+    padding: 3.6vw 3vw;
     background-color: rgba(71, 60, 60, 0.956);
     border-radius: 10px;
     height: 100%;
