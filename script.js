@@ -395,7 +395,7 @@ r.addEventListener('click', closeWindow);
 let panelquery = document.getElementsByClassName('pSong');
 pArray = Array.from(panelquery);
 let lineQuery=Array.from(document.getElementsByClassName('line'))
-console.log(lineQuery)
+// console.log(lineQuery)
 pArray.forEach((pElem, i) => {
     pElem.addEventListener('click', () => {
         remLineQ();
