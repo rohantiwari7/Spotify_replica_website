@@ -444,3 +444,12 @@ function remLineQ(){
 
 
 // document.addEventListener("backbutton", closeWindow())
+
+p1.addEventListener('click',()=>{
+    songInd=-1;
+    next.click();
+})
+p2.addEventListener('click',()=>{
+    songInd=6;
+    next.click();
+})
