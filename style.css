@@ -896,15 +896,15 @@ nav {
         width: 13vw;
     }
 }
-@media only screen and (max-width:392px) {
+@media only screen and (max-width:395px) {
     #searchBox{
-        width: 90px;
+        width: 87px;
     }
     .cover{
         margin: 10px 20px 15px 20px;
     }
     #login{
-        max-width: 100px;
+        max-width: 95px;
         overflow: hidden;
         box-sizing: border-box;
     }
