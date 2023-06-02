@@ -100,7 +100,7 @@ nav {
     padding-top: 80px;
     padding-bottom: 80px;
     /* height: 210vh; */
-    background: linear-gradient(160deg, rgb(91, 122, 184),30%, rgb(169, 110, 110));
+    background: linear-gradient(160deg, rgba(90, 113, 158, 0.959),50%, rgba(178, 103, 103, 0.964));
 }
 
 
@@ -363,16 +363,16 @@ nav {
 
 /* Playlist format ////////////////////////////////////// */
 
-.hot p{
+.hot span{
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     font-weight: 700;
     margin: 15px 90px;
     color: white;
-    
+    cursor: pointer;
 }
 
-.hot p:hover {
+.hot span:hover {
     text-decoration: underline;
 }
 
@@ -723,7 +723,7 @@ nav {
     #main{
         background:  linear-gradient(160deg,rgb(118, 199, 105),30%, gray);      
     }
-    .hot p{
+    .hot span{
         margin: 16px 60px;
     }
     .hot .playlists {
@@ -858,7 +858,7 @@ nav {
     .play_bigB {
         display: none;
     }
-    .hot p{
+    .hot span{
         font-size: 22px;
         margin: 10px 35px;
         /* padding-top: 5px;         */
@@ -916,7 +916,7 @@ nav {
     .play_bigB {
         display: none;
     }
-    .hot p{
+    .hot span{
         font-size: 22px;
         margin: 10px 25px;
         /* padding-top: 5px;         */
