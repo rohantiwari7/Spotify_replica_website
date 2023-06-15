@@ -107,7 +107,7 @@ playpause.addEventListener('click', () => {
     if (audioElem.paused || audioElem.currentTime <= 0) {  //if paused (make it play)
         playpause.src = "pause-solid.svg";
         audioElem.play();
-        console.log("play clicked from 'playpause' function with 'click' event");
+        // console.log("play clicked from 'playpause' function with 'click' event");
         
     }
     else {   //if playing
@@ -121,7 +121,7 @@ playpause.addEventListener('click', () => {
 audioElem.addEventListener("canplay", () => {
     if(playAllowed==1){
         audioElem.play();
-        console.log("play clicked in 'canplay' event");
+        // console.log("play clicked in 'canplay' event");
     }
 });
 
