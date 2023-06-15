@@ -107,7 +107,7 @@ playpause.addEventListener('click', () => {
     if (audioElem.paused || audioElem.currentTime <= 0) {  //if paused (make it play)
         playpause.src = "pause-solid.svg";
         audioElem.play();
-        console.log("play clicked from 'playpause' function with 'click' event");
+        // console.log("play clicked from 'playpause' function with 'click' event");
         
     }
     else {   //if playing
@@ -121,7 +121,7 @@ playpause.addEventListener('click', () => {
 audioElem.addEventListener("canplay", () => {
     if(playAllowed==1){
         audioElem.play();
-        console.log("play clicked in 'canplay' event");
+        // console.log("play clicked in 'canplay' event");
     }
 });
 
@@ -357,6 +357,7 @@ function openWindow() {
         setTimeout(() => { errMsg.style.display = "none" }, 3000);
     }
     else {
+        window.history.replaceState({stateid:"100"},"popular-hits","/popular-hits")
         panel.style.display = "flex";
         // panel.style.opacity=0.95;
         setTimeout(() => {   panel.classList.add('panel_open');  }, 10); 
@@ -378,6 +379,7 @@ songNamePlayer.addEventListener('click', tryopenWindow);
 ////////Close panel
 
 function closeWindow() {
+    window.history.replaceState("","","/")
     panel.classList.remove('panel_open');
     main.classList.remove('blur');
     setTimeout(() => {   panel.style.display = "none";  }, 350);
