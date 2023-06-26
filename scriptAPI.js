@@ -30,7 +30,7 @@ async function getAuthorise() {
             client_id: Client_ID,
             response_type: 'code',
             redirect_uri: encodeURI(Redirect_uri),
-            show_dialog: showDialog,
+            show_dialog:  false, // showDialog,
             scope: ""
             // "user-read-private user-read-email user-modify-playback-state user-read-playback-position user-library-read streaming user-read-playback-state user-read-recently-played playlist-read-private"
         }).toString();
@@ -57,7 +57,7 @@ async function onPageLoad() {
             login.innerText=naam.display_name;
             logout.style.visibility="visible";
             console.log("onload function executed");
-            findQuery();
+            // findQuery();
         }
     }
     audioElem.src = songDir + songs[songInd].songName + ".mp3";
@@ -94,6 +94,7 @@ async function getRefreshToken() {
     await callTokenApi(TOKEN, options);
 }
 
+
 async function callTokenApi(url, options) {
     const response = await fetch(url, options);
     const data = await response.json();  // response.status === 200 && 
@@ -115,7 +116,7 @@ async function callTokenApi(url, options) {
             let naam=await apiCall(ME);
             login.innerText=naam.display_name;
             logout.style.visibility="visible";
-            await findQuery();
+            // await findQuery();
         }
        
     }
@@ -124,7 +125,7 @@ async function callTokenApi(url, options) {
         console.log("Login Failed");
         // logoutFn()
         loggedIn=false;
-
+        showDialog="true";
         //await getAuthorise();           //Manually login
 
     }
@@ -198,11 +199,9 @@ async function findQuery(){
     }
     else{   //search feature used
         localSong=false;
-        // setTimeout(() => {
-        //     openWindow();
-        // }, 100);
+        // setTimeout(() => {  openWindow();  }, 100);
     }
-    let q=SEARCH+'?q='+query+"&type=track,artist&market=IN&limit=5&include_external=audio";
+    let q=SEARCH+'?q='+query+"&type=track,artist&market=IN&limit=5";
     // console.log(query);
 
     data=await apiCall(q);
@@ -254,10 +253,10 @@ async function findQuery(){
 
 function logoutFn(){
     localStorage.clear();
-    // window.location.href='';
     logout.style.visibility="hidden";
     login.innerText="Login";
     loggedIn=false;
+    window.location.reload();
 }
 
 // ////////////////////////////////////   panel work

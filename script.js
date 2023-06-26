@@ -444,11 +444,13 @@ function remLineQ(){
 
 
 // document.addEventListener("backbutton", closeWindow())
-
+// first row playlist
 p1.addEventListener('click',()=>{
     songInd=-1;
     next.click();
 })
+
+// second row playlist
 p2.addEventListener('click',()=>{
     songInd=6;
     next.click();

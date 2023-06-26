@@ -915,9 +915,12 @@ nav {
         margin: 15px 0 0 25px;
     }
     #login{
-        max-width: 90px;
+        max-width: 80px;
         overflow: hidden;
         margin: 0px 2px;
+    }
+    .left div, .right div {
+        font-size: 16px;
     }
     .covertitle {
         font-size: 23px;
