@@ -188,11 +188,10 @@ let localSong=true;
 async function findQuery(){
     
     query=searchBox.value;
-    
+
     console.log(searchBox.value);
-    // if(onlinePlaylist==true){
-    //     return
-    // }
+    console.log("query fired");
+    
     if (query==""){   //general query for current playing song
         query=songName;
         localSong=true;
@@ -216,7 +215,7 @@ async function findQuery(){
             artistId=data.tracks.items[0].artists[0].id;
             console.log('songName=', songName,'  artistName=', artistName,'  artistId=',artistId);
             // console.log(data)
-            if (!localSong && data.tracks.items[0].preview_url!=null){   //handeling "search" query
+            if (!localSong && data.tracks.items[0].preview_url!=null){   //handeling "searchBox" query
                 query1.classList.remove('play_small_hover');
                 query2.src = "play-solid.svg";
                 query2.classList.remove('pause_small_img');
@@ -299,22 +298,6 @@ async function findPopSongs(artistId){
         }
     }
 }
-/////////////////////////////////// 
-// Play popular songs list
-let onlinePlaylist=false;
-let tempInd=0;
-
-playBtn_Panel.addEventListener('click',()=>{
-    // songInd = -1;
-    tempInd=0;
-    onlinePlaylist=true;
-    query1.classList.remove('play_small_hover');
-    query2.src = "play-solid.svg";
-    query2.classList.remove('pause_small_img');
-    query2.classList.add('play_small_img');
-    console.log('playlist added to playing list');
-    next.click();
-})
 
 //////////////////////////////////////////
 let t=undefined;

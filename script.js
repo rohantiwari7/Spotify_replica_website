@@ -54,13 +54,18 @@ elemArray.forEach((elem, i) => {
 elemArray.forEach((elem, i) => {
     elem.addEventListener('click', () => {
         remLineQ(); //remove any panel click styling
+        localSong=true;
         if (songInd === i) { //pause it
-            query1.classList.remove('play_small_hover');
-            query2.src = "play-solid.svg";
-            query2.classList.remove('pause_small_img');
-            query2.classList.add('play_small_img');
-            playpause.click();
-            if (!audioElem.paused) {
+            console.log("same song clicked")
+            
+            if (!audioElem.paused){
+                query1.classList.remove('play_small_hover');
+                query2.src = "play-solid.svg";
+                query2.classList.remove('pause_small_img');
+                query2.classList.add('play_small_img');
+                playpause.click();}
+            else {
+                playpause.click();
                 query2.src = "pause-solid.svg";
                 query2.classList.remove('play_small_img');
                 query2.classList.add('pause_small_img');
@@ -93,37 +98,27 @@ elemArray.forEach((elem, i) => {
     })
 })
 
-let playAllowed=0
 // play pause feature, and changing icon
 playpause.addEventListener('click', () => {
-    if(playAllowed==0 && songInd==0 && localSong && !cv){
-        query2.src = "pause-solid.svg";
-        query2.classList.remove('play_small_img');
-        query2.classList.add('pause_small_img');
-        query1.classList.add('play_small_hover'); 
-    }
     
-    playAllowed=1;
     if (audioElem.paused || audioElem.currentTime <= 0) {  //if paused (make it play)
         playpause.src = "pause-solid.svg";
         audioElem.play();
-        // console.log("play clicked from 'playpause' function with 'click' event");
-        
     }
     else {   //if playing
         playpause.src = "play-solid.svg";
         audioElem.pause();
-        console.log("pause clicked from 'playpause' function with 'click' event");
     }
+    // console.log("play clicked from 'playpause' function with 'click' event");
 
 })
 
-audioElem.addEventListener("canplay", () => {
-    if(playAllowed==1){
-        audioElem.play();
-        // console.log("play clicked in 'canplay' event");
-    }
-});
+// audioElem.addEventListener("canplay", () => {
+//     if(playAllowed==1){
+//         audioElem.play();
+//         // console.log("play clicked in 'canplay' event");
+//     }
+// });
 
 
 // metadata loaded. ready to fill player metadata
@@ -134,7 +129,7 @@ audioElem.addEventListener('loadedmetadata', () => {
     let dispM = m < 1 ? '0' : m;
     let dispS = s < 10 ? '0' + s : s;
     duration.textContent = dispM + ':' + dispS;
-    if (loggedIn && onlinePlaylist == false) { findQuery(); }
+    if (loggedIn && localSong) { findQuery(); }
 })
 
 //seeking(manually) through progressbar, 
@@ -157,7 +152,6 @@ audioElem.addEventListener('timeupdate', () => {
 
 //AutoPlay  /when current playlist is ended
 audioElem.addEventListener('ended', () => {
-    cv = false;
     currTime.textContent = '0:00';
     playpause.src = "play-solid.svg";
     progressbar.value = 0;
@@ -179,8 +173,8 @@ prev.addEventListener('click', () => {
     prev.classList.add("buttonPress");
 
     if (onlinePlaylist == true) {
-        if (tempInd >0 ) {
-            tempInd -= 1;
+        tempInd -= 1;
+        if (tempInd >=0 ) {
             songNamePlayer.innerText = popularSongs[tempInd].trackName;
             songName = popularSongs[tempInd].trackName;
             albumArt.src = popularSongs[tempInd].trackAlbumArt;
@@ -188,26 +182,24 @@ prev.addEventListener('click', () => {
             lineQuery[tempInd].classList.add('line_show');
             pArray[tempInd].classList.add('pSong_select');
 
-            // playpause.click();
+            playpause.click();
             playpause.src = "pause-solid.svg";
-            if (tempInd <= 0) {
-                setTimeout(() => {   onlinePlaylist = false;   tempInd = 0;   }, 150);
-            }
+            
         }
         else {
             onlinePlaylist = false;
+            localSong=true;
             tempInd = 0;
+            prev.click();
         }
     }
     else {
 
-        if (songInd > 0) {
-            songInd -= 1;
-        }
-        else {
+        songInd -= 1;
+        if (songInd < 0) {
             songInd = songs.length - 1;
         }
-        playAllowed=1
+        
         // styling
         ele = document.getElementsByClassName('playlist')[songInd]
         query1 = ele.querySelector('.play_small');
@@ -218,12 +210,13 @@ prev.addEventListener('click', () => {
         query1.classList.add('play_small_hover');
         //end styling 
         onlinePlaylist = false;
+        localSong=true;
 
         songName = songs[songInd].songName;
         songNamePlayer.innerText = songs[songInd].songName;
         albumArt.src = coverDir + songs[songInd].coverName;
         audioElem.src = songDir + songs[songInd].songName + ".mp3";
-        // playpause.click(); // handeled by canplay event
+        playpause.click(); // handeled by canplay event
         playpause.src = "pause-solid.svg";
     }
 })
@@ -243,11 +236,11 @@ next.addEventListener('click', () => {
     query2.classList.add('play_small_img');
     remLineQ();
     // console.log("next clicked");
-    playAllowed=1
 
     ////Main function
     next.classList.add("buttonPress");
     if (onlinePlaylist == true) {
+        tempInd += 1;
         if (tempInd < popularSongs.length) {
             songNamePlayer.innerText = popularSongs[tempInd].trackName;
             songName = popularSongs[tempInd].trackName;
@@ -256,17 +249,16 @@ next.addEventListener('click', () => {
             lineQuery[tempInd].classList.add('line_show');
             pArray[tempInd].classList.add('pSong_select');
 
-            tempInd += 1;
-
-            // playpause.click();
+            localSong=false
+            playpause.click();
             playpause.src = "pause-solid.svg";
-            if (tempInd >= popularSongs.length) {
-                setTimeout(() => {   onlinePlaylist = false;   tempInd = 0;   }, 150);
-            }
+        
         }
         else {
             onlinePlaylist = false;
+            localSong=true;
             tempInd = 0;
+            next.click();
         }
     }
     else {
@@ -289,13 +281,14 @@ next.addEventListener('click', () => {
         query1.classList.add('play_small_hover');
         //end styling 
         onlinePlaylist = false;
+        localSong=true;
         // 
         songName = songs[songInd].songName;
         songNamePlayer.innerText = songs[songInd].songName;
         albumArt.src = coverDir + songs[songInd].coverName;
         audioElem.src = songDir + songs[songInd].songName + ".mp3";
         playpause.src = "pause-solid.svg";
-        // playpause.click();
+        playpause.click();
     }
 })
 
@@ -310,12 +303,12 @@ next.addEventListener('animationend', () => {
 // Songs and Albums event listeners
 
 // /////////////////////////////////////
-let cv = false;
 let cover = document.getElementsByClassName('cover')[0];
 
 cover.addEventListener('click', () => {
-    cv = true
     onlinePlaylist = false;
+    localSong=true;
+    songInd=-1
     // styling
     remLineQ();
     query1.classList.remove('play_small_hover');
@@ -329,7 +322,6 @@ cover.addEventListener('click', () => {
     albumArt.src = "assets/img/cover.png";
     audioElem.src = "songs/coversong/Unholy ft Kim Petras.mp3";
     playpause.click();
-    setTimeout(()=>{cv=false; songInd= 9;},800);
 
 })
 
@@ -364,9 +356,6 @@ function openWindow() {
         main.classList.add('blur');
         console.log('panel is opened');
         panelOpen = true;
-        // if(foundArtistId==undefined || foundArtistId!=artistId){
-        //     findPopSongs(artistId);
-        // }
     }
 
 }
@@ -400,7 +389,8 @@ pArray.forEach((pElem, i) => {
     pElem.addEventListener('click', () => { //onlineplaylist trick to avoid findQuery on loaded metadata event  first true, then false after some sec
         remLineQ();
         tempInd = i
-        onlinePlaylist = true;
+        // onlinePlaylist = true;
+        localSong=false;
         songNamePlayer.innerText = popularSongs[tempInd].trackName
         songName = popularSongs[tempInd].trackName
         albumArt.src = popularSongs[tempInd].trackAlbumArt;
@@ -414,10 +404,10 @@ pArray.forEach((pElem, i) => {
         lineQuery[tempInd].classList.add('line_show');  
         pArray[tempInd].classList.add('pSong_select');
         ////end styling
-        setTimeout(() => {   onlinePlaylist = false;   }, 400);  
     })
 })
 function refreshPanel() {
+    remLineQ();
     pArray.forEach((pElem, i) => {
         // console.log(pElem.querySelector('img'))
         if(i<popularSongs.length){
@@ -454,4 +444,33 @@ p1.addEventListener('click',()=>{
 p2.addEventListener('click',()=>{
     songInd=6;
     next.click();
+})
+
+/////////////////////////////////// 
+// Play popular songs list
+let onlinePlaylist=false;
+let tempInd=0;
+
+playBtn_Panel.addEventListener('click',()=>{
+    
+    tempInd=0;
+    onlinePlaylist=true;
+    localSong=false;
+    songNamePlayer.innerText = popularSongs[tempInd].trackName
+    songName = popularSongs[tempInd].trackName
+    albumArt.src = popularSongs[tempInd].trackAlbumArt;
+    audioElem.src = popularSongs[tempInd].trackSrc;
+    playpause.click();
+    
+    // styling remove
+    remLineQ();
+    query1.classList.remove('play_small_hover');
+    query2.src = "play-solid.svg";
+    query2.classList.remove('pause_small_img');
+    query2.classList.add('play_small_img');
+    console.log('playlist added to playing list');
+    
+    //styling add
+    lineQuery[tempInd].classList.add('line_show');  
+    pArray[tempInd].classList.add('pSong_select');
 })
