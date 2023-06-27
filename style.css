@@ -553,7 +553,7 @@ nav {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     font-weight: 700;
-    margin: 15px 5px 0px 5px;
+    margin: 18px 5px 5px 5px;
     color: white;
     max-width: 250px;
     justify-content: space-between;
@@ -768,6 +768,7 @@ nav {
     } 
     #artistPanel{
         font-size: 36px;
+        margin-top: 7px;
     }
     #progressbar{
         width: 20vw;
