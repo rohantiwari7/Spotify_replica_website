@@ -286,6 +286,7 @@ nav {
     cursor: pointer;
     width: 200px;
     height: 200px;
+    border-radius: 6px;
 }
 
 .coverlabel {

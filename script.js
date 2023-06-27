@@ -17,7 +17,7 @@ let coverDir = "assets/img/";
 songs = [
     { songName: "5 Taara (with Jatinder Shah)", coverName: "cover1.jpg", artistName: "Diljit Dosanjh" },
     { songName: "Phir Aur Kya Chahiye", coverName: "cover2.jpg", artistName: "Arijit Singh" },
-    { songName: "Aashiqui 2 - Tum Hi Ho", coverName: "cover3.jpg", artistName: "Arijit Singh" },
+    { songName: "KAZINO - BIBI(비비)", coverName: "cover3.jpg", artistName: "BIBI(비비)" },
     { songName: "Tere Vaste Falak Se", coverName: "cover4.jpg", artistName: "Varun Jain, Sachin-Jigar" },
     { songName: "Call Out My Name", coverName: "cover5.jpg", artistName: "The Weeknd" },
     { songName: "Addicted", coverName: "cover6.jpg", artistName: "Enrique Iglesias" },
@@ -28,7 +28,7 @@ songs = [
     { songName: "Pani da rang - Vicky Donor", coverName: "cover11.jpg", artistName: "Ayushmann Khurrana" },
     { songName: "Zara Sa - KK", coverName: "cover12.jpg", artistName: "K.K." },
     { songName: "Kahani Suno 2.0", coverName: "cover13.jpg", artistName: "Kaifi Khalil" },
-    { songName: "Sunflower - Post-Malone", coverName: "cover14.jpg", artistName: "Post Malone, Swae Lee" }
+    { songName: "Unholy ft Kim Petras", coverName: "cover14.jpg", artistName: "Sam Smith ft Kim Petras" }
 ]
 
 var songInd = 0;
@@ -349,12 +349,12 @@ cover.addEventListener('click', () => {
     query2.classList.add('play_small_img');
     // 
 
-    songNamePlayer.innerText = "Unholy - Sam Smith ft. Kim Petras";
+    songNamePlayer.innerText = "Sunflower - Post-Malone";
     songName = songNamePlayer.innerText;
-    albumArt.src = "assets/img/cover.png";
-    audioElem.src = "songs/coversong/Unholy ft Kim Petras.mp3";
+    albumArt.src = "assets/img/cover.jpg";
+    audioElem.src = "songs/coversong/Sunflower - Post-Malone.mp3";
     playpause.click();
-
+    
 })
 
 
