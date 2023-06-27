@@ -66,12 +66,15 @@ nav {
 
 #searchBox{
     height: 28px;
-    width: 170px;
-    border-radius: 6px;
+    width: 180px;
+    /* border-radius: 6px; */
     padding-left: 8px;
     font-size: 16px;
-    background-color: rgb(22, 21, 21);
+    /* background-color: rgb(22, 21, 21); */
+    background-color: rgb(41, 40, 40);
     color: white;
+    border: unset;
+    border-bottom: 1px solid rgb(154, 149, 149);
 }
 
 #errMsg{
@@ -835,9 +838,6 @@ nav {
     #main{
         background: linear-gradient(160deg, rgb(91, 122, 184),30%, rgb(169, 110, 110));
     }
-    #searchBox{
-        width: 80px;
-    }
     .left div, .right div {
         padding: 0 6px;
     }
@@ -922,7 +922,8 @@ nav {
         margin: 15px 0 0 25px;
     }
     #login{
-        max-width: 80px;
+        /* display: none; */
+        max-width: 50px;
         overflow: hidden;
         margin: 0px 2px;
     }
