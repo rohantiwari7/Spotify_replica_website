@@ -312,7 +312,26 @@ async function fillSongs(playlistId){
     if (!data.error){  
         if(data.tracks.length!=0){
             foundArtistId=artistId;
-            console.log(data.tracks)
+            fetchedSongs=[];
+            // console.log(data.tracks)
+            let count=0;
+            for(i=0;i<data.tracks.items.length;i++){
+                if (data.tracks.items[i].track.preview_url || data.tracks.items[i].track.preview_url!=null){
+                    temp={
+                        trackSrc: data.tracks.items[i].track.preview_url,
+                        trackName: data.tracks.items[i].track.name,
+                        trackArtist:data.tracks.items[i].track.artists[0].name,
+                        trackAlbumArt: data.tracks.items[i].track.album.images[1].url,
+                        trackDuration: data.tracks.items[i].track.duration_ms
+                    }
+                    fetchedSongs.push(temp);
+                    count+=1
+                }
+                if (count>=14){
+                    break
+                }
+            }
+            console.log(fetchedSongs)
         }
     }
 }
