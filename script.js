@@ -28,7 +28,7 @@ songs = [
     { songName: "Pani da rang - Vicky Donor", coverName: "cover11.jpg", artistName: "Ayushmann Khurrana" },
     { songName: "Zara Sa - KK", coverName: "cover12.jpg", artistName: "K.K." },
     { songName: "Kahani Suno 2.0", coverName: "cover13.jpg", artistName: "Kaifi Khalil" },
-    { songName: "Unholy ft Kim Petras", coverName: "cover14.jpg", artistName: "Sam Smith ft Kim Petras" }
+    { songName: "Unholy ft Kim Petras", coverName: "cover14.jpg", artistName: "Sam Smith" }
 ]
 
 var songInd = 0;

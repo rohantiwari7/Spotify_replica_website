@@ -382,7 +382,7 @@ nav {
     justify-content:space-evenly;
     margin: 15px 56px;
     flex-wrap: wrap;
-    max-height: 292px;
+    max-height: 278px;
     overflow-y: hidden;
 }
 
@@ -391,7 +391,7 @@ nav {
     position: relative;
     width: var(--img-width);
     flex-direction: column;
-    margin: 15px 12px;
+    margin: 12px 10px;
     padding: 10px;
     border-radius: 5px;
     color: white;
@@ -688,12 +688,12 @@ nav {
         font-size: 40px;
     }
     .hot .playlists {
-        max-height: 528px;
+        max-height: 518px;
     }
     #progressbar{
         width: 25vw;
     }
-    .playlist{
+    .playlist {
         width: var(--img-width-small);
     }
     .playlist .AA img {
@@ -728,7 +728,7 @@ nav {
         margin: 16px 60px;
     }
     .hot .playlists {
-        margin: 10px 35px;
+        margin: 13px 35px;
     }
     #songNamePlayer {
         padding: 4px 10px;
@@ -775,7 +775,7 @@ nav {
     }
 }
 
-@media only screen and (max-width:600px) {
+@media only screen and (max-width:612px) {
     .left div, .right div {
         padding: 0 10px;
     }
@@ -792,7 +792,7 @@ nav {
         margin: 20px  0px;
     }
     .hot .playlists {
-        max-height: 767px;
+        max-height: 753px;
     }
     #main{
         background:  linear-gradient(160deg,rgb(193, 189, 90),30%, gray);      
@@ -873,15 +873,15 @@ nav {
     }
     .hot span{
         font-size: 22px;
-        margin: 10px 35px;
+        margin: 15px 35px;
         /* padding-top: 5px;         */
     }
     .hot .playlists {
-        margin: 5px 10px;
+        margin: 5px 10px 15px 10px;
         max-height: 717px;
     }
     .playlist {
-        margin: 10px 10px;
+        margin: 10px 8px;
         padding: 8px;
     }
     #albumArt {
@@ -933,13 +933,13 @@ nav {
     .hot span{
         font-size: 22px;
         margin: 10px 25px;
-        /* padding-top: 5px;         */
+        padding-top: 5px;        
     }
     .hot .playlists {
-        margin: 5px 5px;
+        margin: 5px 5px 15px 5px;
     }
     .playlist {
-        margin: 10px 5px;
+        margin: 8px 4px;
     }
     #progressbar{
         display: none;
