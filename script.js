@@ -22,7 +22,7 @@ songs = [
     { songName: "Call Out My Name", coverName: "cover5.jpg", artistName: "The Weeknd" },
     { songName: "Addicted", coverName: "cover6.jpg", artistName: "Enrique Iglesias" },
     { songName: "Guzaarish Hai Ye Jo Barish", coverName: "cover7.jpg", artistName: "K.K., Shail Hada" },
-    { songName: "Life In Technicolor", coverName: "cover8.jpg", artistName: "Coldplay" },
+    { songName: "Cupid - Twin ver", coverName: "cover8.jpg", artistName: "FIFTY FIFTY - Twin ver." },
     { songName: "Be Intehaan - Atif", coverName: "cover9.jpg", artistName: "Atif Aslam, Sunidhi Chauhan" },
     { songName: "Singh Is Kinng", coverName: "cover10.jpg", artistName: "RDB, SnoopDog" },
     { songName: "Pani da rang - Vicky Donor", coverName: "cover11.jpg", artistName: "Ayushmann Khurrana" },
