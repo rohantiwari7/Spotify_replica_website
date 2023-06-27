@@ -273,8 +273,9 @@ async function findPopSongs(artistId){
         if(data.tracks.length!=0){
             foundArtistId=artistId;
             popularSongs=[];
-            for(i=0;i<10;i++){
-                if (data.tracks[i].preview_url!=undefined || data.tracks[i].preview_url!=null){
+            // console.log(data.tracks)
+            for(i=0;i<data.tracks.length;i++){
+                if (data.tracks[i].preview_url || data.tracks[i].preview_url!=null){
                 temp={
                     trackSrc: data.tracks[i].preview_url,
                     trackName: data.tracks[i].name,
@@ -289,7 +290,7 @@ async function findPopSongs(artistId){
             
             console.log(popularSongs);
             trackArtistImage=await artistImage(artistId);
-            console.log('trackArtistImage= ',trackArtistImage);
+            // console.log('trackArtistImage= ',trackArtistImage);
             artistArtPanel.src=trackArtistImage;
             artistPanel.innerText=artistName;
             refreshPanel();
