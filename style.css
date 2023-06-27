@@ -65,11 +65,13 @@ nav {
 }
 
 #searchBox{
-    height: 27px;
-    width: 160px;
+    height: 28px;
+    width: 170px;
     border-radius: 6px;
     padding-left: 8px;
     font-size: 16px;
+    background-color: rgb(22, 21, 21);
+    color: white;
 }
 
 #errMsg{
