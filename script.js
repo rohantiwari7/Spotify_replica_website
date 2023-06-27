@@ -54,9 +54,9 @@ elemArray.forEach((elem, i) => {
 elemArray.forEach((elem, i) => {
     elem.addEventListener('click', () => {
         remLineQ(); //remove any panel click styling
-        localSong=true;
-        if (songInd === i) { //pause it
-            console.log("same song clicked")
+        coverClick=false;
+        if (songInd === i && localSong) { //pause it
+            // console.log("same song clicked");
             
             if (!audioElem.paused){
                 query1.classList.remove('play_small_hover');
@@ -70,10 +70,11 @@ elemArray.forEach((elem, i) => {
                 query2.classList.remove('play_small_img');
                 query2.classList.add('pause_small_img');
                 query1.classList.add('play_small_hover');  //making it static
-
+                
             }
         }
         else {
+            localSong=true;
             // reset old play button
             query1.classList.remove('play_small_hover'); //removing static of previous song
             query2.src = "play-solid.svg";
@@ -106,10 +107,36 @@ playpause.addEventListener('click', () => {
     if (audioElem.paused || audioElem.currentTime <= 0) {  //if paused (make it play)
         playpause.src = "pause-solid.svg";
         audioElem.play();
+        //styling add
+        if(!coverClick){
+            if(localSong){
+                query2.src = "pause-solid.svg";
+                query2.classList.remove('play_small_img');
+                query2.classList.add('pause_small_img');
+                query1.classList.add('play_small_hover');  //making it static
+            }
+            else{
+                lineQuery[tempInd].classList.add('line_show');  
+                pArray[tempInd].classList.add('pSong_select');
+            }
+        }
     }
     else {   //if playing
         playpause.src = "play-solid.svg";
         audioElem.pause();
+        //styling remove
+        if(!coverClick){
+            if(localSong){
+                query1.classList.remove('play_small_hover'); //removing static of previous song
+                query2.src = "play-solid.svg";
+                query2.classList.remove('pause_small_img');
+                query2.classList.add('play_small_img');
+            }
+            else{
+                remLineQ();
+            }
+        }
+
     }
     // console.log("play clicked from 'playpause' function with 'click' event");
 
@@ -171,6 +198,7 @@ prev.addEventListener('click', () => {
     query2.classList.remove('pause_small_img');
     query2.classList.add('play_small_img');
     remLineQ();
+    coverClick=false;
     // console.log("prev clicked");
     prev.classList.add("buttonPress");
 
@@ -237,6 +265,7 @@ next.addEventListener('click', () => {
     query2.classList.remove('pause_small_img');
     query2.classList.add('play_small_img');
     remLineQ();
+    coverClick=false;
     // console.log("next clicked");
 
     ////Main function
@@ -251,7 +280,7 @@ next.addEventListener('click', () => {
             lineQuery[tempInd].classList.add('line_show');
             pArray[tempInd].classList.add('pSong_select');
 
-            localSong=false
+            localSong=false;
             playpause.click();
             playpause.src = "pause-solid.svg";
         
@@ -274,7 +303,7 @@ next.addEventListener('click', () => {
         // let len=songs.length;
         // songInd= Math.floor(Math.random() * len);
         // styling
-        ele = document.getElementsByClassName('playlist')[songInd]
+        ele = document.getElementsByClassName('playlist')[songInd];
         query1 = ele.querySelector('.play_small');
         query2 = ele.querySelector('.play_small_img');
         query2.src = "pause-solid.svg";
@@ -306,11 +335,12 @@ next.addEventListener('animationend', () => {
 
 // /////////////////////////////////////
 let cover = document.getElementsByClassName('cover')[0];
+let coverClick=false;
 
 cover.addEventListener('click', () => {
     onlinePlaylist = false;
     localSong=true;
-    songInd=-1
+    coverClick=true;
     // styling
     remLineQ();
     query1.classList.remove('play_small_hover');
@@ -345,7 +375,7 @@ function openWindow() {
         return
     }
     if (!loggedIn) {
-        errMsg.innerText = "Please Login for Song Info"
+        errMsg.innerText = "Please Login for Song Info";
         errMsg.style.display = "flex";
         errMsg.style.height = "60px";
         setTimeout(() => { errMsg.style.display = "none" }, 3000);
@@ -384,17 +414,20 @@ r.addEventListener('click', closeWindow);
 // ////////////////////////////////////////////////////////////
 // panel js
 let panelquery = document.getElementsByClassName('pSong');
+
 pArray = Array.from(panelquery);
-let lineQuery=Array.from(document.getElementsByClassName('line'))
+
+let lineQuery=Array.from(document.getElementsByClassName('line'));
 // console.log(lineQuery)
+
 pArray.forEach((pElem, i) => {
-    pElem.addEventListener('click', () => { //onlineplaylist trick to avoid findQuery on loaded metadata event  first true, then false after some sec
+    pElem.addEventListener('click', () => { 
         remLineQ();
+        coverClick=false
         tempInd = i
-        // onlinePlaylist = true;
         localSong=false;
-        songNamePlayer.innerText = popularSongs[tempInd].trackName
-        songName = popularSongs[tempInd].trackName
+        songNamePlayer.innerText = popularSongs[tempInd].trackName;
+        songName = popularSongs[tempInd].trackName;
         albumArt.src = popularSongs[tempInd].trackAlbumArt;
         audioElem.src = popularSongs[tempInd].trackSrc;
         playpause.click();
@@ -458,8 +491,9 @@ playBtn_Panel.addEventListener('click',()=>{
     tempInd=0;
     onlinePlaylist=true;
     localSong=false;
-    songNamePlayer.innerText = popularSongs[tempInd].trackName
-    songName = popularSongs[tempInd].trackName
+    coverClick=false;
+    songNamePlayer.innerText = popularSongs[tempInd].trackName;
+    songName = popularSongs[tempInd].trackName;
     albumArt.src = popularSongs[tempInd].trackAlbumArt;
     audioElem.src = popularSongs[tempInd].trackSrc;
     playpause.click();
