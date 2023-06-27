@@ -299,6 +299,22 @@ async function findPopSongs(artistId){
         }
     }
 }
+async function fillSongs(playlistId){
+    
+    let q=`https://api.spotify.com/v1/playlists/${playlistId}?market=in`;
+    
+    data=await apiCall(q);
+    if(data==undefined ){
+        return;
+    }
+    if (!data.error){  
+        if(data.tracks.length!=0){
+            foundArtistId=artistId;
+            console.log(data.tracks)
+        }
+    }
+}
+fillSongs("57WaI46qepN0lMyzsOSEfx")
 
 //////////////////////////////////////////
 let t=undefined;
