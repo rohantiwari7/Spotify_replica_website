@@ -15,8 +15,8 @@ let songDir = "songs/";
 let coverDir = "assets/img/";
 
 songs = [
-    { songName: "5 Taara (with Jatinder Shah)", coverName: "cover1.jpg", artistName: "Diljit Dosanjh" },
-    { songName: "Phir Aur Kya Chahiye", coverName: "cover2.jpg", artistName: "Arijit Singh" },
+    { songName: "Phir Aur Kya Chahiye", coverName: "cover1.jpg", artistName: "Arijit Singh" },
+    { songName: "5 Taara", coverName: "cover2.jpg", artistName: "Diljit Dosanjh" },
     { songName: "KAZINO - BIBI(비비)", coverName: "cover3.jpg", artistName: "BIBI(비비)" },
     { songName: "Tere Vaste Falak Se", coverName: "cover4.jpg", artistName: "Varun Jain, Sachin-Jigar" },
     { songName: "Call Out My Name", coverName: "cover5.jpg", artistName: "The Weeknd" },
