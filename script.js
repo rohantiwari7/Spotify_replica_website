@@ -18,7 +18,7 @@ songs = [
     { songName: "5 Taara (with Jatinder Shah)", coverName: "cover1.jpg", artistName: "Diljit Dosanjh" },
     { songName: "Phir Aur Kya Chahiye", coverName: "cover2.jpg", artistName: "Arijit Singh" },
     { songName: "Aashiqui 2 - Tum Hi Ho", coverName: "cover3.jpg", artistName: "Arijit Singh" },
-    { songName: "Teri Meri", coverName: "cover4.jpg", artistName: "Rahat Fateh Ali Khan and Shreya Ghoshal" },
+    { songName: "Tere Vaste Falak Se", coverName: "cover4.jpg", artistName: "Varun Jain, Sachin-Jigar" },
     { songName: "Call Out My Name", coverName: "cover5.jpg", artistName: "The Weeknd" },
     { songName: "Addicted", coverName: "cover6.jpg", artistName: "Enrique Iglesias" },
     { songName: "Guzaarish Hai Ye Jo Barish", coverName: "cover7.jpg", artistName: "K.K., Shail Hada" },
@@ -28,7 +28,7 @@ songs = [
     { songName: "Pani da rang - Vicky Donor", coverName: "cover11.jpg", artistName: "Ayushmann Khurrana" },
     { songName: "Zara Sa - KK", coverName: "cover12.jpg", artistName: "K.K." },
     { songName: "Kahani Suno 2.0", coverName: "cover13.jpg", artistName: "Kaifi Khalil" },
-    { songName: "Bolo Har Har - Shivaay", coverName: "cover14.jpg", artistName: "Badshah" }
+    { songName: "Sunflower - Post-Malone", coverName: "cover14.jpg", artistName: "Post Malone, Swae Lee" }
 ]
 
 var songInd = 0;
