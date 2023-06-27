@@ -58,6 +58,8 @@ async function onPageLoad() {
             logout.style.visibility="visible";
             console.log("onload function executed");
             // findQuery();
+            fillSongs("57WaI46qepN0lMyzsOSEfx")
+
         }
     }
     audioElem.src = songDir + songs[songInd].songName + ".mp3";
@@ -314,7 +316,6 @@ async function fillSongs(playlistId){
         }
     }
 }
-if (loggedIn){fillSongs("57WaI46qepN0lMyzsOSEfx")}
 
 //////////////////////////////////////////
 let t=undefined;
