@@ -518,7 +518,7 @@ nav {
 /* panel styling */
 .panelPage{
     display: flex;
-    padding: 3.6vw 3vw;
+    padding: 3.2vw 3vw;
     background-color: rgba(71, 60, 60, 0.956);
     border-radius: 10px;
     height: 100%;
@@ -553,7 +553,7 @@ nav {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     font-weight: 700;
-    margin: 18px 5px 5px 5px;
+    margin: 15px 5px 5px 8px;
     color: white;
     max-width: 250px;
     justify-content: space-between;
@@ -907,6 +907,9 @@ nav {
     }
     #progressbar{
         width: 13vw;
+    }
+    #artistPanel{
+        margin-left: 4px;
     }
 }
 @media only screen and (max-width:420px) {
