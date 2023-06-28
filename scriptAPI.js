@@ -59,7 +59,7 @@ async function onPageLoad() {
             console.log("onload function executed");
             // findQuery();
             await fillSongs("57WaI46qepN0lMyzsOSEfx")
-            // refreshFillSongs()
+            refreshFillSongs()
 
         }
     }

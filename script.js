@@ -18,7 +18,7 @@ songs = [
     { songName: "Phir Aur Kya Chahiye", coverName: "cover1.jpg", artistName: "Arijit Singh" },
     { songName: "5 Taara", coverName: "cover2.jpg", artistName: "Diljit Dosanjh" },
     { songName: "KAZINO - BIBI(비비)", coverName: "cover3.jpg", artistName: "BIBI(비비)" },
-    { songName: "Tere Vaste Falak Se", coverName: "cover4.jpg", artistName: "Varun Jain, Sachin-Jigar" },
+    { songName: "Tere Vaste Falak", coverName: "cover4.jpg", artistName: "Varun Jain, Sachin-Jigar" },
     { songName: "Call Out My Name", coverName: "cover5.jpg", artistName: "The Weeknd" },
     { songName: "Addicted", coverName: "cover6.jpg", artistName: "Enrique Iglesias" },
     { songName: "Guzaarish Hai Ye Jo Barish", coverName: "cover7.jpg", artistName: "K.K., Shail Hada" },
@@ -510,3 +510,14 @@ playBtn_Panel.addEventListener('click',()=>{
     lineQuery[tempInd].classList.add('line_show');  
     pArray[tempInd].classList.add('pSong_select');
 })
+
+elementsF=Array.from(document.getElementsByClassName('playlistF'))
+
+
+function refreshFillSongs(){
+    elementsF.forEach((elemF,i)=>{
+        elemF.querySelector('.AA img').src = fetchedSongs[i].trackAlbumArt;
+        elemF.querySelector('.pltitle').innerText = fetchedSongs[i].trackName.slice(0,27);
+        elemF.querySelector('.artists').innerText = fetchedSongs[i].trackArtist.slice(0,30);
+    })
+}
