@@ -529,7 +529,7 @@ elementsF.forEach((elem,i)=>{
     elem.addEventListener('click',()=>{
         remLineQ(); //remove any panel click styling
         coverClick=false;
-        localSong=false;
+        localSong=true;
         // reset old play button
         query1.classList.remove('play_small_hover'); //removing static of previous song
         query2.src = "play-solid.svg";
