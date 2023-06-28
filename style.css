@@ -403,7 +403,7 @@ nav {
     background-color: rgba(67, 62, 62, 0.9);
 }
 
-.playlist :hover, .playlistF :hover, .pSong:hover, #panelClose:hover {
+.playlist:hover, .playlistF:hover, .pSong:hover, #panelClose:hover {
     background-color: rgba(13, 13, 13, 0.6);
     transition: background-color .4s;
     cursor: pointer;
@@ -462,7 +462,7 @@ nav {
     padding: 1px 0 0 0;
 }
 
-.playlist :hover .play_small , .playlistF :hover .play_small {
+.playlist:hover .play_small , .playlistF:hover .play_small {
     opacity: 1;
     transition: opacity .4s;
 }
