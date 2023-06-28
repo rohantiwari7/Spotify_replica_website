@@ -25,7 +25,7 @@ songs = [
     { songName: "Cupid - Twin ver", coverName: "cover8.jpg", artistName: "FIFTY FIFTY - Twin ver." },
     { songName: "Be Intehaan - Atif", coverName: "cover9.jpg", artistName: "Atif Aslam, Sunidhi Chauhan" },
     { songName: "Singh Is Kinng", coverName: "cover10.jpg", artistName: "RDB, SnoopDog" },
-    { songName: "Pani da rang - Vicky Donor", coverName: "cover11.jpg", artistName: "Ayushmann Khurrana" },
+    { songName: "Pani da rang", coverName: "cover11.jpg", artistName: "Ayushmann Khurrana" },
     { songName: "Zara Sa - KK", coverName: "cover12.jpg", artistName: "K.K." },
     { songName: "Kahani Suno 2.0", coverName: "cover13.jpg", artistName: "Kaifi Khalil" },
     { songName: "Unholy ft Kim Petras", coverName: "cover14.jpg", artistName: "Sam Smith" }
