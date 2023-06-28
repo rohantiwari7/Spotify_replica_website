@@ -466,9 +466,9 @@ function remLineQ(){
 //     // Do something when the back button is clicked
 //     closeWindow();
 //   });
-
-
 // document.addEventListener("backbutton", closeWindow())
+
+
 // first row playlist
 p1.addEventListener('click',()=>{
     songInd=-1;

@@ -409,7 +409,7 @@ nav {
     cursor: pointer;
 }
 
-.playlist .AA img {
+.AA img {
     border-radius: 5px;
     width: var(--img-width);
     height: var(--img-height);
@@ -701,7 +701,7 @@ nav {
     .playlist {
         width: var(--img-width-small);
     }
-    .playlist .AA img {
+    .AA img {
         width: var(--img-width-small);
         height: var(--img-height-small);
     }

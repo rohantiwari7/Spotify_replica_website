@@ -58,7 +58,8 @@ async function onPageLoad() {
             logout.style.visibility="visible";
             console.log("onload function executed");
             // findQuery();
-            fillSongs("57WaI46qepN0lMyzsOSEfx")
+            await fillSongs("57WaI46qepN0lMyzsOSEfx")
+            // refreshFillSongs()
 
         }
     }
@@ -110,11 +111,11 @@ async function callTokenApi(url, options) {
         localStorage.setItem('access_token', access_token);
         if(refresh_token!=undefined){
             localStorage.setItem('refresh_token', refresh_token);
+            window.history.pushState("","",Redirect_uri);
         }
         localStorage.setItem('expires_in', expires_in);
-        window.history.pushState("","",Redirect_uri);
         if(loggedIn){
-            login.innerText="Logged in";
+            // login.innerText="Logged in";
             let naam=await apiCall(ME);
             login.innerText=naam.display_name;
             logout.style.visibility="visible";
@@ -318,9 +319,9 @@ async function fillSongs(playlistId){
             for(i=0;i<data.tracks.items.length;i++){
                 if (data.tracks.items[i].track.preview_url || data.tracks.items[i].track.preview_url!=null){
                     temp={
-                        trackSrc: data.tracks.items[i].track.preview_url,
                         trackName: data.tracks.items[i].track.name,
                         trackArtist:data.tracks.items[i].track.artists[0].name,
+                        trackSrc: data.tracks.items[i].track.preview_url,
                         trackAlbumArt: data.tracks.items[i].track.album.images[1].url,
                         trackDuration: data.tracks.items[i].track.duration_ms
                     }
