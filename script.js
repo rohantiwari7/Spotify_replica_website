@@ -511,6 +511,9 @@ playBtn_Panel.addEventListener('click',()=>{
     pArray[tempInd].classList.add('pSong_select');
 })
 
+
+// /////////////////////////////
+//  Extended playlist 
 elementsF=Array.from(document.getElementsByClassName('playlistF'))
 
 
@@ -521,3 +524,34 @@ function refreshFillSongs(){
         elemF.querySelector('.artists').innerText = fetchedSongs[i].trackArtist.slice(0,30);
     })
 }
+
+elementsF.forEach((elem,i)=>{
+    elem.addEventListener('click',()=>{
+        remLineQ(); //remove any panel click styling
+        coverClick=false;
+        localSong=false;
+        // reset old play button
+        query1.classList.remove('play_small_hover'); //removing static of previous song
+        query2.src = "play-solid.svg";
+        query2.classList.remove('pause_small_img');
+        query2.classList.add('play_small_img');
+
+        // Main function
+        query1 = elem.querySelector('.play_small');
+        query2 = elem.querySelector('.play_small_img');
+        songInd = i;
+        onlinePlaylist = false;
+
+        songName = fetchedSongs[i].trackName;
+        songNamePlayer.innerText = songName;
+        albumArt.src = fetchedSongs[i].trackAlbumArt;
+        audioElem.src = fetchedSongs[i].trackSrc;
+        playpause.click();
+        // make icon to static pause
+        query2.src = "pause-solid.svg";
+        query2.classList.remove('play_small_img');
+        query2.classList.add('pause_small_img');
+        query1.classList.add('play_small_hover');  //making it static
+        }
+    )
+})
