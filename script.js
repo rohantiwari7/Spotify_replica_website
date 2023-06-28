@@ -205,7 +205,7 @@ prev.addEventListener('click', () => {
     if (onlinePlaylist == true) {
         tempInd -= 1;
         if (tempInd >=0 ) {
-            songNamePlayer.innerText = popularSongs[tempInd].trackName;
+            songNamePlayer.innerText = popularSongs[tempInd].trackName.slice(0,30);
             songName = popularSongs[tempInd].trackName;
             albumArt.src = popularSongs[tempInd].trackAlbumArt;
             audioElem.src = popularSongs[tempInd].trackSrc;
@@ -273,7 +273,7 @@ next.addEventListener('click', () => {
     if (onlinePlaylist == true) {
         tempInd += 1;
         if (tempInd < popularSongs.length) {
-            songNamePlayer.innerText = popularSongs[tempInd].trackName;
+            songNamePlayer.innerText = popularSongs[tempInd].trackName.slice(0,30);
             songName = popularSongs[tempInd].trackName;
             albumArt.src = popularSongs[tempInd].trackAlbumArt;
             audioElem.src = popularSongs[tempInd].trackSrc;
@@ -426,8 +426,8 @@ pArray.forEach((pElem, i) => {
         coverClick=false
         tempInd = i
         localSong=false;
-        songNamePlayer.innerText = popularSongs[tempInd].trackName;
         songName = popularSongs[tempInd].trackName;
+        songNamePlayer.innerText = songName.slice(0,30);
         albumArt.src = popularSongs[tempInd].trackAlbumArt;
         audioElem.src = popularSongs[tempInd].trackSrc;
         playpause.click();
@@ -492,8 +492,8 @@ playBtn_Panel.addEventListener('click',()=>{
     onlinePlaylist=true;
     localSong=false;
     coverClick=false;
-    songNamePlayer.innerText = popularSongs[tempInd].trackName;
     songName = popularSongs[tempInd].trackName;
+    songNamePlayer.innerText = songName.slice(0,30);
     albumArt.src = popularSongs[tempInd].trackAlbumArt;
     audioElem.src = popularSongs[tempInd].trackSrc;
     playpause.click();
@@ -543,7 +543,7 @@ elementsF.forEach((elem,i)=>{
         onlinePlaylist = false;
 
         songName = fetchedSongs[i].trackName;
-        songNamePlayer.innerText = songName;
+        songNamePlayer.innerText = songName.slice(0,30);
         albumArt.src = fetchedSongs[i].trackAlbumArt;
         audioElem.src = fetchedSongs[i].trackSrc;
         playpause.click();
