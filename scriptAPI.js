@@ -58,8 +58,9 @@ async function onPageLoad() {
             logout.style.visibility="visible";
             console.log("onload function executed");
             // findQuery();
-            await fillSongs("57WaI46qepN0lMyzsOSEfx")
-            refreshFillSongs()
+            await fillSongs("57WaI46qepN0lMyzsOSEfx");
+            refreshFillSongs();
+            extendedPlaylist.classList.remove("hide");
 
         }
     }
@@ -120,6 +121,9 @@ async function callTokenApi(url, options) {
             login.innerText=naam.display_name;
             logout.style.visibility="visible";
             // await findQuery();
+            await fillSongs("57WaI46qepN0lMyzsOSEfx");
+            refreshFillSongs();
+            extendedPlaylist.classList.remove("hide");
         }
        
     }
