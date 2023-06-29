@@ -491,9 +491,9 @@ nav {
     position: fixed;
     z-index: 20;
     width: 100%;
-    /* top: 80px; */
-    /* height: calc(100vh - 200px); */
-    bottom: 14%
+    top: 80px;
+    height: calc(100vh - 200px);
+    /* bottom: 50px */
     }
 
 #l, #r{
@@ -530,7 +530,7 @@ nav {
 /* panel styling */
 .panelPage{
     display: flex;
-    padding: 3.4vw 3vw;
+    padding: 3.2vw 3vw;
     background-color: rgba(71, 60, 60, 0.956);
     border-radius: 10px;
     box-sizing: border-box;
@@ -594,7 +594,7 @@ nav {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    margin: 8px 0px 24px 0px;
+    margin: 8px 0px 18px 0px;
 }
 .popSongs1, .popSongs2 {   
     display: flex;
@@ -911,9 +911,9 @@ nav {
     #albumArt {
         margin: 0 10px 0 10px;
     }
-    /* .panel{
+    .panel{
         top: 74px;
-    } */
+    }
     .panelLabel{
         margin:  0px 5px;
     }
