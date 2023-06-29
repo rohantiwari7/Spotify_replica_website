@@ -175,7 +175,7 @@ async function findQuery(){
                 // songInd=-1;
                 onlinePlaylist=true;
                 audioElem.src=data.tracks.items[0].preview_url;
-                // playpause.click();
+                playpause.click();
                 openWindow();
                 albumArt.src=data.tracks.items[0].album.images[2].url;
                 songNamePlayer.innerText=songName;
