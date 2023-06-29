@@ -488,7 +488,7 @@ nav {
     transition-property: opacity;
     transition-duration:400ms;
     box-sizing: border-box;
-    position: absolute;
+    position: fixed;
     z-index: 20;
     width: 100%;
     top: 80px;
@@ -530,7 +530,7 @@ nav {
 /* panel styling */
 .panelPage{
     display: flex;
-    padding: 3.2vw 3vw;
+    padding: 3.4vw 3vw;
     background-color: rgba(71, 60, 60, 0.956);
     border-radius: 10px;
     box-sizing: border-box;
