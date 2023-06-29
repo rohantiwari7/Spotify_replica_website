@@ -913,7 +913,7 @@ nav {
     }
     .panel{
         /* top: 74px; */
-        height: calc(100vh - 190px);
+        height: calc(100vh - 210px);
     }
     .panelLabel{
         margin:  0px 5px;
