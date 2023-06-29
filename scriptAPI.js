@@ -21,79 +21,33 @@ const TOPTRACKS="https://api.spotify.com/v1/artists/{id}/top-tracks";
 
 
 let loggedIn=false;
-let showDialog="true";
-async function getAuthorise() {
-    if (!loggedIn){
-        q = AUTHORIZE +'?';
-        if (localStorage.length>2){showDialog="false"};
-        q += new URLSearchParams({
-            client_id: Client_ID,
-            response_type: 'code',
-            redirect_uri: encodeURI(Redirect_uri),
-            show_dialog:  false, // showDialog,
-            scope: ""
-            // "user-read-private user-read-email user-modify-playback-state user-read-playback-position user-library-read streaming user-read-playback-state user-read-recently-played playlist-read-private"
-        }).toString();
-        // const response =fetch(q,{mode:"no-cors",headers:{"Access-Control-Allow-Origin": "http://localhost:5500"}})  
-        window.location.href = q;
-    }
-};
 
 async function onPageLoad() {
-    q = window.location.search;
-
-    if (q.length > 0) {
-        urlParams = new URLSearchParams(q);
-        let code = urlParams.get('code');
-        console.log(code);
-        localStorage.setItem('code', code);
-        await getToken(code);
+    if(localStorage.getItem('access_token')){
+        loggedIn=true;
     }
-    else if(localStorage.length>2){
-        let naam=await apiCall(ME);    // initiator of check login
-        // console.log(naam.display_name)
-        if (loggedIn && naam!=undefined){
-            console.log('loggedIn', loggedIn);
-            login.innerText=naam.display_name;
-            logout.style.visibility="visible";
-            console.log("onload function executed");
-            // findQuery();
-            await fillSongs("57WaI46qepN0lMyzsOSEfx");
-            refreshFillSongs();
-            extendedPlaylist.classList.remove("hide");
-
-        }
+    else {
+        await getToken();
     }
+    console.log("onload function executed");
+    await fillSongs("57WaI46qepN0lMyzsOSEfx");
+    await fillSongs("37i9dQZF1DWXtlo6ENS92N");
+    await fillSongs("37i9dQZF1DWZNJXX2UeBij");
+    console.log(fetchedSongs);
+    await refreshFillSongs();
+    extendedPlaylist.classList.remove("hide");
+
     audioElem.src = songDir + songs[songInd].songName + ".mp3";
 }
 
-async function getToken(code) {
+async function getToken() {
     let options = {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Basic " + btoa(Client_ID + ':' + Client_secret)
         },
-        body: "grant_type=authorization_code" +
-            "&code=" + code +
-            "&redirect_uri=" + encodeURI(Redirect_uri)
-
-    }
-    await callTokenApi(TOKEN, options);
-}
-
-
-async function getRefreshToken() {
-    let refresh_token=localStorage.getItem('refresh_token');
-    let options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Basic " + btoa(Client_ID + ':' + Client_secret)
-        },
-        body: "grant_type=refresh_token" +
-            "&refresh_token=" + refresh_token
-
+        body: "grant_type=client_credentials"
     }
     await callTokenApi(TOKEN, options);
 }
@@ -107,24 +61,14 @@ async function callTokenApi(url, options) {
         loggedIn=true;
         console.log(data);
         const access_token = data.access_token;
-        const refresh_token = data.refresh_token;
         let expires_in = data.expires_in;
         localStorage.setItem('access_token', access_token);
-        if(refresh_token!=undefined){
-            localStorage.setItem('refresh_token', refresh_token);
-            window.history.pushState("","",Redirect_uri);
-        }
-        localStorage.setItem('expires_in', expires_in);
-        if(loggedIn){
-            // login.innerText="Logged in";
-            let naam=await apiCall(ME);
-            login.innerText=naam.display_name;
-            logout.style.visibility="visible";
-            // await findQuery();
-            await fillSongs("57WaI46qepN0lMyzsOSEfx");
-            refreshFillSongs();
-            extendedPlaylist.classList.remove("hide");
-        }
+        // if(loggedIn){
+        //     // login.innerText="Logged in";
+        //     await fillSongs("57WaI46qepN0lMyzsOSEfx");
+        //     refreshFillSongs refreshFillSongs();
+        //     extendedPlaylist.classList.remove("hide");
+        // }
        
     }
     else {
@@ -133,8 +77,6 @@ async function callTokenApi(url, options) {
         // logoutFn()
         loggedIn=false;
         showDialog="true";
-        //await getAuthorise();           //Manually login
-
     }
 }
 
@@ -145,6 +87,10 @@ async function apiCall(url){
         "Authorization": "Bearer " + localStorage.getItem('access_token')
     }}
     const response = await fetch(url, options);
+    // console.log(response.status); // Will show you the status
+    if (response.status!==200) {
+        return await getToken();
+    }
     const data = await response.json();   //response.status===200 &&
 
     if (!data.error){   
@@ -155,14 +101,12 @@ async function apiCall(url){
     else if(data.error.status===401) {
         console.log(data.error, 'need to Refresh token');
         loggedIn=false;
-        await getRefreshToken();
+        await getToken();
     }
     else if(data.error.status===400) {
         // alert("Authentication Expired")
-        console.error(data.error, 'need to Authenticate again');
-        loggedIn=false;
-        //await getAuthorise();
-        
+        console.log(data.error, 'need to Authenticate again');
+        loggedIn=false;        
     }
     
 }
@@ -231,7 +175,8 @@ async function findQuery(){
                 // songInd=-1;
                 onlinePlaylist=true;
                 audioElem.src=data.tracks.items[0].preview_url;
-                playpause.click();
+                // playpause.click();
+                openWindow();
                 albumArt.src=data.tracks.items[0].album.images[2].url;
                 songNamePlayer.innerText=songName;
                 searchBox.value="";
@@ -255,14 +200,6 @@ async function findQuery(){
             }
         }
     }
-}
-
-function logoutFn(){
-    localStorage.clear();
-    logout.style.visibility="hidden";
-    login.innerText="Login";
-    loggedIn=false;
-    window.location.reload();
 }
 
 // ////////////////////////////////////   panel work
@@ -306,6 +243,10 @@ async function findPopSongs(artistId){
         }
     }
 }
+
+
+fetchedSongs=[];
+
 async function fillSongs(playlistId){
     
     let q=`https://api.spotify.com/v1/playlists/${playlistId}?market=in`;
@@ -317,7 +258,6 @@ async function fillSongs(playlistId){
     if (!data.error){  
         if(data.tracks.length!=0){
             foundArtistId=artistId;
-            fetchedSongs=[];
             // console.log(data.tracks)
             let count=0;
             for(i=0;i<data.tracks.items.length;i++){
@@ -332,11 +272,11 @@ async function fillSongs(playlistId){
                     fetchedSongs.push(temp);
                     count+=1
                 }
-                if (count>=14){
+                if (count>=7){
                     break
                 }
             }
-            console.log(fetchedSongs)
+            // console.log(fetchedSongs)
         }
     }
 }
