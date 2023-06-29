@@ -118,7 +118,7 @@ nav {
     position: fixed;
     z-index: 30;
     /* top: calc(100svh - var(--player-height) - 8px); */
-    bottom: 20px;
+    bottom: 1%;
     left: 3vw;
     right: 3vw;
     height: var(--player-height);
