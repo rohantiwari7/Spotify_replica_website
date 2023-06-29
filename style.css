@@ -117,7 +117,7 @@ nav {
     color: white;
     position: fixed;
     z-index: 30;
-    top: calc(100% - var(--player-height) - 8px);
+    top: calc(100dvh - var(--player-height) - 8px);
     left: 3vw;
     right: 3vw;
     height: var(--player-height);
