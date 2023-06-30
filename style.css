@@ -82,7 +82,7 @@ nav {
     background-color: rgb(41, 40, 40);
     color: white;
     position: fixed;
-    z-index: 10;
+    z-index: 40;
     top: 47vh;
     /* rotate: 90deg; */
     left: 50%;

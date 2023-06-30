@@ -208,12 +208,13 @@ let trackArtistImage=undefined;
 
 async function findPopSongs(artistId){
     
-    let q=`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=in`;
+    let q=`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=us`;
     
     data=await apiCall(q);
     if(data==undefined ){
         return;
     }
+    // console.log(data)
     if (!data.error){  
         if(data.tracks.length!=0){
             foundArtistId=artistId;
@@ -234,11 +235,23 @@ async function findPopSongs(artistId){
             }
             
             console.log(popularSongs);
-            trackArtistImage=await artistImage(artistId);
-            // console.log('trackArtistImage= ',trackArtistImage);
-            artistArtPanel.src=trackArtistImage;
-            artistPanel.innerText=artistName;
-            refreshPanel();
+            if (popularSongs.length>6){
+                trackArtistImage=await artistImage(artistId);
+                // console.log('trackArtistImage= ',trackArtistImage);
+                artistArtPanel.src=trackArtistImage;
+                artistPanel.innerText=artistName;
+                refreshPanel();
+            }
+            else{
+                if(panelOpen){
+                    closeWindow();
+                    errMsg.innerText = `Songs of ${artistName} not currently available`;
+                    errMsg.style.display = "flex";
+                    errMsg.style.height = "60px";
+                    errMsg.style.width="200px";
+                    setTimeout(() => { errMsg.style.display = "none" }, 3000);
+                }
+            }
             console.log('panel refreshed')
 
         }
