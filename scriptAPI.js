@@ -89,7 +89,8 @@ async function apiCall(url){
     const response = await fetch(url, options);
     // console.log(response.status); // Will show you the status
     if (response.status!==200) {
-        return await getToken();
+        await getToken();
+        return await apiCall(url);  //after login error resolution, continur with the request fired
     }
     const data = await response.json();   //response.status===200 &&
 
