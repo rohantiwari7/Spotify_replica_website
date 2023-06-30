@@ -82,7 +82,7 @@ nav {
     background-color: rgb(41, 40, 40);
     color: white;
     position: fixed;
-    z-index: 10;
+    z-index: 40;
     top: 47vh;
     /* rotate: 90deg; */
     left: 50%;
@@ -117,7 +117,8 @@ nav {
     color: white;
     position: fixed;
     z-index: 30;
-    top: calc(98.5vh - var(--player-height));
+    /* top: calc(100svh - var(--player-height) - 8px); */
+    bottom: 1%;
     left: 3vw;
     right: 3vw;
     height: var(--player-height);
@@ -387,7 +388,7 @@ nav {
     justify-content:space-evenly;
     margin: 15px 56px;
     flex-wrap: wrap;
-    max-height: 263px;
+    max-height: 268px;
     overflow-y: hidden;
 }
 
@@ -401,6 +402,7 @@ nav {
     border-radius: 5px;
     color: white;
     background-color: rgba(67, 62, 62, 0.9);
+    height: 227px;
 }
 
 .playlist:hover, .playlistF:hover, .pSong:hover, #panelClose:hover {
@@ -486,11 +488,12 @@ nav {
     transition-property: opacity;
     transition-duration:400ms;
     box-sizing: border-box;
-    position: absolute;
+    position: fixed;
     z-index: 20;
     width: 100%;
     top: 80px;
-    height: calc(100vh - 200px);
+    height: calc(100% - 130px);
+    /* bottom: 50px */
     }
 
 #l, #r{
@@ -530,6 +533,7 @@ nav {
     padding: 3.2vw 3vw;
     background-color: rgba(71, 60, 60, 0.956);
     border-radius: 10px;
+    box-sizing: border-box;
     height: 100%;
     width: 100%;
     justify-content: space-between;
@@ -590,7 +594,7 @@ nav {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    margin-top: 8px;
+    margin: 8px 0px 18px 0px;
 }
 .popSongs1, .popSongs2 {   
     display: flex;
@@ -704,6 +708,7 @@ nav {
     }
     .playlist , .playlistF{
         width: var(--img-width-small);
+        height: 207px;
     }
     .AA img {
         width: var(--img-width-small);
@@ -725,7 +730,7 @@ nav {
 
 }
 
-@media only screen and (max-width:850px) {
+@media only screen and (max-width:863px) {
     /* #home,#about {
         display: none;
     } */
@@ -738,6 +743,7 @@ nav {
     }
     .hot .playlists {
         margin: 13px 35px;
+        max-height: 505px;
     }
     #songNamePlayer {
         padding: 4px 10px;
@@ -784,7 +790,7 @@ nav {
     }
 }
 
-@media only screen and (max-width:612px) {
+@media only screen and (max-width:613px) {
     .left div, .right div {
         padding: 0 10px;
     }
@@ -792,7 +798,7 @@ nav {
         font-size: 21px;
     }
     #searchBox{
-        width: 120px;
+        width: 165px;
     }
     .coverartists{
         display: none;
@@ -800,8 +806,30 @@ nav {
     .coverButton{
         margin: 20px  0px;
     }
+    .play_bigG {
+        width: 60px;
+        height: 34px;
+        line-height: 32px;
+    }
+    .play_bigG:hover {
+        width: 63px;
+        height: 35px;
+        font-weight: 600;
+    }
+    .play_bigB {
+        width: 60px;
+        height: 34px;
+        line-height: 32px;
+        left: 80px;
+    }
+    
+    .play_bigB:hover {
+        width: 63px;
+        height: 35px;
+        font-weight: 600;
+    }
     .hot .playlists {
-        max-height: 743px;
+        max-height: 753px;
     }
     #main{
         background:  linear-gradient(160deg,rgb(193, 189, 90),30%, gray);      
@@ -842,9 +870,9 @@ nav {
     #main{
         background: linear-gradient(160deg, rgb(91, 122, 184),30%, rgb(169, 110, 110));
     }
-    .left div, .right div {
+    /* .left div, .right div {
         padding: 0 6px;
-    }
+    } */
     .left img{
         width: 35px;
     }
@@ -863,17 +891,7 @@ nav {
     .covertitle {
         font-size: 25px;
     }
-    .play_bigG {
-        width: 60px;
-        height: 34px;
-        line-height: 32px;
-    }
-    
-    .play_bigG:hover {
-        width: 63px;
-        height: 35px;
-        font-weight: 600;
-    }
+
     .play_bigB {
         display: none;
     }
@@ -884,7 +902,7 @@ nav {
     }
     .hot .playlists {
         margin: 5px 10px 15px 10px;
-        max-height: 717px;
+        max-height: 724px;
     }
     .playlist , .playlistF{
         margin: 10px 8px;
@@ -893,9 +911,10 @@ nav {
     #albumArt {
         margin: 0 10px 0 10px;
     }
-    /* .icons {
-        margin-right: 5px;
-    } */
+    .panel{
+        /* top: 74px; */
+        height: calc(100vh - 210px);
+    }
     .panelLabel{
         margin:  0px 5px;
     }
@@ -947,7 +966,7 @@ nav {
     }
     .hot .playlists {
         margin: 5px 5px 15px 5px;
-        max-height: 690px;
+        max-height: 715px;
     }
     .playlist , .playlistF{
         margin: 8px 4px;
