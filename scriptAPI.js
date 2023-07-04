@@ -33,7 +33,7 @@ async function onPageLoad() {
     await fillSongs("57WaI46qepN0lMyzsOSEfx");
     await fillSongs("37i9dQZF1DWXtlo6ENS92N");
     await fillSongs("37i9dQZF1DWZNJXX2UeBij");
-    console.log(fetchedSongs);
+    console.log('extended playlist fetched of length ',fetchedSongs.length);
     await refreshFillSongs();
     extendedPlaylist.classList.remove("hide");
 
@@ -89,6 +89,7 @@ async function apiCall(url){
     const response = await fetch(url, options);
     // console.log(response.status); // Will show you the status
     if (response.status!==200) {
+        console.log(response.status)
         await getToken();
         return await apiCall(url);  //after login error resolution, continur with the request fired
     }
@@ -136,23 +137,25 @@ let artistName=undefined;
 let artistId=undefined;
 // let songName=undefined
 let localSong=true; 
+let isArtist=undefined;
+let searched=false;
 
 async function findQuery(){
     
     query=searchBox.value;
 
-    console.log(searchBox.value);
-    console.log("query fired");
-    
+    console.log(query);
+    console.log("findQuery called");
+    searchBox.value="";
+
     if (query==""){   //general query for current playing song
         query=songName;
-        localSong=true;
+        searched=false;
     }
     else{   //search feature used
-        localSong=false;
-        // setTimeout(() => {  openWindow();  }, 100);
+        searched=true;
     }
-    let q=SEARCH+'?q='+query+"&type=track,artist&market=IN&limit=5";
+    let q=SEARCH+'?q='+query+"&type=track,artist&market=IN&limit=10";
     // console.log(query);
 
     data=await apiCall(q);
@@ -162,43 +165,45 @@ async function findQuery(){
     }
     if(!data.error && loggedIn){   
         if(data.tracks.items.length!=0 ){
-            songName=data.tracks.items[0].name;
-            artistName=data.tracks.items[0].artists[0].name;
-            artistId=data.tracks.items[0].artists[0].id;
-            console.log('songName=', songName,'  artistName=', artistName,'  artistId=',artistId);
             // console.log(data)
-            if (!localSong && data.tracks.items[0].preview_url!=null){   //handeling "searchBox" query
-                query1.classList.remove('play_small_hover');
-                query2.src = "play-solid.svg";
-                query2.classList.remove('pause_small_img');
-                query2.classList.add('play_small_img');
-                remLineQ();
-                // songInd=-1;
-                onlinePlaylist=true;
-                audioElem.src=data.tracks.items[0].preview_url;
-                playpause.click();
-                openWindow();
-                albumArt.src=data.tracks.items[0].album.images[2].url;
-                songNamePlayer.innerText=songName;
-                searchBox.value="";
-                setTimeout(()=>{onlinePlaylist = false; let len=songs.length; songInd= Math.floor(Math.random() * len);},1000);
+            // 
+            if(!searched){   //query is songname, by design
+                artistName=data.tracks.items[0].artists[0].name;  //artist among artists in this list
+                artistId=data.tracks.items[0].artists[0].id;   //this too needs checking
+                console.log('songName=', songName,'  artistName=', artistName,'  artistId=',artistId);
+                findPopSongs(artistId);
             }
-            // if (panelOpen==true ){
-            if (loggedIn){
-                if(foundArtistId==undefined || foundArtistId!=artistId){
+            else{   // Searchbox  query
+                sN=data.tracks.items[0].name;
+                aN=data.artists.items[0].name;
+                console.log(`query=${query}, 1st artistName=${aN}, 1st songname=${sN}`)
+                if (isTrue(aN,query)) { 
+                    console.log('is Artist');
+                    isArtist=true; 
+                } 
+                else { 
+                    if (isTrue(sN,query)) { 
+                        console.log('is Song'); 
+                        isArtist=false;  
+                    }  
+                }
+                openWindow();
+                if(isArtist){
+                    artistName=data.artists.items[0].name;
+                    artistId=data.artists.items[0].id; 
                     findPopSongs(artistId);
                 }
+                else{  // Query is a song
+                    refreshSongQuery(data,query)
+                }
+
             }
-            // }
         }
-        else{
-            searchBox.value="";
-            if(!localSong) {
-                errMsg.innerText="Song not found";
-                errMsg.style.display="flex";
-                errMsg.style.height="35px";
-                setTimeout(()=>{errMsg.style.display="none"},2000);
-            }
+        else{   // response has no tracks
+            errMsg.innerText="Song not found";
+            errMsg.style.display="flex";
+            errMsg.style.height="35px";
+            setTimeout(()=>{errMsg.style.display="none"},2000);
         }
     }
 }
@@ -208,7 +213,7 @@ let trackArtistImage=undefined;
 
 async function findPopSongs(artistId){
     
-    let q=`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=us`;
+    let q=`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=IN`;
     
     data=await apiCall(q);
     if(data==undefined ){
@@ -216,35 +221,37 @@ async function findPopSongs(artistId){
     }
     // console.log(data)
     if (!data.error){  
-        if(data.tracks.length!=0){
-            foundArtistId=artistId;
-            popularSongs=[];
+        if(data.tracks.length>6){
+            tempArray=[];
             // console.log(data.tracks)
             for(i=0;i<data.tracks.length;i++){
                 if (data.tracks[i].preview_url || data.tracks[i].preview_url!=null){
-                temp={
-                    trackSrc: data.tracks[i].preview_url,
-                    trackName: data.tracks[i].name,
-                    trackId: data.tracks[i].id,
-                    trackAlbumArt: data.tracks[i].album.images[1].url,
-                    trackAlbum: data.tracks[i].album.name,
-                    trackDuration: data.tracks[i].duration_ms
+                    temp={
+                        trackSrc: data.tracks[i].preview_url,
+                        trackName: data.tracks[i].name,
+                        trackId: data.tracks[i].id,
+                        trackAlbumArt: data.tracks[i].album.images[1].url,
+                        popularity: data.tracks[i].popularity
+                        }
+                    tempArray.push(temp);
+                    if (tempArray.length===10){
+                        break
                     }
-                popularSongs.push(temp);
                 }
             }
             
-            console.log(popularSongs);
-            if (popularSongs.length>6){
+            console.log(`popular songs by ${artistName} `,tempArray);
+            if (tempArray.length>6){
+                popularSongs=JSON.parse(JSON.stringify(tempArray))
                 trackArtistImage=await artistImage(artistId);
                 // console.log('trackArtistImage= ',trackArtistImage);
                 artistArtPanel.src=trackArtistImage;
                 artistPanel.innerText=artistName;
-                refreshPanel();
+                refreshPanel(popularSongs);
             }
             else{
                 if(panelOpen){
-                    closeWindow();
+                    // closeWindow();
                     errMsg.innerText = `Songs of ${artistName} not currently available`;
                     errMsg.style.display = "flex";
                     errMsg.style.height = "60px";
@@ -271,7 +278,6 @@ async function fillSongs(playlistId){
     }
     if (!data.error){  
         if(data.tracks.length!=0){
-            foundArtistId=artistId;
             // console.log(data.tracks)
             let count=0;
             for(i=0;i<data.tracks.items.length;i++){
@@ -280,8 +286,7 @@ async function fillSongs(playlistId){
                         trackName: data.tracks.items[i].track.name,
                         trackArtist:data.tracks.items[i].track.artists[0].name,
                         trackSrc: data.tracks.items[i].track.preview_url,
-                        trackAlbumArt: data.tracks.items[i].track.album.images[1].url,
-                        trackDuration: data.tracks.items[i].track.duration_ms
+                        trackAlbumArt: data.tracks.items[i].track.album.images[1].url
                     }
                     fetchedSongs.push(temp);
                     count+=1
@@ -309,5 +314,81 @@ async function artistImage(artistId){
     }
     else{t=null;}
     return t;
+}
+
+// let s = 'Arijit Singh';
+// let ss = 'Aniruddh';
+const d = {'a':'A', 'b':'B','c':'C','d':'D','e':'E','f':'F','g':'G','h':'H','i':'I','j':'J','k':'K','l':'L','m':'M','n':'N','o':'O','p':'P','q':'Q','r':'R','s':'S','t':'T','u':'U','v':'V','w':'W','x':'X','y':'Y','z':'Z'};
+
+function isTrue(s,query) {
+    let ls = s.length;
+    let lquery = query.length;
+    const A = new Array(lquery + 1).fill(0).map(() => new Array(ls + 1).fill(0));
+    
+    for (let r = 1; r <= lquery; r++) {
+        for (let c = 1; c <= ls; c++) {
+            if (query[r - 1] === s[c - 1] || (query[r - 1] in d && d[query[r - 1]] === s[c - 1])) {
+                A[r][c] = 1 + A[r - 1][c - 1];
+            } else {
+                A[r][c] = Math.max(A[r][c - 1], A[r - 1][c]);
+            }
+        }
+    }
+    
+    // console.log(A);
+    xx = A[lquery][ls] / lquery;
+    console.log(`${s} matching with ${query} ratio is ${xx}`)
+    if (xx >= 0.87) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+async function refreshSongQuery(data,query){
+    console.log('song query refresh started')
+    if(data.tracks.items.length>5){
+        console.log(data)
+        Qsongs=[]
+        for(i=0;i<data.tracks.items.length;i++){
+            if (data.tracks.items[i].preview_url || data.tracks.items[i].preview_url!=null){
+                temp={
+                    trackSrc: data.tracks.items[i].preview_url,
+                    trackName: data.tracks.items[i].name,
+                    trackId: data.tracks.items[i].id,
+                    trackAlbumArt: data.tracks.items[i].album.images[1].url,
+                    popularity: data.tracks.items[i].popularity
+                    }
+                Qsongs.push(temp);
+                if (Qsongs.length===10){
+                    break
+                }
+            }
+        }
+        
+        console.log(Qsongs);
+        if (Qsongs.length>6){
+            popularSongs=JSON.parse(JSON.stringify(Qsongs))
+            trackArtistImage=popularSongs[0].trackAlbumArt;
+            // console.log('trackArtistImage= ',trackArtistImage);
+            artistArtPanel.src=trackArtistImage;
+            artistPanel.innerText=`'${query}' results`;
+            refreshPanel(popularSongs);
+            popSongLabel.style.display='none';
+        }
+        else{
+            if(panelOpen){
+                // closeWindow();
+                errMsg.innerText = `Song '${query}' not currently available`;
+                errMsg.style.display = "flex";
+                errMsg.style.height = "60px";
+                errMsg.style.width="200px";
+                setTimeout(() => { errMsg.style.display = "none" }, 3000);
+            }
+        }
+        console.log('song query panel refreshed')
+
+    }
 }
 

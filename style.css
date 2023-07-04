@@ -492,8 +492,9 @@ nav {
     z-index: 20;
     width: 100%;
     top: 80px;
-    height: calc(100% - 130px);
+    min-height: calc(100% - 130px);
     /* bottom: 50px */
+    /* height: 150vh; */
     }
 
 #l, #r{
@@ -913,7 +914,7 @@ nav {
     }
     .panel{
         /* top: 74px; */
-        height: calc(100vh - 210px);
+        min-height: calc(100vh - 210px);
     }
     .panelLabel{
         margin:  0px 5px;

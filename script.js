@@ -18,10 +18,10 @@ songs = [
     { songName: "Phir Aur Kya Chahiye", coverName: "cover1.jpg", artistName: "Arijit Singh" },
     { songName: "5 Taara", coverName: "cover2.jpg", artistName: "Diljit Dosanjh" },
     { songName: "KAZINO - BIBI", coverName: "cover3.jpg", artistName: "BIBI(비비)" },
-    { songName: "Tere Vaste Falak", coverName: "cover4.jpg", artistName: "Varun Jain, Sachin" },
+    { songName: "Tere Vaaste", coverName: "cover4.jpg", artistName: "Varun Jain, Sachin" },
     { songName: "Call Out My Name", coverName: "cover5.jpg", artistName: "The Weeknd" },
-    { songName: "Addicted", coverName: "cover6.jpg", artistName: "Enrique Iglesias" },
-    { songName: "Guzaarish Hai Ye Jo Barish", coverName: "cover7.jpg", artistName: "K.K., Shail Hada" },
+    { songName: "Addicted - Enrique", coverName: "cover6.jpg", artistName: "Enrique Iglesias" },
+    { songName: "Guzaarish", coverName: "cover7.jpg", artistName: "K.K., Shail Hada" },
     { songName: "Cupid - Twin ver", coverName: "cover8.jpg", artistName: "FIFTY FIFTY - Twin ver." },
     { songName: "Be Intehaan - Atif", coverName: "cover9.jpg", artistName: "Atif Aslam, Sunidhi Chauhan" },
     { songName: "Singh Is Kinng", coverName: "cover10.jpg", artistName: "RDB, SnoopDog" },
@@ -289,7 +289,7 @@ next.addEventListener('click', () => {
             onlinePlaylist = false;
             localSong=true;
             tempInd = 0;
-            next.click();
+            setTimeout(() => { next.click();  }, 10);
         }
     }
     else {
@@ -312,7 +312,7 @@ next.addEventListener('click', () => {
         query1.classList.add('play_small_hover');
         //end styling 
         onlinePlaylist = false;
-        localSong=true;
+        localSong = true;
         // 
         songName = songs[songInd].songName;
         songNamePlayer.innerText = songs[songInd].songName;
@@ -360,7 +360,6 @@ cover.addEventListener('click', () => {
 
 /////////////////////////////////////////////////////////
 let panelOpen = false;
-let foundArtistId = undefined;
 function tryopenWindow() {
     if(panelOpen){
         closeWindow();
@@ -448,18 +447,21 @@ pArray.forEach((pElem, i) => {
         ////end styling
     })
 })
-function refreshPanel() {
+
+const popSongLabel=document.getElementsByClassName('popSongLabel')[0]
+function refreshPanel(songs) {
     remLineQ();
+    popSongLabel.style.display='flex';
     pArray.forEach((pElem, i) => {
         // console.log(pElem.querySelector('img'))
-        if(i<popularSongs.length){
-            pElem.querySelector('img').src = popularSongs[i].trackAlbumArt;
-            pElem.querySelector('.pSdark').innerText = popularSongs[i].trackName;
+        if(i<songs.length){
+            pElem.querySelector('img').src = songs[i].trackAlbumArt;
+            pElem.querySelector('.pSdark').innerText = songs[i].trackName;
             pElem.querySelector('.pSlight').innerText = "0:29";
 
         }
     })
-
+    onlinePlaylist=false;
 }
 
 function remLineQ(){
@@ -479,11 +481,16 @@ function remLineQ(){
 // first row playlist
 p1.addEventListener('click',()=>{
     songInd=-1;
+    onlinePlaylist=false;
+    localSong=true;
     next.click();
 })
 
 // second row playlist
 p2.addEventListener('click',()=>{
+    songInd=-1;
+    onlinePlaylist=false;
+    localSong=true;
     songInd=6;
     next.click();
 })
@@ -499,6 +506,7 @@ playBtn_Panel.addEventListener('click',()=>{
     onlinePlaylist=true;
     localSong=false;
     coverClick=false;
+    
     songName = popularSongs[tempInd].trackName;
     songNamePlayer.innerText = songName.slice(0,30);
     albumArt.src = popularSongs[tempInd].trackAlbumArt;
