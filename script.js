@@ -158,7 +158,7 @@ audioElem.addEventListener('loadedmetadata', () => {
     let dispM = m < 1 ? '0' : m;
     let dispS = s < 10 ? '0' + s : s;
     duration.textContent = dispM + ':' + dispS;
-    if (loggedIn && localSong) { findQuery(); }
+    if (loggedIn && localSong && songName) { findQuery(); }
 })
 
 //seeking(manually) through progressbar, 
