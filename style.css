@@ -920,7 +920,7 @@ nav {
     }
     .panel{
         /* top: 74px; */
-        min-height: calc(100vh - 250px);
+        min-height: calc(100vh - 280px);
     }
     .panelPage{
         padding: 3.2vw 1.3vw;
