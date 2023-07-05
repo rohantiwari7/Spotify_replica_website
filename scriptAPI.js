@@ -241,13 +241,13 @@ async function findPopSongs(artistId){
             }
             
             console.log(`popular songs by ${artistName} `,tempArray);
-            if (tempArray.length>6){
+            if (tempArray.length>=6){
                 popularSongs=JSON.parse(JSON.stringify(tempArray))
+                refreshPanel(popularSongs);
+                artistPanel.innerText=artistName;
                 trackArtistImage=await artistImage(artistId);
                 // console.log('trackArtistImage= ',trackArtistImage);
                 artistArtPanel.src=trackArtistImage;
-                artistPanel.innerText=artistName;
-                refreshPanel(popularSongs);
             }
             else{
                 if(panelOpen){
@@ -309,10 +309,10 @@ async function artistImage(artistId){
     
     data=await apiCall(q);
     // console.log(data);
-    if(data.images[0].url){
-        t=data.images[0].url;
+    if(data.images.length>1){
+        t=data.images[1].url;
     }
-    else{t=null;}
+    else{t="";}
     return t;
 }
 
@@ -338,7 +338,7 @@ function isTrue(s,query) {
     // console.log(A);
     xx = A[lquery][ls] / lquery;
     console.log(`${s} matching with ${query} ratio is ${xx}`)
-    if (xx >= 0.87) {
+    if (xx >= 0.88) {
         return true;
     } else {
         return false;

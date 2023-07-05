@@ -458,7 +458,11 @@ function refreshPanel(songs) {
             pElem.querySelector('img').src = songs[i].trackAlbumArt;
             pElem.querySelector('.pSdark').innerText = songs[i].trackName;
             pElem.querySelector('.pSlight').innerText = "0:29";
-
+        }
+        else{
+            pElem.querySelector('img').src = "";
+            pElem.querySelector('.pSdark').innerText = "";
+            pElem.querySelector('.pSlight').innerText = "";
         }
     })
     onlinePlaylist=false;
