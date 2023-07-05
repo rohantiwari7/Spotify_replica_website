@@ -920,6 +920,9 @@ nav {
         /* top: 74px; */
         min-height: calc(100vh - 210px);
     }
+    .panelPage{
+        padding: 3.2vw 1.3vw;
+    }
     .panelLabel{
         margin:  0px 5px;
     }
@@ -985,5 +988,8 @@ nav {
     } 
     .panelLabel{
         margin:  0px 4px;
+    }
+    #l, #r{
+        width: 2vw;
     }
 }
