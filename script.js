@@ -340,18 +340,11 @@ cover.addEventListener('click', () => {
     onlinePlaylist = false;
     localSong=true;
     coverOpen=true;
-    // styling
-    // remLineQ();
-    // query1.classList.remove('play_small_hover');
-    // query2.src = "play-solid.svg";
-    // query2.classList.remove('pause_small_img');
-    // query2.classList.add('play_small_img');
-    // 
+    tempName=songName;
 
     openWindow();
     fillPlaylist('7ld7q89dE5etlqq60XTiVy');
 
-    
 })
 
 
@@ -414,6 +407,13 @@ function closeWindow() {
     // navi.classList.remove('blur');
     console.log('panel is closed');
     panelOpen = false;
+    if(coverOpen){
+        if(tempName!=undefined && tempName==songName){
+            coverOpen=false;
+            console.log("find query because of closing panel")
+            findQuery();
+        }
+    }    
     if(searched){
         searched=false;
         if(tempName){

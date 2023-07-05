@@ -139,6 +139,7 @@ let artistId=undefined;
 let localSong=true; 
 let isArtist=undefined;
 let searched=false;
+let tempName="";
 
 async function findQuery(){
     
