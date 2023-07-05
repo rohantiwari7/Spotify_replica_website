@@ -411,6 +411,15 @@ function closeWindow() {
     // navi.classList.remove('blur');
     console.log('panel is closed');
     panelOpen = false;
+    if(searched){
+        searched=false;
+        if(tempName){
+            if(tempName===songName){
+                console.log("find query because of closing panel")
+                findQuery();
+            }
+        }
+    }
 }
 
 panelClose.addEventListener('click', closeWindow);

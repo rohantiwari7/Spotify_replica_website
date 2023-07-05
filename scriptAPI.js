@@ -154,6 +154,7 @@ async function findQuery(){
     }
     else{   //search feature used
         searched=true;
+        tempName=songName;
     }
     let q=SEARCH+'?q='+query+"&type=track,artist&market=IN&limit=10";
     // console.log(query);
