@@ -495,14 +495,14 @@ nav {
     z-index: 20;
     width: 100%;
     top: 80px;
-    min-height: calc(100% - 100px);
+    min-height: calc(100% - 180px);
     /* bottom: 50px */
     /* height: 150vh; */
     }
 
 #l, #r{
     width: 4vw;
-    height: 80vh;
+    height: 77vh;
     cursor: pointer;
 }
 
