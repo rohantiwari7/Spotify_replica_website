@@ -360,7 +360,7 @@ function tryopenWindow() {
 }
 
 
-let tempArray=[];
+let tempArray=[{a:'a'},{a:'a'},{a:'a'},{a:'a'},{a:'a'},{a:'a'},{a:'a'}];
 
 
 function openWindow() {
@@ -383,11 +383,11 @@ function openWindow() {
         panelOpen = true;
         if(!coverOpen){
             if (tempArray.length<6){
-            errMsg.innerText = `Songs of ${artistName} not currently available`;
-            errMsg.style.display = "flex";
-            errMsg.style.height = "60px";
-            errMsg.style.width="200px";
-            setTimeout(() => { errMsg.style.display = "none" }, 3000);
+                errMsg.innerText = `Songs of ${artistName} not currently available`;
+                errMsg.style.display = "flex";
+                errMsg.style.height = "60px";
+                errMsg.style.width="200px";
+                setTimeout(() => { errMsg.style.display = "none" }, 3000);
             }
         }
     }
