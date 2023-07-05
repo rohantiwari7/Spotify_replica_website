@@ -54,7 +54,6 @@ elemArray.forEach((elem, i) => {
 elemArray.forEach((elem, i) => {
     elem.addEventListener('click', () => {
         remLineQ(); //remove any panel click styling
-        coverClick=false;
         if (songInd === i && localSong) { //pause it
             // console.log("same song clicked");
             
@@ -108,35 +107,31 @@ playpause.addEventListener('click', () => {
         playpause.src = "pause-solid.svg";
         audioElem.play();
         //styling add
-        if(!coverClick){
-            if(localSong){
-                query2.src = "pause-solid.svg";
-                query2.classList.remove('play_small_img');
-                query2.classList.add('pause_small_img');
-                query1.classList.add('play_small_hover');  //making it static
-            }
-            else{
-                lineQuery[tempInd].classList.add('line_show');  
-                pArray[tempInd].classList.add('pSong_select');
-            }
+        if(localSong){
+            query2.src = "pause-solid.svg";
+            query2.classList.remove('play_small_img');
+            query2.classList.add('pause_small_img');
+            query1.classList.add('play_small_hover');  //making it static
         }
+        else{
+            lineQuery[tempInd].classList.add('line_show');  
+            pArray[tempInd].classList.add('pSong_select');
+        }
+
     }
     else {   //if playing
         playpause.src = "play-solid.svg";
         audioElem.pause();
         //styling remove
-        if(!coverClick){
-            if(localSong){
-                query1.classList.remove('play_small_hover'); //removing static of previous song
-                query2.src = "play-solid.svg";
-                query2.classList.remove('pause_small_img');
-                query2.classList.add('play_small_img');
-            }
-            else{
-                remLineQ();
-            }
+        if(localSong){
+            query1.classList.remove('play_small_hover'); //removing static of previous song
+            query2.src = "play-solid.svg";
+            query2.classList.remove('pause_small_img');
+            query2.classList.add('play_small_img');
         }
-
+        else{
+            remLineQ();
+        }
     }
     // console.log("play clicked from 'playpause' function with 'click' event");
 
@@ -198,7 +193,6 @@ prev.addEventListener('click', () => {
     query2.classList.remove('pause_small_img');
     query2.classList.add('play_small_img');
     remLineQ();
-    coverClick=false;
     // console.log("prev clicked");
     prev.classList.add("buttonPress");
 
@@ -265,7 +259,6 @@ next.addEventListener('click', () => {
     query2.classList.remove('pause_small_img');
     query2.classList.add('play_small_img');
     remLineQ();
-    coverClick=false;
     // console.log("next clicked");
 
     ////Main function
@@ -335,25 +328,21 @@ next.addEventListener('animationend', () => {
 
 // /////////////////////////////////////
 let cover = document.getElementsByClassName('cover')[0];
-let coverClick=false;
 
 cover.addEventListener('click', () => {
     onlinePlaylist = false;
     localSong=true;
-    coverClick=true;
     // styling
-    remLineQ();
-    query1.classList.remove('play_small_hover');
-    query2.src = "play-solid.svg";
-    query2.classList.remove('pause_small_img');
-    query2.classList.add('play_small_img');
+    // remLineQ();
+    // query1.classList.remove('play_small_hover');
+    // query2.src = "play-solid.svg";
+    // query2.classList.remove('pause_small_img');
+    // query2.classList.add('play_small_img');
     // 
 
-    songNamePlayer.innerText = "Sunflower - Post-Malone";
-    songName = songNamePlayer.innerText;
-    albumArt.src = "assets/img/cover.jpg";
-    audioElem.src = "songs/coversong/Sunflower - Post-Malone.mp3";
-    playpause.click();
+    openWindow();
+    fillPlaylist('7ld7q89dE5etlqq60XTiVy');
+
     
 })
 
@@ -446,7 +435,6 @@ let lineQuery=Array.from(document.getElementsByClassName('line'));
 pArray.forEach((pElem, i) => {
     pElem.addEventListener('click', () => { 
         remLineQ();
-        coverClick=false
         tempInd = i
         localSong=false;
         songName = popularSongs[tempInd].trackName;
@@ -489,7 +477,7 @@ function remLineQ(){
     for (let x=0;x<popularSongs.length;x++){
         lineQuery[x].classList.remove('line_show');
         pArray[x].classList.remove('pSong_select');
-    }
+    }    
 }
 
 // window.addEventListener("popstate", function(event) {
@@ -526,7 +514,6 @@ playBtn_Panel.addEventListener('click',()=>{
     tempInd=0;
     onlinePlaylist=true;
     localSong=false;
-    coverClick=false;
     
     songName = popularSongs[tempInd].trackName;
     songNamePlayer.innerText = songName.slice(0,30);
@@ -564,7 +551,6 @@ async function refreshFillSongs(){
 elementsF.forEach((elem,i)=>{
     elem.addEventListener('click',()=>{
         remLineQ(); //remove any panel click styling
-        coverClick=false;
         localSong=true;
         // reset old play button
         query1.classList.remove('play_small_hover'); //removing static of previous song

@@ -28,7 +28,7 @@ async function onPageLoad() {
     }
     else {
         await getToken();
-    }
+    }              //  
     console.log("onload function executed");
     await fillSongs("57WaI46qepN0lMyzsOSEfx");
     await fillSongs("37i9dQZF1DWXtlo6ENS92N");
@@ -302,6 +302,43 @@ async function fillSongs(playlistId){
     }
 }
 
+async function fillPlaylist(playlistId){
+    
+    let q=`https://api.spotify.com/v1/playlists/${playlistId}?market=in`;
+    
+    data=await apiCall(q);
+    if(data==undefined ){
+        return;
+    }
+    if (!data.error){  
+        if(data.tracks.length!=0){
+            // console.log(data)
+            let count=0;
+            tempArray=[];
+            for(i=0;i<data.tracks.items.length;i++){
+                if (data.tracks.items[i].track.preview_url || data.tracks.items[i].track.preview_url!=null){
+                    temp={
+                        trackName: data.tracks.items[i].track.name,
+                        trackArtist:data.tracks.items[i].track.artists[0].name,
+                        trackSrc: data.tracks.items[i].track.preview_url,
+                        trackAlbumArt: data.tracks.items[i].track.album.images[1].url
+                    }
+                    tempArray.push(temp);
+                    count+=1
+                }
+                if (count>=10){
+                    // popularSongs=[];
+                    popularSongs=JSON.parse(JSON.stringify(tempArray))
+                    break
+                }
+            }
+            // console.log(playlist)
+            artistArtPanel.src=data.images[0].url;
+            artistPanel.innerText=data.name;
+            refreshPanel(popularSongs);
+        }
+    }
+}
 //////////////////////////////////////////
 let t=undefined;
 

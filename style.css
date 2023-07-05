@@ -303,10 +303,12 @@ nav {
 
 .covertitle, #artistPanel {
     font-family: 'Roboto', sans-serif;
-    font-size: 60px;
+    font-size: 47px;
     font-weight: 600;
     margin-right: 45px;
     color: white;
+    max-height: 113px;
+    overflow-y: hidden;
 }
 
 .covertitle:hover {
@@ -688,9 +690,9 @@ nav {
     .pSdark{
         width: 80%;
     }
-    #artistPanel{
+    /* #artistPanel{
         font-size: 50px;
-    }
+    } */
     .panelLabel{
         margin:  0px 30px;
     }
@@ -724,6 +726,7 @@ nav {
     }
     #artistPanel{
         font-size: 40px;
+        max-height: 100px;
     }
     .panelLabel{
         margin:  0px 20px;
@@ -785,6 +788,7 @@ nav {
     #artistPanel{
         font-size: 36px;
         margin-top: 7px;
+        max-height: 90px;
     }
     #progressbar{
         width: 20vw;
