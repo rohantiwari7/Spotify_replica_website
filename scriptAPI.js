@@ -243,7 +243,8 @@ async function findPopSongs(artistId){
             
             console.log(`popular songs by ${artistName} `,tempArray);
             if (tempArray.length>=6){
-                popularSongs=JSON.parse(JSON.stringify(tempArray))
+                artistArtPanel.src="";
+                popularSongs=JSON.parse(JSON.stringify(tempArray));
                 refreshPanel(popularSongs);
                 artistPanel.innerText=artistName;
                 trackArtistImage=await artistImage(artistId);

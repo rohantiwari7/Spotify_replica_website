@@ -418,6 +418,10 @@ function closeWindow() {
                 console.log("find query because of closing panel")
                 findQuery();
             }
+            else if (!isArtist){
+                console.log("findquery for 'playing-searched song' after panle close")
+                findQuery();
+            }
         }
     }
 }
