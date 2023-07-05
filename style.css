@@ -921,7 +921,7 @@ nav {
     .panel{
         /* top: 74px; */
         min-height: calc(100vh - 280px);
-        height: 200vh;
+        /* height: 200vh; */
     }
     .panelPage{
         padding: 3.2vw 1.3vw;
