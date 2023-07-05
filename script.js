@@ -387,7 +387,7 @@ function openWindow() {
         main.classList.add('blur');
         console.log('panel is opened');
         panelOpen = true;
-        if(popularSongs.length<6){
+        if(tempArray.length<6){
             errMsg.innerText = `Songs of ${artistName} not currently available`;
             errMsg.style.display = "flex";
             errMsg.style.height = "60px";

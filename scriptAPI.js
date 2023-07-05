@@ -352,7 +352,7 @@ async function refreshSongQuery(data,query){
     console.log('song query refresh started')
     if(data.tracks.items.length>5){
         console.log(data)
-        Qsongs=[]
+        tempArray=[]
         for(i=0;i<data.tracks.items.length;i++){
             if (data.tracks.items[i].preview_url || data.tracks.items[i].preview_url!=null){
                 temp={
@@ -362,16 +362,16 @@ async function refreshSongQuery(data,query){
                     trackAlbumArt: data.tracks.items[i].album.images[1].url,
                     popularity: data.tracks.items[i].popularity
                     }
-                Qsongs.push(temp);
-                if (Qsongs.length===10){
+                tempArray.push(temp);
+                if (tempArray.length===10){
                     break
                 }
             }
         }
         
-        console.log(Qsongs);
-        if (Qsongs.length>6){
-            popularSongs=JSON.parse(JSON.stringify(Qsongs))
+        console.log(tempArray);
+        if (tempArray.length>6){
+            popularSongs=JSON.parse(JSON.stringify(tempArray))
             trackArtistImage=popularSongs[0].trackAlbumArt;
             // console.log('trackArtistImage= ',trackArtistImage);
             artistArtPanel.src=trackArtistImage;
