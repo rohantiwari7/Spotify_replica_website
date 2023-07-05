@@ -929,6 +929,10 @@ nav {
     .pSong{
         margin: 17px 3px 0px 3px;
     }
+    .pSdark {
+        width: 85%;
+        padding: 0 0 0 8px;
+    }
     .line{
         /* height: 1.5px; */
         margin: 0px 3px 0px 0px;
