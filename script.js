@@ -32,9 +32,10 @@ songs = [
 ]
 
 var songInd = 0;
-let songName = songs[songInd].songName;
-songNamePlayer.innerText = songs[songInd].songName;
-albumArt.src = coverDir + songs[songInd].coverName;
+let songName;
+// songName =songs[songInd].songName;
+// songNamePlayer.innerText = songs[songInd].songName;
+// albumArt.src = coverDir + songs[songInd].coverName;
 // audioElem.src = songDir + songs[songInd].songName + ".mp3";  set from "onloaded" event
 
 
@@ -54,6 +55,7 @@ elemArray.forEach((elem, i) => {
 elemArray.forEach((elem, i) => {
     elem.addEventListener('click', () => {
         remLineQ(); //remove any panel click styling
+        coverOpen=false;
         if (songInd === i && localSong) { //pause it
             // console.log("same song clicked");
             
@@ -102,7 +104,9 @@ elemArray.forEach((elem, i) => {
 
 // play pause feature, and changing icon
 playpause.addEventListener('click', () => {
-    
+    if(player.style.display==='none'){
+        player.style.display='flex';
+    }
     if (audioElem.paused || audioElem.currentTime <= 0) {  //if paused (make it play)
         playpause.src = "pause-solid.svg";
         audioElem.play();
@@ -193,6 +197,7 @@ prev.addEventListener('click', () => {
     query2.classList.remove('pause_small_img');
     query2.classList.add('play_small_img');
     remLineQ();
+    coverOpen=false
     // console.log("prev clicked");
     prev.classList.add("buttonPress");
 
@@ -259,6 +264,7 @@ next.addEventListener('click', () => {
     query2.classList.remove('pause_small_img');
     query2.classList.add('play_small_img');
     remLineQ();
+    coverOpen=false
     // console.log("next clicked");
 
     ////Main function
@@ -328,10 +334,12 @@ next.addEventListener('animationend', () => {
 
 // /////////////////////////////////////
 let cover = document.getElementsByClassName('cover')[0];
+let coverOpen=false;
 
 cover.addEventListener('click', () => {
     onlinePlaylist = false;
     localSong=true;
+    coverOpen=true;
     // styling
     // remLineQ();
     // query1.classList.remove('play_small_hover');
@@ -380,12 +388,14 @@ function openWindow() {
         main.classList.add('blur');
         console.log('panel is opened');
         panelOpen = true;
-        if(tempArray.length<6){
+        if(!coverOpen){
+            if (tempArray.length<6){
             errMsg.innerText = `Songs of ${artistName} not currently available`;
             errMsg.style.display = "flex";
             errMsg.style.height = "60px";
             errMsg.style.width="200px";
             setTimeout(() => { errMsg.style.display = "none" }, 3000);
+            }
         }
     }
 
@@ -435,6 +445,7 @@ let lineQuery=Array.from(document.getElementsByClassName('line'));
 pArray.forEach((pElem, i) => {
     pElem.addEventListener('click', () => { 
         remLineQ();
+        if(coverOpen){onlinePlaylist=true;}
         tempInd = i
         localSong=false;
         songName = popularSongs[tempInd].trackName;
@@ -497,10 +508,9 @@ p1.addEventListener('click',()=>{
 
 // second row playlist
 p2.addEventListener('click',()=>{
-    songInd=-1;
+    songInd=6
     onlinePlaylist=false;
     localSong=true;
-    songInd=6;
     next.click();
 })
 
@@ -552,6 +562,7 @@ elementsF.forEach((elem,i)=>{
     elem.addEventListener('click',()=>{
         remLineQ(); //remove any panel click styling
         localSong=true;
+        coverOpen=false;
         // reset old play button
         query1.classList.remove('play_small_hover'); //removing static of previous song
         query2.src = "play-solid.svg";

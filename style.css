@@ -501,7 +501,7 @@ nav {
 
 #l, #r{
     width: 4vw;
-    height: 100%;
+    height: 100vh;
     cursor: pointer;
 }
 

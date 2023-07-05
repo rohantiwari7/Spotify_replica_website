@@ -37,7 +37,7 @@ async function onPageLoad() {
     await refreshFillSongs();
     extendedPlaylist.classList.remove("hide");
 
-    audioElem.src = songDir + songs[songInd].songName + ".mp3";
+    // audioElem.src = songDir + songs[songInd].songName + ".mp3";
 }
 
 async function getToken() {
