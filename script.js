@@ -19,8 +19,8 @@ songs = [
     { songName: "5 Taara", coverName: "cover2.jpg", artistName: "Diljit Dosanjh" },
     { songName: "KAZINO - BIBI", coverName: "cover3.jpg", artistName: "BIBI(비비)" },
     { songName: "Tere Vaaste", coverName: "cover4.jpg", artistName: "Varun Jain, Sachin" },
-    { songName: "Call Out My Name", coverName: "cover5.jpg", artistName: "The Weeknd" },
-    { songName: "Addicted - Enrique", coverName: "cover6.jpg", artistName: "Enrique Iglesias" },
+    { songName: "Pachtaoge", coverName: "cover5.jpg", artistName: "Arijit Singh" },
+    { songName: "Grenade - Bruno mars", coverName: "cover6.jpg", artistName: "Bruno mars" },
     { songName: "Guzaarish", coverName: "cover7.jpg", artistName: "K.K., Shail Hada" },
     { songName: "Cupid - Twin ver", coverName: "cover8.jpg", artistName: "FIFTY FIFTY - Twin ver." },
     { songName: "Be Intehaan - Atif", coverName: "cover9.jpg", artistName: "Atif Aslam, Sunidhi Chauhan" },
@@ -28,7 +28,7 @@ songs = [
     { songName: "Pani da rang", coverName: "cover11.jpg", artistName: "Ayushmann Khurrana" },
     { songName: "Zara Sa - KK", coverName: "cover12.jpg", artistName: "K.K." },
     { songName: "Kahani Suno 2.0", coverName: "cover13.jpg", artistName: "Kaifi Khalil" },
-    { songName: "Unholy ft Kim Petras", coverName: "cover14.jpg", artistName: "Sam Smith" }
+    { songName: "Nashe Si Chadh Gayi", coverName: "cover14.jpg", artistName: "Arijit Singh" }
 ]
 
 var songInd = 0;
@@ -368,6 +368,10 @@ function tryopenWindow() {
         openWindow();
     }
 }
+
+
+let tempArray=[];
+
 
 function openWindow() {
     if(panelOpen){
