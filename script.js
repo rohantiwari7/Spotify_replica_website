@@ -31,7 +31,7 @@ songs = [
     { songName: "Nashe Si Chadh Gayi", coverName: "cover14.jpg", artistName: "Arijit Singh" }
 ]
 
-var songInd = -10;
+var songInd = -1;
 let songName;
 // songName =songs[songInd].songName;
 // songNamePlayer.innerText = songs[songInd].songName;
