@@ -336,6 +336,8 @@ async function fillPlaylist(playlistId){
             // console.log(playlist)
             artistArtPanel.src=data.images[0].url;
             artistPanel.innerText=data.name;
+            console.log(' ');
+            console.log(`playlist ${data.name.slice(0,20)} refreshed`,popularSongs);
             refreshPanel(popularSongs);
         }
     }
