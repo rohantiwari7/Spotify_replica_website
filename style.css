@@ -324,7 +324,7 @@ nav {
 }
 
 .coverButton {
-    font-family: Roboto;
+    font-family: 'Roboto',sans-serif;
     position: relative;
     font-weight: 500;
 }
