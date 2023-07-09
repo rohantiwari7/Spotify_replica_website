@@ -244,7 +244,7 @@ async function findPopSongs(artistId){
             
             console.log(`popular songs by ${artistName} `,tempArray);
             if (tempArray.length>=6){
-                artistArtPanel.src="";
+                // artistArtPanel.src="";
                 popularSongs=JSON.parse(JSON.stringify(tempArray));
                 refreshPanel(popularSongs);
                 artistPanel.innerText=artistName;
@@ -414,7 +414,7 @@ async function refreshSongQuery(data,query){
             popularSongs=JSON.parse(JSON.stringify(tempArray))
             trackArtistImage=popularSongs[0].trackAlbumArt;
             // console.log('trackArtistImage= ',trackArtistImage);
-            artistArtPanel.src=trackArtistImage;
+            artistArtPanel.src="";
             artistPanel.innerText=`'${query}' results`;
             refreshPanel(popularSongs);
             popSongLabel.style.display='none';

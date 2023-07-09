@@ -34,10 +34,16 @@
         <div class="panelPage">
             <div id="artistArtPanelWrapper">
                 <img id="albumArtPanel" alt="" onerror="this.style.display='none'" onload="this.style.display='block'">
-                <div id="songNamePanel">Nashe si chad gayi</div>
-                <img id="artistArtPanel" alt="" >
+                <div id="songNamePanel"></div>
+                <div id="progressUnitPanel">
+                    <div id="currTimePanel" width="36px"></div>
+                    <input id="progressbarPanel" type="range" min="0" max="100" value="0" step="any">
+                    <div id="durationPanel" width="36px"></div>
+                </div>
+                <div id="artistArtPanelContainer">
+                    <img id="artistArtPanel" alt="" onerror="this.style.display='none'" onload="this.style.display='block'">
+                </div>
             </div>
-
             <div class="panelLabel">
                 <div id="artistPanel"></div>
                 <div class="popSongLabel">

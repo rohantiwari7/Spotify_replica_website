@@ -115,6 +115,7 @@ nav {
     background-color: rgb(41, 40, 40);
     color: white;
     position: fixed;
+    overflow-x: hidden;
     z-index: 30;
     /* top: calc(100svh - var(--player-height) - 8px); */
     bottom: 1%;
@@ -556,14 +557,34 @@ nav {
     width: 80%;
     margin: auto;
 }
-#artistArtPanel{
-    display: block;    /* change it to block  */
-    box-sizing: border-box;
-    width: 50%;
-    margin: 20px 25%;
-    border-radius: 50%;
-    /* overflow: hidden; */
+#progressUnitPanel{
+    display: none;
+    width: 100%;
+    margin: 15px auto;
+    justify-content: space-between;
 }
+
+#progressbarPanel {
+    cursor: pointer;
+    margin: 0 8px;
+    width: 80%;
+}
+
+#artistArtPanelContainer{
+    display: block;
+    overflow: hidden;
+    height: 150px;
+    width: 150px;
+    margin: 55px auto auto auto;
+    border-radius: 50%;
+}
+
+#artistArtPanel{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 #songNamePanel {
     font-family: 'Roboto', sans-serif;
     font-size: 29px;
@@ -810,6 +831,10 @@ nav {
         margin-top: 7px;
         max-height: 87px;
     }
+    #artistArtPanelContainer{
+        width: 110px;
+        height: 110px;
+    }
     #progressbar{
         width: 20vw;
     }
@@ -884,17 +909,21 @@ nav {
     .panelPage{
         flex-direction: column;
     }
-    #artistArtPanel{
-        display: none;
-    }
     #artistArtPanelWrapper {
         width: 100%;
-        margin: 60px auto auto auto;
+        margin: 60px auto 30px auto;
     }
-    #artistPanel {
+    #artistArtPanelContainer{
+        display: none;
+    }
+    #artistPanel{
         font-weight: 600;
         font-size: 27px;
         max-height: 100px;
+        margin-top: 20px;
+    }
+    #progressUnitPanel{
+        display: flex;
     }
     .panelLabel{
         width: 100%;
@@ -1056,7 +1085,7 @@ nav {
     #l, #r{
         width: 2vw;
     }
-    .popSongs{
+    /* .popSongs{
         overflow-x: scroll;
         overflow-y: hidden;
         margin: 8px 5px 90px 5px;
@@ -1082,8 +1111,7 @@ nav {
         width: 95px;
         padding: 5px 0px;
         height: 45px;
-        /* align-items: center; */
-        /* line-height: 20px; */
     }
+    */
 }
 
