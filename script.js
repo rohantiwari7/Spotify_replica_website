@@ -414,7 +414,7 @@ function openWindow() {
         if (audioElem.src==="" && window.innerWidth<610){
             artistArtPanelWrapper.style.display='none';
         }
-        window.scrollTo(0,20);
+        setTimeout(() => { window.scrollTo(0,20);   }, 10);
         panelOpen = true;
         if(!coverOpen){
             if (tempArray.length<6){
