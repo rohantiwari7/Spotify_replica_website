@@ -373,8 +373,8 @@ cover.addEventListener('click', () => {
     localSong=true;
     coverOpen=true;
     tempName=songName;
-    if (audioElem.src===""){
-        artistArtPanelWrapper.style.display='none'
+    if (audioElem.src==="" && window.innerWidth<610){
+        artistArtPanelWrapper.style.display='none';
     }
     openWindow();
     fillPlaylist('7ld7q89dE5etlqq60XTiVy');
