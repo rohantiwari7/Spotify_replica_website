@@ -112,7 +112,6 @@ playpause.addEventListener('click', () => {
     }
     if(artistArtPanelWrapper.style.display==='none'){
         artistArtPanelWrapper.style.display='block';
-        // setTimeout(() => { window.scrollTo(0,500);  }, 10);
     }
     if (audioElem.paused || audioElem.currentTime <= 0) {  //if paused (make it play)
         playpause.src = "pause-solid.svg";
@@ -526,9 +525,9 @@ function refreshPanel(songs) {
     // if(window.innerWidth<420){      for horizontal scroll
     //     popSongsScrollPosition.scrollLeft=0
     // }
-    if(panelOpen){
-        window.scrollTo(0,20);
-    }
+    // if(panelOpen){
+    //     window.scrollTo(0,20);
+    // }
 }
 
 function remLineQ(){

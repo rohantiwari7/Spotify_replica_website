@@ -191,7 +191,7 @@ async function findQuery(){
                 }
                 openWindow();
                 if(window.innerWidth<610){
-                    setTimeout(() => { window.scrollTo(0,500)     }, 10);
+                    setTimeout(() => { window.scrollTo(0,600)     }, 10);
                 }
                 if(isArtist){
                     artistName=data.artists.items[0].name;
