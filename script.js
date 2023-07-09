@@ -499,6 +499,7 @@ function refreshPanel(songs) {
     if(window.innerWidth<420){
         popSongsScrollPosition.scrollLeft=0
     }
+    window.scrollTo(0,20);
 }
 
 function remLineQ(){

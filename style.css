@@ -894,6 +894,7 @@ nav {
     #artistPanel {
         font-weight: 600;
         font-size: 27px;
+        max-height: 100px;
     }
     .panelLabel{
         width: 100%;
