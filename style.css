@@ -8,6 +8,7 @@
 .prevent-select{
     user-select: none;
     -webkit-user-select: none;
+    -webkit-touch-callout: none;
 }
 :root {
     --player-height: 70px;
