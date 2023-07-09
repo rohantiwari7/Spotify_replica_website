@@ -156,7 +156,7 @@ async function findQuery(){
     else{   //search feature used
         searched=true;
         tempName=songName;
-        setTimeout(() => {  artistPanel.click();    }, 10);
+        setTimeout(() => {  searchBox.blur()    }, 10);
     }
     let q=SEARCH+'?q='+query+"&type=track,artist&market=IN&limit=10";
     // console.log(query);
