@@ -373,9 +373,7 @@ cover.addEventListener('click', () => {
     localSong=true;
     coverOpen=true;
     tempName=songName;
-    if (audioElem.src==="" && window.innerWidth<610){
-        artistArtPanelWrapper.style.display='none';
-    }
+    
     openWindow();
     fillPlaylist('7ld7q89dE5etlqq60XTiVy');
 
@@ -414,7 +412,10 @@ function openWindow() {
         // navi.classList.add('blur');
         main.classList.add('blur');
         console.log('panel is opened');
-        window.scrollTo(0,20)
+        if (audioElem.src==="" && window.innerWidth<610){
+            artistArtPanelWrapper.style.display='none';
+        }
+        window.scrollTo(0,20);
         panelOpen = true;
         if(!coverOpen){
             if (tempArray.length<6){
