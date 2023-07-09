@@ -156,6 +156,7 @@ async function findQuery(){
     else{   //search feature used
         searched=true;
         tempName=songName;
+        artistPanel.click();
     }
     let q=SEARCH+'?q='+query+"&type=track,artist&market=IN&limit=10";
     // console.log(query);
@@ -185,10 +186,11 @@ async function findQuery(){
                     isArtist=true; 
                 } 
                 else { 
-                    if (isTrue(sN,query)) { 
-                        console.log('is Song'); 
-                        isArtist=false;  
-                    }  
+                    // if (isTrue(sN,query)) { 
+                        //     isArtist=false;  
+                        // }  
+                    isArtist=false;  
+                    console.log('is Song'); 
                 }
                 openWindow();
                 if(window.innerWidth<610){
@@ -203,9 +205,9 @@ async function findQuery(){
                     artistName=data.artists.items[0].name;
                     artistId=data.artists.items[0].id; 
                     onlinePlaylist=false;
-                    findPopSongs(artistId);
+                    if(!findPopSongs(artistId)){ isArtist=false};
                 }
-                else{  // Query is a song
+                else if(!isArtist){  // Query is a song
                     onlinePlaylist=false;
                     refreshSongQuery(data,query)
                 }
@@ -262,6 +264,7 @@ async function findPopSongs(artistId){
                 trackArtistImage=await artistImage(artistId);
                 // console.log('trackArtistImage= ',trackArtistImage);
                 artistArtPanel.src=trackArtistImage;
+                return true
             }
             else{
                 if(panelOpen){
@@ -271,6 +274,7 @@ async function findPopSongs(artistId){
                     errMsg.style.height = "60px";
                     errMsg.style.width="200px";
                     setTimeout(() => { errMsg.style.display = "none" }, 3000);
+                    return false
                 }
             }
             console.log('panel refreshed')
