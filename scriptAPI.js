@@ -173,7 +173,9 @@ async function findQuery(){
             if(!searched){   //query is songname, by design
                 artistName=data.tracks.items[0].artists[0].name;  //artist among artists in this list
                 artistId=data.tracks.items[0].artists[0].id;   //this too needs checking
-                if(panelOpen){  window.scrollTo(0,20); } //turn off if jerky                       
+                if(panelOpen && window.innerWidth<610 && window.scrollY>240){ 
+                     window.scrollTo(0,12);
+                 } //turn off if jerky                       
                 console.log('songName=', songName,'  artistName=', artistName,'  artistId=',artistId);
                 findPopSongs(artistId);
             }
@@ -193,9 +195,9 @@ async function findQuery(){
                     console.log('is Song'); 
                 }
                 openWindow();
-                if(window.innerWidth<610){
+                if(panelOpen && window.innerWidth<610){
                     if (audioElem.src===""){
-                        setTimeout(() => { window.scrollTo(0,10)     }, 10);
+                        setTimeout(() => { window.scrollTo(0,12)     }, 10);
                     }
                     else{
                         setTimeout(() => { window.scrollTo(0,650)     }, 10);

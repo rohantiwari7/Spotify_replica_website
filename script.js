@@ -414,7 +414,7 @@ function openWindow() {
         if (audioElem.src==="" && window.innerWidth<610){
             artistArtPanelWrapper.style.display='none';
         }
-        setTimeout(() => { window.scrollTo(0,20);   }, 10);
+        setTimeout(() => { window.scrollTo(0,12);   }, 10);
         panelOpen = true;
         if(!coverOpen){
             if (tempArray.length<6){
@@ -526,7 +526,7 @@ function refreshPanel(songs) {
     //     popSongsScrollPosition.scrollLeft=0
     // }
     // if(panelOpen){
-    //     window.scrollTo(0,20);
+    //     window.scrollTo(0,12);
     // }
 }
 
