@@ -94,6 +94,7 @@ elemArray.forEach((elem, i) => {
             albumArt.src = coverDir + songs[songInd].coverName;
             albumArtPanel.src = coverDir + songs[songInd].coverName;
             audioElem.src = songDir + songs[songInd].songName + ".mp3";
+            setTimeout(() => {   progressbar.value=0; progressbarPanel.value=0; }, 10);
             playpause.click();
             // make icon to static pause
             query2.src = "pause-solid.svg";
@@ -108,6 +109,10 @@ elemArray.forEach((elem, i) => {
 playpause.addEventListener('click', () => {
     if(player.style.display==='none'){
         player.style.display='flex';
+    }
+    if(artistArtPanelWrapper.style.display==='none'){
+        artistArtPanelWrapper.style.display='block';
+        // setTimeout(() => { window.scrollTo(0,500);  }, 10);
     }
     if (audioElem.paused || audioElem.currentTime <= 0) {  //if paused (make it play)
         playpause.src = "pause-solid.svg";
@@ -154,11 +159,14 @@ playpause.addEventListener('click', () => {
 // metadata loaded. ready to fill player metadata
 audioElem.addEventListener('loadedmetadata', () => {
     progressbar.value = 0;
+    progressbarPanel.value = 0;
     let m = ~~(audioElem.duration / 60);
     let s = ~~(audioElem.duration % 60);
     let dispM = m < 1 ? '0' : m;
     let dispS = s < 10 ? '0' + s : s;
     duration.textContent = dispM + ':' + dispS;
+    durationPanel.textContent = dispM + ':' + dispS;
+
     if (loggedIn && localSong && songName) { findQuery(); }
 })
 
@@ -171,13 +179,23 @@ progressbar.addEventListener('input', (e) => {
     }
 })
 
+progressbarPanel.addEventListener('input', (e) => {
+    val = e.target.value;
+    audioElem.currentTime = (val) * audioElem.duration / 100;
+    if (audioElem.paused) {
+        playpause.click();
+    }
+})
+
 //updating current time-stamp on player
 audioElem.addEventListener('timeupdate', () => {
     progressbar.value = (100 * audioElem.currentTime / audioElem.duration).toFixed(1);
+    progressbarPanel.value = (100 * audioElem.currentTime / audioElem.duration).toFixed(1);
     let m = ~~(audioElem.currentTime / 60);
     let s = ~~(audioElem.currentTime % 60);
     let dispS = s < 10 ? '0' + s : s;
     currTime.textContent = m + ':' + dispS;
+    currTimePanel.textContent = m + ':' + dispS;
 })
 
 //AutoPlay  /when current playlist is ended
@@ -212,6 +230,7 @@ prev.addEventListener('click', () => {
             albumArt.src = popularSongs[tempInd].trackAlbumArt;
             albumArtPanel.src = popularSongs[tempInd].trackAlbumArt;
             audioElem.src = popularSongs[tempInd].trackSrc;
+            setTimeout(() => {   progressbar.value=0; progressbarPanel.value=0; }, 10);
             lineQuery[tempInd].classList.add('line_show');
             pArray[tempInd].classList.add('pSong_select');
 
@@ -251,6 +270,7 @@ prev.addEventListener('click', () => {
         albumArt.src = coverDir + songs[songInd].coverName;
         albumArtPanel.src = coverDir + songs[songInd].coverName;
         audioElem.src = songDir + songs[songInd].songName + ".mp3";
+        setTimeout(() => {   progressbar.value=0; progressbarPanel.value=0; }, 10);
         playpause.click(); // handeled by canplay event
         playpause.src = "pause-solid.svg";
     }
@@ -284,6 +304,7 @@ next.addEventListener('click', () => {
             albumArt.src = popularSongs[tempInd].trackAlbumArt;
             albumArtPanel.src = popularSongs[tempInd].trackAlbumArt;
             audioElem.src = popularSongs[tempInd].trackSrc;
+            setTimeout(() => {   progressbar.value=0; progressbarPanel.value=0; }, 10);
             lineQuery[tempInd].classList.add('line_show');
             pArray[tempInd].classList.add('pSong_select');
 
@@ -327,6 +348,7 @@ next.addEventListener('click', () => {
         albumArt.src = coverDir + songs[songInd].coverName;
         albumArtPanel.src = coverDir + songs[songInd].coverName;
         audioElem.src = songDir + songs[songInd].songName + ".mp3";
+        setTimeout(() => {   progressbar.value=0; progressbarPanel.value=0; }, 10);
         playpause.src = "pause-solid.svg";
         playpause.click();
     }
@@ -351,7 +373,9 @@ cover.addEventListener('click', () => {
     localSong=true;
     coverOpen=true;
     tempName=songName;
-
+    if (audioElem.src===""){
+        artistArtPanelWrapper.style.display='none'
+    }
     openWindow();
     fillPlaylist('7ld7q89dE5etlqq60XTiVy');
 
@@ -390,6 +414,7 @@ function openWindow() {
         // navi.classList.add('blur');
         main.classList.add('blur');
         console.log('panel is opened');
+        window.scrollTo(0,20)
         panelOpen = true;
         if(!coverOpen){
             if (tempArray.length<6){
@@ -464,6 +489,7 @@ pArray.forEach((pElem, i) => {
         albumArt.src = popularSongs[tempInd].trackAlbumArt;
         albumArtPanel.src = popularSongs[tempInd].trackAlbumArt;
         audioElem.src = popularSongs[tempInd].trackSrc;
+        setTimeout(() => {   progressbar.value=0; progressbarPanel.value=0; }, 10);
         playpause.click();
         /////styling
         query1.classList.remove('play_small_hover');
@@ -496,10 +522,12 @@ function refreshPanel(songs) {
         }
     })
     onlinePlaylist=false;
-    if(window.innerWidth<420){
-        popSongsScrollPosition.scrollLeft=0
+    // if(window.innerWidth<420){      for horizontal scroll
+    //     popSongsScrollPosition.scrollLeft=0
+    // }
+    if(panelOpen){
+        window.scrollTo(0,20);
     }
-    window.scrollTo(0,20);
 }
 
 function remLineQ(){
@@ -549,6 +577,7 @@ playBtn_Panel.addEventListener('click',()=>{
     albumArt.src = popularSongs[tempInd].trackAlbumArt;
     albumArtPanel.src = popularSongs[tempInd].trackAlbumArt;
     audioElem.src = popularSongs[tempInd].trackSrc;
+    setTimeout(() => {   progressbar.value=0; progressbarPanel.value=0; }, 10);
     playpause.click();
     
     // styling remove
@@ -601,6 +630,7 @@ elementsF.forEach((elem,i)=>{
         albumArt.src = fetchedSongs[i].trackAlbumArt;
         albumArtPanel.src = fetchedSongs[i].trackAlbumArt;
         audioElem.src = fetchedSongs[i].trackSrc;
+        setTimeout(() => {   progressbar.value=0; progressbarPanel.value=0; }, 10);
         playpause.click();
         // make icon to static pause
         query2.src = "pause-solid.svg";

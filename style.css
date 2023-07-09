@@ -570,6 +570,13 @@ nav {
     width: 80%;
 }
 
+#currTimePanel , #durationPanel {
+    color: white;
+    font-family: sans-serif;
+    font-size: 17px;
+    /* padding: 0px 10px; */
+}
+
 #artistArtPanelContainer{
     display: block;
     overflow: hidden;
@@ -891,16 +898,14 @@ nav {
     #main{
         background:  linear-gradient(160deg,rgb(193, 189, 90),30%, gray);      
     }
-    .icons{
-        width: 65px;
-    }
-    #prev{
-        display: none;
-    }
+    
     #progressbar{
         width: 16vw;
     }
     #currTime{
+        display: none;
+    }
+    #progressbar{
         display: none;
     }
     #duration{
@@ -987,6 +992,13 @@ nav {
         margin: 5px 10px 15px 10px;
         max-height: 724px;
     }
+    #prev{
+        display: none;
+    }
+    .icons{
+        width: 75px;
+    }
+    
     .playlist , .playlistF{
         margin: 10px 8px;
         padding: 8px;
@@ -1012,7 +1024,7 @@ nav {
         width: 85%;
         padding: 0 0 0 9px;
         font-size: 15.5px;
-        max-height: 35px;
+        max-height: 37px;
     }
     #player {
         left: 1.5vw;
@@ -1026,9 +1038,6 @@ nav {
     #panelClose{
         height: 35px;
         width: 35px;
-    }
-    #progressbar{
-        width: 13vw;
     }
     #artistPanel{
         margin-left: 4px;
@@ -1072,12 +1081,10 @@ nav {
     .playlist , .playlistF{
         margin: 8px 4px;
     }
-    #progressbar{
-        display: none;
-    }
+    
     .icons img {
-        height: 21px;
-        padding: 5px 12px; 
+        height: 22px;
+        padding: 5px 15px; 
     } 
     /* .panelLabel{
         margin:  0px 4px;

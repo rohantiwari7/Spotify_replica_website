@@ -190,12 +190,17 @@ async function findQuery(){
                     }  
                 }
                 openWindow();
+                if(window.innerWidth<610){
+                    setTimeout(() => { window.scrollTo(0,500)     }, 10);
+                }
                 if(isArtist){
                     artistName=data.artists.items[0].name;
                     artistId=data.artists.items[0].id; 
+                    onlinePlaylist=false;
                     findPopSongs(artistId);
                 }
                 else{  // Query is a song
+                    onlinePlaylist=false;
                     refreshSongQuery(data,query)
                 }
 
