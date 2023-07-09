@@ -3,7 +3,6 @@
 
 * {
     padding: 0;
-
     margin: 0;
 }
 .prevent-select{
@@ -547,17 +546,33 @@ nav {
 #artistArtPanelWrapper{
     width: 30%;
     max-width: 300px;
-    max-height: 300px;
+    min-width: 165px;
+    /* max-height: 300px; */
     overflow: hidden;
 }
-
-#artistArtPanel{
+#albumArtPanel{
     display: block; 
     box-sizing: border-box;
-    width: 100%;
+    width: 80%;
+    margin: auto;
+}
+#artistArtPanel{
+    display: block;    /* change it to block  */
+    box-sizing: border-box;
+    width: 50%;
+    margin: 20px 25%;
+    border-radius: 50%;
     /* overflow: hidden; */
 }
-
+#songNamePanel {
+    font-family: 'Roboto', sans-serif;
+    font-size: 29px;
+    font-weight: 700;
+    text-align: center;
+    margin: 18px 5px 10px 5px;
+    color: white;
+    max-width: 100%;
+}
 .panelLabel{
     display: flex;
     flex-direction: column;
@@ -619,7 +634,7 @@ nav {
 .line{
     height: 1.6px;
     margin: 0px 8px 0px 0px;
-    width: calc(100% - 76px);
+    width: calc(100% - 81px);
     align-self: flex-end;
     background-color: rgb(37, 205, 37);
     opacity: 0;
@@ -634,8 +649,8 @@ nav {
 }
 /* overflow: hidden; */
 .pSong img{
-    max-width: 60px;
-    max-height: 60px;
+    max-width: 65px;
+    max-height: 65px;
     cursor: pointer;
 }
 .pSdark {
@@ -733,6 +748,9 @@ nav {
     .panelLabel{
         margin:  0px 20px;
     }
+    #artistArtPanelWrapper {
+        margin-top: 1.6vh;
+    }
 
 }
 
@@ -790,10 +808,17 @@ nav {
     #artistPanel{
         font-size: 36px;
         margin-top: 7px;
-        max-height: 83px;
+        max-height: 87px;
     }
     #progressbar{
         width: 20vw;
+    }
+    #songNamePanel {
+        font-size: 25px;
+        font-weight: 600;
+    }
+    .panelLabel{
+        margin:  0px 12px;
     }
 }
 
@@ -856,14 +881,35 @@ nav {
     #duration{
         display: none;        
     }
-    #artistArtPanelWrapper{
+    .panelPage{
+        flex-direction: column;
+    }
+    #artistArtPanel{
         display: none;
+    }
+    #artistArtPanelWrapper {
+        width: 100%;
+        margin: 60px auto auto auto;
+    }
+    #artistPanel {
+        font-weight: 600;
+        font-size: 27px;
     }
     .panelLabel{
         width: 100%;
+        margin: 0px 12px;
     }
-
-
+    .popSongs{
+        margin: 8px 0px 100px 0px;
+    }
+    .popSongLabel{
+        font-size: 22px;
+        font-weight: 600;
+    }
+    #songNamePanel {
+        font-size: 33px;
+        font-weight: 600;
+    }
 }
 
 @media only screen and (max-width:490px) {
@@ -927,7 +973,7 @@ nav {
         padding: 3.2vw 1.3vw;
     }
     .panelLabel{
-        margin:  0px 5px;
+        margin:  0px 8px;
     }
     .pSong{
         margin: 17px 3px 0px 3px;
@@ -935,6 +981,8 @@ nav {
     .pSdark {
         width: 85%;
         padding: 0 0 0 9px;
+        font-size: 15.5px;
+        max-height: 35px;
     }
     #player {
         left: 1.5vw;
@@ -943,7 +991,7 @@ nav {
     .line{
         /* height: 1.5px; */
         margin: 0px 3px 0px 0px;
-        width: calc(100% - 66px);
+        width: calc(100% - 71px);
     }
     #panelClose{
         height: 35px;
@@ -954,6 +1002,10 @@ nav {
     }
     #artistPanel{
         margin-left: 4px;
+    }
+    #songNamePanel {
+        font-size: 27px;
+        font-weight: 600;
     }
 }
 @media only screen and (max-width:420px) {
@@ -997,10 +1049,40 @@ nav {
         height: 21px;
         padding: 5px 12px; 
     } 
-    .panelLabel{
+    /* .panelLabel{
         margin:  0px 4px;
-    }
+    } */
     #l, #r{
         width: 2vw;
     }
+    .popSongs{
+        overflow-x: scroll;
+        overflow-y: hidden;
+        margin: 8px 5px 90px 5px;
+    }
+    .popSongs::-webkit-scrollbar{
+        display: none;
+    }
+    .popSongs1, .popSongs2 {   
+        flex-direction: row;
+        padding: 0px;
+        width: auto;
+    }
+    .pSong{
+        flex-direction: column;
+        margin: 5px;
+    }
+    .pSong img{
+        max-width: 95px;
+        max-height: 95px;
+        cursor: pointer;
+    }
+    .pSdark {
+        width: 95px;
+        padding: 5px 0px;
+        height: 45px;
+        /* align-items: center; */
+        /* line-height: 20px; */
+    }
 }
+

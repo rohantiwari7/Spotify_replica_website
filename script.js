@@ -90,7 +90,9 @@ elemArray.forEach((elem, i) => {
 
             songName = songs[songInd].songName;
             songNamePlayer.innerText = songs[songInd].songName;
+            songNamePanel.innerText = songs[songInd].songName;
             albumArt.src = coverDir + songs[songInd].coverName;
+            albumArtPanel.src = coverDir + songs[songInd].coverName;
             audioElem.src = songDir + songs[songInd].songName + ".mp3";
             playpause.click();
             // make icon to static pause
@@ -205,8 +207,10 @@ prev.addEventListener('click', () => {
         tempInd -= 1;
         if (tempInd >=0 ) {
             songNamePlayer.innerText = popularSongs[tempInd].trackName.slice(0,30);
+            songNamePanel.innerText = popularSongs[tempInd].trackName.slice(0,30);
             songName = popularSongs[tempInd].trackName;
             albumArt.src = popularSongs[tempInd].trackAlbumArt;
+            albumArtPanel.src = popularSongs[tempInd].trackAlbumArt;
             audioElem.src = popularSongs[tempInd].trackSrc;
             lineQuery[tempInd].classList.add('line_show');
             pArray[tempInd].classList.add('pSong_select');
@@ -243,7 +247,9 @@ prev.addEventListener('click', () => {
 
         songName = songs[songInd].songName;
         songNamePlayer.innerText = songs[songInd].songName;
+        songNamePanel.innerText = songs[songInd].songName;
         albumArt.src = coverDir + songs[songInd].coverName;
+        albumArtPanel.src = coverDir + songs[songInd].coverName;
         audioElem.src = songDir + songs[songInd].songName + ".mp3";
         playpause.click(); // handeled by canplay event
         playpause.src = "pause-solid.svg";
@@ -273,8 +279,10 @@ next.addEventListener('click', () => {
         tempInd += 1;
         if (tempInd < popularSongs.length) {
             songNamePlayer.innerText = popularSongs[tempInd].trackName.slice(0,30);
+            songNamePanel.innerText = popularSongs[tempInd].trackName.slice(0,30);
             songName = popularSongs[tempInd].trackName;
             albumArt.src = popularSongs[tempInd].trackAlbumArt;
+            albumArtPanel.src = popularSongs[tempInd].trackAlbumArt;
             audioElem.src = popularSongs[tempInd].trackSrc;
             lineQuery[tempInd].classList.add('line_show');
             pArray[tempInd].classList.add('pSong_select');
@@ -315,7 +323,9 @@ next.addEventListener('click', () => {
         // 
         songName = songs[songInd].songName;
         songNamePlayer.innerText = songs[songInd].songName;
+        songNamePanel.innerText = songs[songInd].songName;
         albumArt.src = coverDir + songs[songInd].coverName;
+        albumArtPanel.src = coverDir + songs[songInd].coverName;
         audioElem.src = songDir + songs[songInd].songName + ".mp3";
         playpause.src = "pause-solid.svg";
         playpause.click();
@@ -450,7 +460,9 @@ pArray.forEach((pElem, i) => {
         localSong=false;
         songName = popularSongs[tempInd].trackName;
         songNamePlayer.innerText = songName.slice(0,30);
+        songNamePanel.innerText = songName.slice(0,30);
         albumArt.src = popularSongs[tempInd].trackAlbumArt;
+        albumArtPanel.src = popularSongs[tempInd].trackAlbumArt;
         audioElem.src = popularSongs[tempInd].trackSrc;
         playpause.click();
         /////styling
@@ -464,6 +476,8 @@ pArray.forEach((pElem, i) => {
     })
 })
 
+
+const popSongsScrollPosition=document.getElementsByClassName('popSongs')[0]
 const popSongLabel=document.getElementsByClassName('popSongLabel')[0]
 function refreshPanel(songs) {
     remLineQ();
@@ -482,6 +496,9 @@ function refreshPanel(songs) {
         }
     })
     onlinePlaylist=false;
+    if(window.innerWidth<420){
+        popSongsScrollPosition.scrollLeft=0
+    }
 }
 
 function remLineQ(){
@@ -527,7 +544,9 @@ playBtn_Panel.addEventListener('click',()=>{
     
     songName = popularSongs[tempInd].trackName;
     songNamePlayer.innerText = songName.slice(0,30);
+    songNamePanel.innerText = songName.slice(0,30);
     albumArt.src = popularSongs[tempInd].trackAlbumArt;
+    albumArtPanel.src = popularSongs[tempInd].trackAlbumArt;
     audioElem.src = popularSongs[tempInd].trackSrc;
     playpause.click();
     
@@ -577,7 +596,9 @@ elementsF.forEach((elem,i)=>{
 
         songName = fetchedSongs[i].trackName;
         songNamePlayer.innerText = songName.slice(0,30);
+        songNamePanel.innerText = songName.slice(0,30);
         albumArt.src = fetchedSongs[i].trackAlbumArt;
+        albumArtPanel.src = fetchedSongs[i].trackAlbumArt;
         audioElem.src = fetchedSongs[i].trackSrc;
         playpause.click();
         // make icon to static pause
