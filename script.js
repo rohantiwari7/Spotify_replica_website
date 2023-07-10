@@ -451,7 +451,10 @@ function closeWindow() {
     }    
     if(searched){
         searched=false;
-        if(tempName){
+        if(tempName===undefined){findQuery();}
+        
+        else if(tempName){
+            console.log('tempname',tempName)
             if(tempName===songName){
                 console.log("find query because of closing panel")
                 findQuery();

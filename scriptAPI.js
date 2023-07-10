@@ -168,12 +168,12 @@ async function findQuery(){
     }
     if(!data.error && loggedIn){   
         if(data.tracks.items.length!=0 ){
-            // console.log(data)
+            console.log(data)
             // 
             if(!searched){   //query is songname, by design
                 artistName=data.tracks.items[0].artists[0].name;  //artist among artists in this list
                 artistId=data.tracks.items[0].artists[0].id;   //this too needs checking
-                if(panelOpen && window.innerWidth<610 && window.scrollY>240){ 
+                if(panelOpen && window.innerWidth<610 && window.scrollY>300){ 
                      window.scrollTo(0,12);
                  } //turn off if jerky                       
                 console.log('songName=', songName,'  artistName=', artistName,'  artistId=',artistId);
@@ -181,9 +181,10 @@ async function findQuery(){
             }
             else{   // Searchbox  query
                 sN=data.tracks.items[0].name;
-                aN=data.artists.items[0].name;
+                if(data.artists.items.length>0){aN=data.artists.items[0].name;}
+                else{aN=""}
                 console.log(`query=${query}, 1st artistName=${aN}, 1st songname=${sN}`)
-                if (isTrue(aN,query)) { 
+                if (aN!=="" && isTrue(aN,query)) { 
                     console.log('is Artist');
                     isArtist=true; 
                 } 
@@ -200,18 +201,20 @@ async function findQuery(){
                         setTimeout(() => { window.scrollTo(0,12)     }, 10);
                     }
                     else{
-                        setTimeout(() => { window.scrollTo(0,650)     }, 10);
+                        setTimeout(() => { window.scrollTo(0,450)     }, 10);
                     }
                 }
                 if(isArtist){
                     artistName=data.artists.items[0].name;
                     artistId=data.artists.items[0].id; 
                     onlinePlaylist=false;
-                    if(!findPopSongs(artistId)){ isArtist=false};
+                    xx=await findPopSongs(artistId);
+                    if(xx===false){ isArtist=false; console.log('can be song')};
                 }
-                else if(!isArtist){  // Query is a song
+                if(!isArtist){  // Query is a song
                     onlinePlaylist=false;
-                    refreshSongQuery(data,query)
+                    // console.log('sending data to songs filling')
+                    await refreshSongQuery(data,query)
                 }
 
             }
@@ -232,23 +235,23 @@ async function findPopSongs(artistId){
     
     let q=`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=IN`;
     
-    data=await apiCall(q);
-    if(data==undefined ){
+    datax=await apiCall(q);
+    if(datax==undefined ){
         return;
     }
-    // console.log(data)
-    if (!data.error){  
-        if(data.tracks.length>6){
+    // console.log(datax)
+    if (!datax.error){  
+        if(datax.tracks.length>6){
             tempArray=[];
-            // console.log(data.tracks)
-            for(i=0;i<data.tracks.length;i++){
-                if (data.tracks[i].preview_url || data.tracks[i].preview_url!=null){
+            // console.log(datax.tracks)
+            for(i=0;i<datax.tracks.length;i++){
+                if (datax.tracks[i].preview_url || datax.tracks[i].preview_url!=null){
                     temp={
-                        trackSrc: data.tracks[i].preview_url,
-                        trackName: data.tracks[i].name,
-                        trackId: data.tracks[i].id,
-                        trackAlbumArt: data.tracks[i].album.images[1].url,
-                        popularity: data.tracks[i].popularity
+                        trackSrc: datax.tracks[i].preview_url,
+                        trackName: datax.tracks[i].name,
+                        trackId: datax.tracks[i].id,
+                        trackAlbumArt: datax.tracks[i].album.images[1].url,
+                        popularity: datax.tracks[i].popularity
                         }
                     tempArray.push(temp);
                     if (tempArray.length===10){
@@ -281,6 +284,10 @@ async function findPopSongs(artistId){
             }
             console.log('panel refreshed')
 
+        }
+        else{
+            console.log('tracks length = ',datax.tracks.length, 'returns false')
+            return false
         }
     }
 }
@@ -407,8 +414,8 @@ function isTrue(s,query) {
 
 async function refreshSongQuery(data,query){
     console.log('song query refresh started')
+    // console.log(data)
     if(data.tracks.items.length>5){
-        console.log(data)
         tempArray=[]
         for(i=0;i<data.tracks.items.length;i++){
             if (data.tracks.items[i].preview_url || data.tracks.items[i].preview_url!=null){
