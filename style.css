@@ -601,6 +601,7 @@ nav {
     margin: 18px 5px 10px 5px;
     color: white;
     max-width: 100%;
+    overflow: hidden;
 }
 .panelLabel{
     display: flex;
@@ -1044,8 +1045,9 @@ nav {
         margin-left: 4px;
     }
     #songNamePanel {
-        font-size: 23px;
-        font-weight: 500;
+        font-size: 22px;
+        font-weight: 600;
+        max-height: 26px;
     }
 }
 @media only screen and (max-width:420px) {
