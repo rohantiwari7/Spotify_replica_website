@@ -527,7 +527,7 @@ nav {
 
 .blur{
     filter: blur(10px);
-    max-height: 82vh;
+    max-height: 78vh;
     overflow-y: hidden;
 }
 .blurMoreHeight{
