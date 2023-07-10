@@ -4,7 +4,7 @@
 * {
     padding: 0;
     margin: 0;
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
 }
 .prevent-select{
     user-select: none;
