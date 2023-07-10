@@ -4,6 +4,7 @@
 * {
     padding: 0;
     margin: 0;
+    scroll-behavior: smooth;
 }
 .prevent-select{
     user-select: none;
@@ -526,10 +527,12 @@ nav {
 
 .blur{
     filter: blur(10px);
-    max-height: 80vh;
+    max-height: 82vh;
     overflow-y: hidden;
 }
-
+.blurMoreHeight{
+    max-height: 135vh;
+}
 
 /* //////////////////////////////////////////// */
 /* panel styling */
@@ -900,9 +903,6 @@ nav {
     #main{
         background:  linear-gradient(160deg,rgb(193, 189, 90),30%, gray);      
     }
-    .blur{
-        max-height: 130vh;
-    }
     #progressbar{
         width: 16vw;
     }
@@ -939,7 +939,7 @@ nav {
         margin: 0px 12px;
     }
     .popSongs{
-        margin: 8px 0px 110px 0px;
+        margin: 8px 0px 100px 0px;
     }
     .popSongLabel{
         font-size: 22px;
@@ -948,6 +948,7 @@ nav {
     #songNamePanel {
         font-size: 33px;
         font-weight: 600;
+        margin: 25px 5px 15px 5px;
     }
 }
 

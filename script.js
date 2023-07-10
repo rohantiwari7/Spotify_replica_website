@@ -410,6 +410,9 @@ function openWindow() {
         setTimeout(() => {   panel.classList.add('panel_open');  }, 10); 
         // navi.classList.add('blur');
         main.classList.add('blur');
+        if(window.innerWidth<610 && audioElem.src!==""){
+            main.classList.add('blurMoreHeight');
+        }
         console.log('panel is opened');
         if (audioElem.src==="" && window.innerWidth<610){
             artistArtPanelWrapper.style.display='none';
@@ -438,6 +441,7 @@ songNamePlayer.addEventListener('click', tryopenWindow);
 function closeWindow() {
     panel.classList.remove('panel_open');
     main.classList.remove('blur');
+    main.classList.remove('blurMoreHeight');
     setTimeout(() => {   panel.style.display = "none";  }, 350);
     // navi.classList.remove('blur');
     console.log('panel is closed');
