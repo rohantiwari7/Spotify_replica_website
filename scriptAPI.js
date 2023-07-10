@@ -173,7 +173,7 @@ async function findQuery(){
             if(!searched){   //query is songname, by design
                 artistName=data.tracks.items[0].artists[0].name;  //artist among artists in this list
                 artistId=data.tracks.items[0].artists[0].id;   //this too needs checking
-                if(panelOpen && window.innerWidth<610 && window.scrollY>300){ 
+                if(panelOpen && window.innerWidth<610 && window.scrollY>320){ 
                      window.scrollTo(0,12);
                  } //turn off if jerky                       
                 console.log('songName=', songName,'  artistName=', artistName,'  artistId=',artistId);

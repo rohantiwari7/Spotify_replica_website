@@ -900,7 +900,9 @@ nav {
     #main{
         background:  linear-gradient(160deg,rgb(193, 189, 90),30%, gray);      
     }
-    
+    .blur{
+        max-height: 130vh;
+    }
     #progressbar{
         width: 16vw;
     }
@@ -937,7 +939,7 @@ nav {
         margin: 0px 12px;
     }
     .popSongs{
-        margin: 8px 0px 130px 0px;
+        margin: 8px 0px 110px 0px;
     }
     .popSongLabel{
         font-size: 22px;
