@@ -274,7 +274,7 @@ async function findPopSongs(artistId){
             else{
                 if(panelOpen){
                     // closeWindow();
-                    errMsg.innerText = `Songs of ${artistName} not currently available`;
+                    errMsg.innerText = `${artistName} not currently available`;
                     errMsg.style.display = "flex";
                     errMsg.style.height = "60px";
                     errMsg.style.width="200px";
@@ -446,7 +446,7 @@ async function refreshSongQuery(data,query){
         else{
             if(panelOpen){
                 // closeWindow();
-                errMsg.innerText = `Song '${query}' not currently available`;
+                errMsg.innerText = `'${query}' not currently available`;
                 errMsg.style.display = "flex";
                 errMsg.style.height = "60px";
                 errMsg.style.width="200px";
